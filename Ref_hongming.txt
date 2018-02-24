@@ -22,8 +22,10 @@ http://www.bspilot.com/?p=121
 http://www.qidic.com/42354.html
 
 
-Others£º
+Others(me)£º
 http://blog.csdn.net/qq_21842557/article/details/51727674 
+http://www.olliw.eu/2013/imu-data-fusing/#refRM05
+
 
 
 
