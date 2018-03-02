@@ -71,7 +71,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 gx = event.data[0];
                 gy = event.data[1];
                 gz = event.data[2];
-               // printf("gyro(%lld gx=%f, gy=%f, gz=%f)\n", event.timestamp, gx, gy, gz);
+            //    printf("gyro(%lld gx=%f, gy=%f, gz=%f)\n", event.timestamp, gx, gy, gz);
             accCounter ++;
             if(accCounter >= 0){
                 long long int timestep_end_g = event.timestamp;
