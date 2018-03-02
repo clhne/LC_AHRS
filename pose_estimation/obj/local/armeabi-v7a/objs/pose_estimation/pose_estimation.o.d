@@ -78,7 +78,10 @@ obj/local/armeabi-v7a/objs/pose_estimation/pose_estimation.o: \
  D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/sys/resource.h \
  D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/linux/resource.h \
  D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/asm/resource.h \
- D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h
+ D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h \
+ jni/MahonyAHRS.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/math.h \
+ D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/math.h
 
 D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stdio.h:
 
@@ -237,3 +240,9 @@ D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/linux/resource.h:
 D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/asm/resource.h:
 
 D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h:
+
+jni/MahonyAHRS.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/math.h:
+
+D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/math.h:
