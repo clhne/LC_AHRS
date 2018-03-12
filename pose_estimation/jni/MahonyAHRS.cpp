@@ -28,7 +28,7 @@
 // Definitions
 
 #define DEFAULT_SAMPLE_FREQ	512.0f	// sample frequency in Hz
-#define twoKpDef	(2.0f * 0.5f)	// 2 * proportional gain
+#define twoKpDef	(2.0f * 1.0f)	// 2 * proportional gain
 #define twoKiDef	(2.0f * 0.0f)	// 2 * integral gain
 
 
@@ -65,11 +65,12 @@ void Mahony::update(float gx, float gy, float gz, float ax, float ay, float az, 
 
 	// Use IMU algorithm if magnetometer measurement invalid
 	// (avoids NaN in magnetometer normalisation)
-	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		updateIMU(gx, gy, gz, ax, ay, az, timestep);
+	
+    if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
+		//updateIMU(gx, gy, gz, ax, ay, az, timestep);
 		return;
 	}
-
+    
 	// Convert gyroscope degrees/sec to radians/sec
 	gx *= 0.0174533f;
 	gy *= 0.0174533f;

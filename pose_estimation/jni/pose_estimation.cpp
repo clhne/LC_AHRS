@@ -10,6 +10,8 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 #include <MahonyAHRS.h>
+#include <fstream>
+using namespace std;
 uint64_t performanceCounter() {
   uint64_t result = 0;
   timespec ts;
@@ -59,54 +61,75 @@ void* SENSOR_WORKER_THREAD(void* param) {
     int accCounter = 0;
     int gyroCounter = 0;
     int magCounter =0;
-    float gx = 0, gy = 0, gz = 0, ax = 0, ay = 0, az = 0, mx = 0, my = 0, mz = 0;
+    bool a_ready = false;
+    bool m_ready = false;
+    double gx = 0, gy = 0, gz = 0, ax = 0, ay = 0, az = 0, mx = 0, my = 0, mz = 0;
     long long int timestep;
     Mahony pose;
+    ofstream fout;
+    fout.open("Mag_data.txt");
     while (ident = ALooper_pollAll(-1, NULL, &events, NULL) >= 0) {
       if (ident == 1) {
         ASensorEvent event;
         long long int timestep_begin = event.timestamp;
         while(ASensorEventQueue_getEvents(queue, &event, 1) > 0){
             if(event.type == ASENSOR_TYPE_GYROSCOPE){
+                /*
+                gx = 0.008514;
+                gy = -0.004257;
+                gz = 0.025541;
+                */
                 gx = event.data[0];
                 gy = event.data[1];
                 gz = event.data[2];
-            //    printf("gyro(%lld gx=%f, gy=%f, gz=%f)\n", event.timestamp, gx, gy, gz);
+                //printf("gyro(%lld gx=%f, gy=%f, gz=%f)\n", event.timestamp, gx, gy, gz);
             accCounter ++;
-            if(accCounter >= 0){
+            if(accCounter >= 0 && a_ready && m_ready){
                 long long int timestep_end_g = event.timestamp;
-                timestep = (timestep_end_g - timestep_begin)/10000000.0;
+                timestep = (double)(timestep_end_g - timestep_begin)/10000000;
                 
                 if(timestep >= 0){
                     //printf("gyro timestep = %lld\n",timestep );
                     pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep);
-                    //pose.updateIMU(gx, gy, gz, ax, ay, az, timestep);
-                    float roll = pose.getRoll();
-                    float pitch = pose.getPitch();
-                    float yaw = pose.getYaw();
-                    printf("roll = %f,pitch = %f,yaw = %f\n",roll, pitch, yaw);
+                    double roll = pose.getRoll();
+                    double pitch = pose.getPitch();
+                    double yaw = pose.getYaw();
+                    printf("roll = %lf,pitch = %lf,yaw = %lf\n",roll, pitch, yaw);
                 //    sleep(1);
                 }
             }
             }
             else if(event.type == ASENSOR_TYPE_ACCELEROMETER){
+                /*
+                ax = -5.765238;
+                ay = -3.926491;
+                az = 7.077260;
+                */
                 ax = event.data[0];
                 ay = event.data[1];
                 az = event.data[2];
+                a_ready = true;
                 //printf("acc(%lld ax=%f, ay=%f, az=%f)\n", event.timestamp, ax, ay, az);
-                long long int timestep_end_a = event.timestamp/10000000.0;
+                long long int timestep_end_a = event.timestamp/10000000;
             //    pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_a);
-                //pose.updateIMU(gx, gy, gz, ax, ay, az, timestep_end_a);
                 //printf("acc(%lld ax = %f,ay=%f,az=%f)\n",event.timestamp,event.acceleration.x,event.acceleration.y,event.acceleration.z);
             }
             else if(event.type == ASENSOR_TYPE_MAGNETIC_FIELD){
+                
+                /*
+                mx = 46.800003;
+                my = 28.800001;
+                mz = 68.400002;
+                */
                 mx = event.data[0];
                 my = event.data[1];
                 mz = event.data[2];
+                m_ready = true;
                 //printf("mag(%lld mx=%f, my=%f, mz=%f)\n",event.timestamp, mx, my, mz);
-                long long int timestep_end_m = event.timestamp/10000000.0;
+                long long int timestep_end_m = event.timestamp/10000000;
              //   pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_m);
-                //pose.updateIMU(gx, gy, gz, ax, ay, az, timestep_end_m);
+             
+             fout<<mx<<" "<<my<<" "<<mz<<endl;
             }
         }
       }
@@ -121,6 +144,5 @@ int main(int argc, char* argv[]) {
   pthread_create(&thread_id, NULL, &SENSOR_WORKER_THREAD, NULL);
   pthread_join(thread_id, NULL);
 
-  
   return 0;
 }

@@ -81,7 +81,87 @@ obj/local/armeabi-v7a/objs/pose_estimation/pose_estimation.o: \
  D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/asm-generic/resource.h \
  jni/MahonyAHRS.h \
  D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/math.h \
- D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/math.h
+ D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/math.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/fstream \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ioserr.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_fstream.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_streambuf.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ios_base.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_stdexcept_base.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_exception.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/exception \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/gabixx_config.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_pair.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/type_traits.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/type_manips.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_move_construct_fwk.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_locale.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstdlib.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cmath.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cwchar.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/cstddef \
+ D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/wchar.h \
+ D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_mbstate_t.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_threads.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstddef.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_threads.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ctime.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_fwd.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iosfwd.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/char_traits.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstring.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/using/cstring \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_construct.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_new.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/new \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/cstddef \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/exception \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstdio.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iterator_base.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ptrs_specialize.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_alloc.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_algobase.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/climits \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_algobase.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_function_base.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iterator.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_alloc.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_base.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_npos.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_operators.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ctraits_fns.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_function.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_function_adaptors.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_range_errors.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_facets_fwd.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_streambuf.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_istream.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ios.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ctype.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/c_locale.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_numpunct.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ios.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ostream.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ostreambuf_iterator.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ostream.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_put.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iostream_string.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_put.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_limits.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/cfloat \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/float.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_limits.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_istreambuf_iterator.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_istream.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_get.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_get.c \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_codecvt.h \
+ D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_fstream.c
 
 D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stdio.h:
 
@@ -246,3 +326,163 @@ jni/MahonyAHRS.h:
 D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/math.h:
 
 D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/math.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/fstream:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/debug/_debug.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ioserr.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_fstream.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_streambuf.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ios_base.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_stdexcept_base.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_exception.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/exception:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/gabixx_config.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_pair.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/type_traits.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/type_manips.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_move_construct_fwk.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_locale.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstdlib.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cmath.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cwchar.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/cstddef:
+
+D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/../include/wchar.h:
+
+D:/android-ndk-r10c/platforms/android-9/arch-arm/usr/include/sys/_wchar_limits.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_mbstate_t.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_threads.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstddef.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_threads.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ctime.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_fwd.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iosfwd.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/char_traits.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstring.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/using/cstring:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_construct.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_new.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/../../gabi++/include/new:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/cstddef:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/exception:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_cstdio.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iterator_base.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ptrs_specialize.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_alloc.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_algobase.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/climits:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_algobase.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_function_base.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iterator.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_alloc.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_uninitialized.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_base.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_npos.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string_operators.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_string.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ctraits_fns.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_function.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_function_adaptors.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_range_errors.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_facets_fwd.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_streambuf.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_istream.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ios.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ctype.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/c_locale.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_numpunct.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ios.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ostream.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ostreambuf_iterator.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_ostream.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_put.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_iostream_string.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_put.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_limits.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/cfloat:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/float.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_limits.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_istreambuf_iterator.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_istream.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_get.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_num_get.c:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_codecvt.h:
+
+D:/android-ndk-r10c/sources/cxx-stl/stlport/stlport/stl/_fstream.c:
