@@ -28,7 +28,7 @@
 // Definitions
 
 #define DEFAULT_SAMPLE_FREQ	512.0f	// sample frequency in Hz
-#define twoKpDef	(2.0f * 1.0f)	// 2 * proportional gain
+#define twoKpDef	(2.0f * 0.8f)	// 2 * proportional gain
 #define twoKiDef	(2.0f * 0.0f)	// 2 * integral gain
 
 
@@ -67,7 +67,7 @@ void Mahony::update(float gx, float gy, float gz, float ax, float ay, float az, 
 	// (avoids NaN in magnetometer normalisation)
 	
     if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		//updateIMU(gx, gy, gz, ax, ay, az, timestep);
+		updateIMU(gx, gy, gz, ax, ay, az, timestep);
 		return;
 	}
     
@@ -284,9 +284,12 @@ float Mahony::invSqrt(float x)
 
 void Mahony::computeAngles()
 {
+    
 	roll = atan2f(q0*q1 + q2*q3, 0.5f - q1*q1 - q2*q2);
 	pitch = asinf(-2.0f * (q1*q3 - q0*q2));
 	yaw = atan2f(q1*q2 + q0*q3, 0.5f - q2*q2 - q3*q3);
+ 
+    
 	anglesComputed = 1;
 }
 
