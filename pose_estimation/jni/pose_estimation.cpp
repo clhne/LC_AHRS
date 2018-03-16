@@ -110,7 +110,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 ay = event.data[1];
                 az = event.data[2];
                 a_ready = true;
-            //    printf("acc(%lld ax=%f, ay=%f, az=%f)\n", event.timestamp, ax, ay, az);
+        //        printf("acc(%lld ax=%f, ay=%f, az=%f)\n", event.timestamp, ax, ay, az);
                 long long int timestep_end_a = event.timestamp/10000000;
             //    pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_a);
                 //printf("acc(%lld ax = %f,ay=%f,az=%f)\n",event.timestamp,event.acceleration.x,event.acceleration.y,event.acceleration.z);
@@ -130,7 +130,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 long long int timestep_end_m = event.timestamp/10000000;
              //   pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_m);
              
-             fout<<mx<<" "<<my<<" "<<mz<<endl;
+             fout<<mx<<" \t"<<my<<" \t"<<mz<<endl;
             }
         }
       }
