@@ -64,10 +64,10 @@ void* SENSOR_WORKER_THREAD(void* param) {
     bool a_ready = false;
     bool m_ready = false;
     double gx = 0, gy = 0, gz = 0, ax = 0, ay = 0, az = 0, mx = 0, my = 0, mz = 0;
-    long long int timestep;
+    double timestep;
     Mahony pose;
     ofstream fout;
-    fout.open("Mag_data.txt");
+    fout.open("/data/local/tmp/Mag_data.txt");
     while (ident = ALooper_pollAll(-1, NULL, &events, NULL) >= 0) {
       if (ident == 1) {
         ASensorEvent event;
@@ -89,9 +89,9 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 timestep = (timestep_end_g - timestep_begin)/10000000.0f;
                 
                 if(timestep >= 0){
-                    //printf("gyro timestep = %lld\n",timestep );
-                    //pose.update(gx, gy, gz, ax, ay, az, my, mx, mz, timestep);
-                    pose.update(gy, gx, gz, ay, ax, az, my, mx, -mz, timestep);
+                   // printf("gyro timestep = %lf\n",timestep );
+                    //pose.update(-gy, -gx, gz, ay, ax, az, mx, my, mz, timestep); //LC1860 axis
+                    pose.update(gy, gx, gz, ay, ax, az, -my, -mx, -mz, timestep);   //vivo x7
                     double roll = pose.getRoll();
                     double pitch = pose.getPitch();
                     double yaw = pose.getYaw();
