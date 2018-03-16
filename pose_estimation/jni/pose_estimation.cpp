@@ -90,7 +90,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 
                 if(timestep >= 0){
                    // printf("gyro timestep = %lf\n",timestep );
-                    //pose.update(-gy, -gx, gz, ay, ax, az, mx, my, mz, timestep); //LC1860 axis
+                    //pose.update(-gy, -gx, gz, ay, ax, az, mx, my, mz, timestep); //LC1860 axes
                     pose.update(gy, gx, gz, ay, ax, az, -my, -mx, -mz, timestep);   //vivo x7
                     double roll = pose.getRoll();
                     double pitch = pose.getPitch();
