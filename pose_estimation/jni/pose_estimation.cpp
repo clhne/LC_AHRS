@@ -89,13 +89,14 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 timestep = (timestep_end_g - timestep_begin)/10000000.0f;
                 
                 if(timestep >= 0){
-                   // printf("gyro timestep = %lf\n",timestep );
-                    //pose.update(-gy, -gx, gz, ay, ax, az, mx, my, mz, timestep); //LC1860 axes
-                    pose.update(gy, gx, gz, ay, ax, az, -my, -mx, -mz, timestep);   //vivo x7
+                    //printf("gyro timestep = %lf\n",timestep );
+                //    pose.update(-gy, -gx, gz, ay, ax, az, mx, my, mz, timestep); //LC1860 axes
+                //    pose.update(gy, gx, gz, ay, ax, az, -my, -mx, -mz, timestep);   //vivo x7
+                    pose.update(-gy, -gx, gz, ay, -ax, -az, my, mx, mz, timestep);
                     double roll = pose.getRoll();
                     double pitch = pose.getPitch();
                     double yaw = pose.getYaw();
-                    printf("roll = %lf,pitch = %lf,yaw = %lf\n",roll, pitch, yaw);
+        //            printf("roll = %lf,pitch = %lf,yaw = %lf\n",roll, pitch, yaw);
                 //    sleep(1);
                 }
             }
@@ -126,7 +127,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 my = event.data[1];
                 mz = event.data[2];
                 m_ready = true;
-            //    printf("mag(%lld mx=%f, my=%f, mz=%f)\n",event.timestamp, mx, my, mz);
+                printf("mag(%lld mx=%f, my=%f, mz=%f)\n",event.timestamp, mx, my, mz);
                 long long int timestep_end_m = event.timestamp/10000000;
              //   pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_m);
              
