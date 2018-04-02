@@ -65,12 +65,12 @@ void Mahony::update(float gx, float gy, float gz, float ax, float ay, float az, 
 
 	// Use IMU algorithm if magnetometer measurement invalid
 	// (avoids NaN in magnetometer normalisation)
-	
+	/*
     if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
 		updateIMU(gx, gy, gz, ax, ay, az, timestep);
 		return;
 	}
-    
+    */
 	// Convert gyroscope degrees/sec to radians/sec
 	gx *= 0.0174533f;
 	gy *= 0.0174533f;

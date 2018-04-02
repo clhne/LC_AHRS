@@ -82,7 +82,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 gx = event.data[0];
                 gy = event.data[1];
                 gz = event.data[2];
-            //    printf("gyro(%lld gx=%f, gy=%f, gz=%f)\n", event.timestamp, gx, gy, gz);
+        //        printf("gyro(%lld gx=%f, gy=%f, gz=%f)\n", event.timestamp, gx, gy, gz);
             accCounter ++;
             if(accCounter >= 0 && a_ready && m_ready){
                 long long int timestep_end_g = event.timestamp;
@@ -111,7 +111,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 ay = event.data[1];
                 az = event.data[2];
                 a_ready = true;
-        //        printf("acc(%lld ax=%f, ay=%f, az=%f)\n", event.timestamp, ax, ay, az);
+                printf("acc(%lld ax=%f, ay=%f, az=%f)\n", event.timestamp, ax, ay, az);
                 long long int timestep_end_a = event.timestamp/10000000;
             //    pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_a);
                 //printf("acc(%lld ax = %f,ay=%f,az=%f)\n",event.timestamp,event.acceleration.x,event.acceleration.y,event.acceleration.z);
@@ -127,7 +127,7 @@ void* SENSOR_WORKER_THREAD(void* param) {
                 my = event.data[1];
                 mz = event.data[2];
                 m_ready = true;
-                printf("mag(%lld mx=%f, my=%f, mz=%f)\n",event.timestamp, mx, my, mz);
+        //        printf("mag(%lld mx=%f, my=%f, mz=%f)\n",event.timestamp, mx, my, mz);
                 long long int timestep_end_m = event.timestamp/10000000;
              //   pose.update(gx, gy, gz, ax, ay, az, mx, my, mz, timestep_end_m);
              
