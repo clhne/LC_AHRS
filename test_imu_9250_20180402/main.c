@@ -23,6 +23,18 @@ int main(void) {
 	delay_init();
   time_init();
   ret_code = mpu_9250_init();
+	
+  enum Mscale {
+  MFS_14BITS = 0, // 0.6 mG per LSB
+  MFS_16BITS      // 0.15 mG per LSB
+  };
+  uint8_t Mmode = 0x02;
+  float destination[3] = {0,0,0};
+  float dest1[3] = {0,0,0};
+  float dest2[3] = {0,0,0};
+  u8 Mscale = MFS_16BITS;
+  initAK8963( Mscale, Mmode, destination);
+  magcalMPU9250(dest1,dest2);
   while(1) {
     //if(mpu_9250_is_dry()) {
       cur_ts = millis();
@@ -34,25 +46,24 @@ int main(void) {
       } else {
         dt = (float)(cur_ts - prev_ts) / 1000.0;
         // https://github.com/kriswiner/MPU9250/issues/220#
-				// https://github.com/kriswiner/MPU9250/issues/51
-				//MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_my, prev_mx, -prev_mz, dt);
-			  MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, 0.0, 0.0, 0.0, dt);
+	    // https://github.com/kriswiner/MPU9250/issues/51
+		//MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_my, prev_mx, -prev_mz, dt);
+		MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, 0.0, 0.0, 0.0, dt);
         prev_ts = cur_ts;
-				yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 57.32484076433121;   
+	    yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 57.32484076433121;   
         pitch = -asin(2.0f * (q1 * q3 - q0 * q2)) * 57.32484076433121;
         roll  = atan2(2.0f * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3) * 57.32484076433121; // https://github.com/kriswiner/MPU9250/blob/master/STM32F401/main.cpp
-        //printf("%d %f %f %f %f\n", ret_code, dt, roll, pitch, yaw);
-        printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
+     //   printf("ret_code= %d dt= %f\t roll= %f\t pitch= %f\t yaw= %f\t\n", ret_code, dt, roll, pitch, yaw);
+        //printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
+		  
+		//printf("prev_gx = %f\t prev_gy = %f\t prev_gz = %f\t\n",prev_gx, prev_gy, prev_gz);
+		//printf("prev_ax = %f\t prev_ay = %f\t prev_az = %f\t\n",prev_ax, prev_ay, prev_az);
+		printf("%f, %f, %f\n",prev_mx, prev_my, prev_mz);
+		//delay_ms(100);
       }
-      prev_ax = cur_ax;
-      prev_ay = cur_ay;
-      prev_az = cur_az;
-      prev_gx = cur_gx;
-      prev_gy = cur_gy;
-      prev_gz = cur_gz;
-      prev_mx = cur_mx,
-      prev_my = cur_my;
-      prev_mz = cur_mz;
+      prev_ax = cur_ax; prev_ay = cur_ay; prev_az = cur_az;
+      prev_gx = cur_gx; prev_gy = cur_gy; prev_gz = cur_gz;
+      prev_mx = cur_mx; prev_my = cur_my; prev_mz = cur_mz;
     //}
   }
 }

@@ -368,9 +368,12 @@ u8 mpu_9250_read_accel_gyro(float *ax, float *ay, float *az, float *gx, float *g
   if (mpu_9250_read_accel_gyro_raw(&raw_ax, &raw_ay, &raw_az, &raw_gx, &raw_gy, &raw_gz)) {
     return 1;
   }
-  *ax = (float)raw_ax * (CUR_ACCEL_STY * G2MSS);
-  *ay = (float)raw_ay * (CUR_ACCEL_STY * G2MSS);
-  *az = (float)raw_az * (CUR_ACCEL_STY * G2MSS);
+//  *ax = (float)raw_ax * (CUR_ACCEL_STY * G2MSS);
+//  *ay = (float)raw_ay * (CUR_ACCEL_STY * G2MSS);
+//  *az = (float)raw_az * (CUR_ACCEL_STY * G2MSS);
+  *ax = (float)raw_ax * (CUR_ACCEL_STY);
+  *ay = (float)raw_ay * (CUR_ACCEL_STY);
+  *az = (float)raw_az * (CUR_ACCEL_STY);
   *gx = (float)(raw_gx - gyro_bias_x) * (CUR_GYRO_STY * DEG2RAD);
   *gy = (float)(raw_gy - gyro_bias_y) * (CUR_GYRO_STY * DEG2RAD);
   *gz = (float)(raw_gz - gyro_bias_z) * (CUR_GYRO_STY * DEG2RAD);
@@ -397,4 +400,82 @@ u8 mpu_9250_init(void) {
     return ret_code;
   }
   return mpu_9250_calibrate();
+}
+
+void writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
+{
+   u8 data_write[2];
+   data_write[0] = subAddress;
+   data_write[1] = data;
+   mpu_9250_write(address, data_write[0], 1, &data_write[1]);
+}
+// https://github.com/kriswiner/MPU6050/wiki/Simple-and-Effective-Magnetometer-Calibration
+void magcalMPU9250(float * dest1, float * dest2) 
+ {
+ u8 MPU9250Mmode = 0x06; 
+ float ii = 0, sample_count = 0;
+ float mag_bias[3] = {0, 0, 0}, mag_scale[3] = {0, 0, 0};
+ float mag_max[3] = {-32767, -32767, -32767}, mag_min[3] = {32767, 32767, 32767}, mag_temp[3] = {0, 0, 0};
+
+ printf("Mag Calibration: Wave device in a figure eight until done!\n");
+ delay_ms(4000);
+
+// shoot for ~fifteen seconds of mag data
+if(MPU9250Mmode == 0x02) sample_count = 128;  // at 8 Hz ODR, new mag data is available every 125 ms
+if(MPU9250Mmode == 0x06) sample_count = 1500;  // at 100 Hz ODR, new mag data is available every 10 ms
+for(ii = 0; ii < sample_count; ii++) {
+mpu_9250_read_mag(&mag_temp[0],&mag_temp[1],&mag_temp[2]);  // Read the mag data   
+for (int jj = 0; jj < 3; jj++) {
+  if(mag_temp[jj] > mag_max[jj]) mag_max[jj] = mag_temp[jj];
+  if(mag_temp[jj] < mag_min[jj]) mag_min[jj] = mag_temp[jj];
+}
+if(MPU9250Mmode == 0x02) delay_ms(135);  // at 8 Hz ODR, new mag data is available every 125 ms
+if(MPU9250Mmode == 0x06) delay_ms(12);  // at 100 Hz ODR, new mag data is available every 10 ms
+}
+
+
+// Get hard iron correction
+ mag_bias[0]  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
+ mag_bias[1]  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
+ mag_bias[2]  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
+ //printf("mag_bias[0] = %f, mag_bias[1] = %f, mag_bias[2] = %f\n",mag_bias[0],mag_bias[1],mag_bias[2]);
+
+ dest1[0] = (float) mag_bias[0]*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
+ dest1[1] = (float) mag_bias[1]*CUR_MAG_STY*mag_adjust_y;   
+ dest1[2] = (float) mag_bias[2]*CUR_MAG_STY*mag_adjust_z;  
+ printf("dest1[0] = %f, dest1[1] = %f, dest1[2] = %f\n",dest1[0],dest1[1],dest2[2]);  
+// Get soft iron correction estimate
+ mag_scale[0]  = (mag_max[0] - mag_min[0])/2;  // get average x axis max chord length in counts
+ mag_scale[1]  = (mag_max[1] - mag_min[1])/2;  // get average y axis max chord length in counts
+ mag_scale[2]  = (mag_max[2] - mag_min[2])/2;  // get average z axis max chord length in counts
+
+ float avg_rad = mag_scale[0] + mag_scale[1] + mag_scale[2];
+ avg_rad /= 3.0;
+
+ dest2[0] = avg_rad/((float)mag_scale[0]);
+ dest2[1] = avg_rad/((float)mag_scale[1]);
+ dest2[2] = avg_rad/((float)mag_scale[2]);
+
+ printf("Mag Calibration done!\n");
+ }
+ 
+void initAK8963(uint8_t Mscale, uint8_t Mmode, float * destination)
+{
+  // First extract the factory calibration for each magnetometer axis
+  uint8_t rawData[3];  // x/y/z gyro calibration data stored here
+  writeByte(AK8963_I2C_ADDR, 0x0A, 0x00); // Power down magnetometer  
+  delay_ms(100);
+  writeByte(AK8963_I2C_ADDR, 0x0A, 0x0F); // Enter Fuse ROM access mode
+  delay_ms(100);
+  mpu_9250_read(AK8963_I2C_ADDR, 0x10, 3, &rawData[0]);  // Read the x-, y-, and z-axis calibration values
+  destination[0] =  (float)(rawData[0] - 128)/256.0f + 1.0f;   // Return x-axis sensitivity adjustment values, etc.
+  destination[1] =  (float)(rawData[1] - 128)/256.0f + 1.0f;  
+  destination[2] =  (float)(rawData[2] - 128)/256.0f + 1.0f; 
+  writeByte(AK8963_I2C_ADDR, 0x0A, 0x00); // Power down magnetometer  
+  delay_ms(100);
+  // Configure the magnetometer for continuous read and highest resolution
+  // set Mscale bit 4 to 1 (0) to enable 16 (14) bit resolution in CNTL register,
+  // and enable continuous mode data acquisition Mmode (bits [3:0]), 0010 for 8 Hz and 0110 for 100 Hz sample rates
+  writeByte(AK8963_I2C_ADDR, 0x0A, Mscale << 4 | Mmode); // Set magnetometer data resolution and sample ODR
+  delay_ms(100);
 }
