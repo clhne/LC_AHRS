@@ -1,0 +1,24 @@
+clear all;
+close all;
+mag = load('Mag_data.txt');
+mag_x = mag(:,1);
+mag_y = mag(:,2);
+mag_z = mag(:,3);
+plot(mag_x, mag_y,'bo');
+hold on;
+plot(mag_x, mag_z,'r*');
+hold on;
+plot(mag_y, mag_z,'kv');
+title('LC1860');
+
+figure;
+mag = load('SaveWindows2018_4_3_16-33-28.TXT');
+mag_x = mag(:,1);
+mag_y = mag(:,2);
+mag_z = mag(:,3);
+plot(mag_x, mag_y,'bo');
+hold on;
+plot(mag_x, mag_z,'r*');
+hold on;
+plot(mag_y, mag_z,'kv');
+title('MPU9250');
