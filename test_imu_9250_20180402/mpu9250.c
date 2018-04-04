@@ -410,11 +410,12 @@ void writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
    mpu_9250_write(address, data_write[0], 1, &data_write[1]);
 }
 // https://github.com/kriswiner/MPU6050/wiki/Simple-and-Effective-Magnetometer-Calibration
-void magcalMPU9250(float * dest1, float * dest2) 
+void magcalMPU9250(float * dest1, float * dest2,float mag_bias_x, float mag_bias_y, float mag_bias_z) 
  {
  u8 MPU9250Mmode = 0x06; 
  float ii = 0, sample_count = 0;
- float mag_bias[3] = {0, 0, 0}, mag_scale[3] = {0, 0, 0};
+ //float mag_bias[3] = {0, 0, 0}, 
+ float mag_scale[3] = {0, 0, 0};
  float mag_max[3] = {-32767, -32767, -32767}, mag_min[3] = {32767, 32767, 32767}, mag_temp[3] = {0, 0, 0};
 
  printf("Mag Calibration: Wave device in a figure eight until done!\n");
@@ -435,14 +436,15 @@ if(MPU9250Mmode == 0x06) delay_ms(12);  // at 100 Hz ODR, new mag data is availa
 
 
 // Get hard iron correction
- mag_bias[0]  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
- mag_bias[1]  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
- mag_bias[2]  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
+ mag_bias_x  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
+ mag_bias_y  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
+ mag_bias_z  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
  //printf("mag_bias[0] = %f, mag_bias[1] = %f, mag_bias[2] = %f\n",mag_bias[0],mag_bias[1],mag_bias[2]);
 
- dest1[0] = (float) mag_bias[0]*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
- dest1[1] = (float) mag_bias[1]*CUR_MAG_STY*mag_adjust_y;   
- dest1[2] = (float) mag_bias[2]*CUR_MAG_STY*mag_adjust_z;  
+ dest1[0] = (float) mag_bias_x*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
+ dest1[1] = (float) mag_bias_y*CUR_MAG_STY*mag_adjust_y;   
+ dest1[2] = (float) mag_bias_z*CUR_MAG_STY*mag_adjust_z; 
+
  printf("dest1[0] = %f, dest1[1] = %f, dest1[2] = %f\n",dest1[0],dest1[1],dest2[2]);  
 // Get soft iron correction estimate
  mag_scale[0]  = (mag_max[0] - mag_min[0])/2;  // get average x axis max chord length in counts
@@ -457,6 +459,7 @@ if(MPU9250Mmode == 0x06) delay_ms(12);  // at 100 Hz ODR, new mag data is availa
  dest2[2] = avg_rad/((float)mag_scale[2]);
 
  printf("Mag Calibration done!\n");
+
  }
  
 void initAK8963(uint8_t Mscale, uint8_t Mmode, float * destination)
