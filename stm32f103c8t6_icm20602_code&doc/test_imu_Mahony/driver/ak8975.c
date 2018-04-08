@@ -93,3 +93,56 @@ uint8_t ak8975_get_mag(float *mag) {
   mag[2] = _mag_scale * magadc[2];
 	return 0;
 }
+
+void magcalMPU9250(float * dest1, float * dest2,float *mag_bias_x, float *mag_bias_y, float *mag_bias_z) 
+ {
+ u8 MPU9250Mmode = 0x06; 
+ float ii = 0, sample_count = 0;
+ int jj = 0;
+ //float mag_bias[3] = {0, 0, 0}, 
+ float mag_scale[3] = {0, 0, 0};
+ float mag_max[3] = {-32767, -32767, -32767}, mag_min[3] = {32767, 32767, 32767}, mag_temp[3] = {0, 0, 0};
+
+ printf("Mag Calibration: Wave device in a figure eight until done!\n");
+ delay_ms(4000);
+
+// shoot for ~fifteen seconds of mag data
+if(MPU9250Mmode == 0x02) sample_count = 128;  // at 8 Hz ODR, new mag data is available every 125 ms
+if(MPU9250Mmode == 0x06) sample_count = 1500;  // at 100 Hz ODR, new mag data is available every 10 ms
+for(ii = 0; ii < sample_count; ii++) {
+ak8975_get_mag(mag_temp);  // Read the mag data   
+for (jj = 0; jj < 3; jj++) {
+  if(mag_temp[jj] > mag_max[jj]) mag_max[jj] = mag_temp[jj];
+  if(mag_temp[jj] < mag_min[jj]) mag_min[jj] = mag_temp[jj];
+}
+if(MPU9250Mmode == 0x02) delay_ms(135);  // at 8 Hz ODR, new mag data is available every 125 ms
+if(MPU9250Mmode == 0x06) delay_ms(12);  // at 100 Hz ODR, new mag data is available every 10 ms
+}
+
+
+// Get hard iron correction
+ *mag_bias_x  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
+ *mag_bias_y  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
+ *mag_bias_z  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
+ printf("mag_bias_x = %f, mag_bias_y = %f, mag_bias_z = %f\n",*mag_bias_x,*mag_bias_y,*mag_bias_z);
+
+ //dest1[0] = (float) *mag_bias_x*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
+ //dest1[1] = (float) *mag_bias_y*CUR_MAG_STY*mag_adjust_y;   
+ //dest1[2] = (float) *mag_bias_z*CUR_MAG_STY*mag_adjust_z; 
+
+ //printf("dest1[0] = %f, dest1[1] = %f, dest1[2] = %f\n",dest1[0],dest1[1],dest2[2]);  
+// Get soft iron correction estimate
+ mag_scale[0]  = (mag_max[0] - mag_min[0])/2;  // get average x axis max chord length in counts
+ mag_scale[1]  = (mag_max[1] - mag_min[1])/2;  // get average y axis max chord length in counts
+ mag_scale[2]  = (mag_max[2] - mag_min[2])/2;  // get average z axis max chord length in counts
+
+// float avg_rad = mag_scale[0] + mag_scale[1] + mag_scale[2];
+// avg_rad /= 3.0;
+
+// dest2[0] = avg_rad/((float)mag_scale[0]);
+// dest2[1] = avg_rad/((float)mag_scale[1]);
+// dest2[2] = avg_rad/((float)mag_scale[2]);
+
+ printf("Mag Calibration done!\n");
+
+ }

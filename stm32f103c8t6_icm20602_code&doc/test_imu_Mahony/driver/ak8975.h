@@ -16,5 +16,6 @@ uint8_t ak8975_init(void);
 uint8_t ak8975_start(void);
 uint8_t ak8975_get_mag_adc(int16_t *mag);
 uint8_t ak8975_get_mag(float *mag);
+void magcalMPU9250(float * dest1, float * dest2,float *mag_bias_x, float *mag_bias_y, float *mag_bias_z);
 #endif
 

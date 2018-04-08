@@ -243,3 +243,5 @@ float icm20602_get_temp() {
   temp_adc = (buf[0]<<8)+buf[1];
   return (25.0f + (float)temp_adc/326.8f);
 }
+
+
