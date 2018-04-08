@@ -368,12 +368,12 @@ u8 mpu_9250_read_accel_gyro(float *ax, float *ay, float *az, float *gx, float *g
   if (mpu_9250_read_accel_gyro_raw(&raw_ax, &raw_ay, &raw_az, &raw_gx, &raw_gy, &raw_gz)) {
     return 1;
   }
-//  *ax = (float)raw_ax * (CUR_ACCEL_STY * G2MSS);
-//  *ay = (float)raw_ay * (CUR_ACCEL_STY * G2MSS);
-//  *az = (float)raw_az * (CUR_ACCEL_STY * G2MSS);
-  *ax = (float)raw_ax * (CUR_ACCEL_STY);
-  *ay = (float)raw_ay * (CUR_ACCEL_STY);
-  *az = (float)raw_az * (CUR_ACCEL_STY);
+  *ax = (float)raw_ax * (CUR_ACCEL_STY * G2MSS);
+  *ay = (float)raw_ay * (CUR_ACCEL_STY * G2MSS);
+  *az = (float)raw_az * (CUR_ACCEL_STY * G2MSS);
+//  *ax = (float)raw_ax * (CUR_ACCEL_STY);
+//  *ay = (float)raw_ay * (CUR_ACCEL_STY);
+//  *az = (float)raw_az * (CUR_ACCEL_STY);
   *gx = (float)(raw_gx - gyro_bias_x) * (CUR_GYRO_STY * DEG2RAD);
   *gy = (float)(raw_gy - gyro_bias_y) * (CUR_GYRO_STY * DEG2RAD);
   *gz = (float)(raw_gz - gyro_bias_z) * (CUR_GYRO_STY * DEG2RAD);
@@ -410,7 +410,7 @@ void writeByte(uint8_t address, uint8_t subAddress, uint8_t data)
    mpu_9250_write(address, data_write[0], 1, &data_write[1]);
 }
 // https://github.com/kriswiner/MPU6050/wiki/Simple-and-Effective-Magnetometer-Calibration
-void magcalMPU9250(float * dest1, float * dest2,float mag_bias_x, float mag_bias_y, float mag_bias_z) 
+void magcalMPU9250(float * dest1, float * dest2,float *mag_bias_x, float *mag_bias_y, float *mag_bias_z) 
  {
  u8 MPU9250Mmode = 0x06; 
  float ii = 0, sample_count = 0;
@@ -436,14 +436,14 @@ if(MPU9250Mmode == 0x06) delay_ms(12);  // at 100 Hz ODR, new mag data is availa
 
 
 // Get hard iron correction
- mag_bias_x  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
- mag_bias_y  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
- mag_bias_z  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
+ *mag_bias_x  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
+ *mag_bias_y  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
+ *mag_bias_z  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
  //printf("mag_bias[0] = %f, mag_bias[1] = %f, mag_bias[2] = %f\n",mag_bias[0],mag_bias[1],mag_bias[2]);
 
- dest1[0] = (float) mag_bias_x*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
- dest1[1] = (float) mag_bias_y*CUR_MAG_STY*mag_adjust_y;   
- dest1[2] = (float) mag_bias_z*CUR_MAG_STY*mag_adjust_z; 
+ dest1[0] = (float) *mag_bias_x*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
+ dest1[1] = (float) *mag_bias_y*CUR_MAG_STY*mag_adjust_y;   
+ dest1[2] = (float) *mag_bias_z*CUR_MAG_STY*mag_adjust_z; 
 
  printf("dest1[0] = %f, dest1[1] = %f, dest1[2] = %f\n",dest1[0],dest1[1],dest2[2]);  
 // Get soft iron correction estimate

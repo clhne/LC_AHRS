@@ -44,7 +44,7 @@ int main(void) {
       float mag_bias_x, mag_bias_y, mag_bias_z;
 
       if (is_first_time) {
-        magcalMPU9250(dest1, dest2, mag_bias_x, mag_bias_y, mag_bias_z);
+        magcalMPU9250(dest1, dest2, &mag_bias_x, &mag_bias_y, &mag_bias_z);
 
         is_first_time = 0;
         prev_ts = cur_ts;
@@ -56,17 +56,18 @@ int main(void) {
         // https://github.com/kriswiner/MPU9250/issues/220#
 	    // https://github.com/kriswiner/MPU9250/issues/51
 		//MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_my, prev_mx, -prev_mz, dt);
-		MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, 0.0, 0.0, 0.0, dt);
+		//MahonyAHRSupdate(-prev_gx, prev_gy, prev_gz, prev_ax, -prev_ay, prev_az, 0.0, 0.0, 0.0, dt);
+        MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz, dt);
         prev_ts = cur_ts;
 	    yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 57.32484076433121;   
         pitch = -asin(2.0f * (q1 * q3 - q0 * q2)) * 57.32484076433121;
         roll  = atan2(2.0f * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3) * 57.32484076433121; // https://github.com/kriswiner/MPU9250/blob/master/STM32F401/main.cpp
-     //   printf("ret_code= %d dt= %f\t roll= %f\t pitch= %f\t yaw= %f\t\n", ret_code, dt, roll, pitch, yaw);
+        printf("ret_code= %d dt= %f\t roll= %f\t pitch= %f\t yaw= %f\t\n", ret_code, dt, roll, pitch, yaw);
         //printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
 		  
 		//printf("prev_gx = %f\t prev_gy = %f\t prev_gz = %f\t\n",prev_gx, prev_gy, prev_gz);
 		//printf("prev_ax = %f\t prev_ay = %f\t prev_az = %f\t\n",prev_ax, prev_ay, prev_az);
-		printf("%f, %f, %f\n",cur_mx, cur_my, cur_mz);
+		//printf("%f, %f, %f\n",cur_mx, cur_my, cur_mz);
 		//delay_ms(100);
       }
       prev_ax = cur_ax; prev_ay = cur_ay; prev_az = cur_az;

@@ -182,22 +182,6 @@
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>438</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134229898</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\mpu9250.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\test_imu_9250\mpu9250.c\438</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
           <LineNumber>37</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>134230494</Address>
@@ -212,7 +196,7 @@
           <Expression>\\test_imu_9250\main.c\37</Expression>
         </Bp>
         <Bp>
-          <Number>4</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>439</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -228,7 +212,7 @@
           <Expression></Expression>
         </Bp>
         <Bp>
-          <Number>5</Number>
+          <Number>4</Number>
           <Type>0</Type>
           <LineNumber>236</LineNumber>
           <EnabledFlag>0</EnabledFlag>
