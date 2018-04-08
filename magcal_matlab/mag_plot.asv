@@ -1,7 +1,0 @@
-clear all;
-close all;
-mag = vpa(load('mag20181514.TXT'),9);
-mag_x = mag(:,1);
-mag_y = mag(:,2);
-mag_z = mag(:,3);
-plot(mag_x, mag_y,'bs', 'markerfacecolor', [ 1, 0, 0 ] )
