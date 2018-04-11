@@ -351,11 +351,11 @@ u8 mpu_9250_calibrate() {
   
 ERROR:
   gyro_bias_x = 0;
-  gyro_bias_x = 0;
-  gyro_bias_x = 0;
+  gyro_bias_y = 0;
+  gyro_bias_z = 0;
   mag_bias_x = 0;
-  mag_bias_x = 0;
-  mag_bias_x = 0;
+  mag_bias_y = 0;
+  mag_bias_z = 0;
   return 1; 
 }
 
@@ -439,24 +439,8 @@ if(MPU9250Mmode == 0x06) delay_ms(12);  // at 100 Hz ODR, new mag data is availa
  *mag_bias_x  = (mag_max[0] + mag_min[0])/2;  // get average x mag bias in counts
  *mag_bias_y  = (mag_max[1] + mag_min[1])/2;  // get average y mag bias in counts
  *mag_bias_z  = (mag_max[2] + mag_min[2])/2;  // get average z mag bias in counts
- //printf("mag_bias[0] = %f, mag_bias[1] = %f, mag_bias[2] = %f\n",mag_bias[0],mag_bias[1],mag_bias[2]);
-
- dest1[0] = (float) *mag_bias_x*CUR_MAG_STY*mag_adjust_x;  // save mag biases in G for main program
- dest1[1] = (float) *mag_bias_y*CUR_MAG_STY*mag_adjust_y;   
- dest1[2] = (float) *mag_bias_z*CUR_MAG_STY*mag_adjust_z; 
-
- printf("dest1[0] = %f, dest1[1] = %f, dest1[2] = %f\n",dest1[0],dest1[1],dest2[2]);  
-// Get soft iron correction estimate
- mag_scale[0]  = (mag_max[0] - mag_min[0])/2;  // get average x axis max chord length in counts
- mag_scale[1]  = (mag_max[1] - mag_min[1])/2;  // get average y axis max chord length in counts
- mag_scale[2]  = (mag_max[2] - mag_min[2])/2;  // get average z axis max chord length in counts
-
- float avg_rad = mag_scale[0] + mag_scale[1] + mag_scale[2];
- avg_rad /= 3.0;
-
- dest2[0] = avg_rad/((float)mag_scale[0]);
- dest2[1] = avg_rad/((float)mag_scale[1]);
- dest2[2] = avg_rad/((float)mag_scale[2]);
+ printf("mag_bias[0] = %f, mag_bias[1] = %f, mag_bias[2] = %f\n",*mag_bias_x,*mag_bias_y,*mag_bias_z);
+ 
 
  printf("Mag Calibration done!\n");
 

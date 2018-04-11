@@ -21,7 +21,7 @@
 // Definitions
 
 //#define sampleFreq  512.0f // sample frequency in Hz
-#define twoKpDef  (2.0f * 0.5f) // 2 * proportional gain
+#define twoKpDef  (2.0f * 8.9f) // 2 * proportional gain
 #define twoKiDef  (2.0f * 0.0f) // 2 * integral gain
 
 //---------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ volatile float twoKp = twoKpDef; // 2 * proportional gain (Kp)
 volatile float twoKi = twoKiDef; // 2 * integral gain (Ki)
 volatile float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f; // quaternion of sensor frame relative to auxiliary frame
 volatile float integralFBx = 0.0f,  integralFBy = 0.0f, integralFBz = 0.0f; // integral error terms scaled by Ki
-
+float eInt[3] = {0.0f, 0.0f, 0.0f}; 
 //---------------------------------------------------------------------------------------------------
 // Function declarations
 
@@ -212,7 +212,6 @@ void MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float
   q2 *= recipNorm;
   q3 *= recipNorm;
 }
-
 //---------------------------------------------------------------------------------------------------
 // Fast inverse square-root
 // See: http://en.wikipedia.org/wiki/Fast_inverse_square_root
@@ -227,6 +226,101 @@ float invSqrt(float x) {
   return y;
 }
 
+//---------------------------------------------------------------------------------------------------
+void MahonyQuaternionUpdate(float ax, float ay, float az, float gx, float gy, float gz, float mx, float my, float mz, float deltat)
+        {
+            //float q0 = 1.0, q1 = 0.0, q2 = 0.0, q3 = 0.0;   // short name local variable for readability
+            float norm;
+            float hx, hy, bx, bz;
+            float vx, vy, vz, wx, wy, wz;
+            float ex, ey, ez;
+            float pa, pb, pc;
+
+            // Auxiliary variables to avoid repeated arithmetic
+            float q0q0 = q0 * q0;
+            float q0q1 = q0 * q1;
+            float q0q2 = q0 * q2;
+            float q0q3 = q0 * q3;
+            float q1q1 = q1 * q1;
+            float q1q2 = q1 * q2;
+            float q1q3 = q1 * q3;
+            float q2q2 = q2 * q2;
+            float q2q3 = q2 * q3;
+            float q3q3 = q3 * q3;   
+
+            // Normalise accelerometer measurement
+            norm = sqrtf(ax * ax + ay * ay + az * az);
+            if (norm == 0.0f) return; // handle NaN
+            norm = 1.0f / norm;        // use reciprocal for division
+            ax *= norm;
+            ay *= norm;
+            az *= norm;
+
+            // Normalise magnetometer measurement
+            norm = sqrtf(mx * mx + my * my + mz * mz);
+            if (norm == 0.0f) return; // handle NaN
+            norm = 1.0f / norm;        // use reciprocal for division
+            mx *= norm;
+            my *= norm;
+            mz *= norm;
+
+            // Reference direction of Earth's magnetic field
+            hx = 2.0f * mx * (0.5f - q2q2 - q3q3) + 2.0f * my * (q1q2 - q0q3) + 2.0f * mz * (q1q3 + q0q2);
+            hy = 2.0f * mx * (q1q2 + q0q3) + 2.0f * my * (0.5f - q1q1 - q3q3) + 2.0f * mz * (q2q3 - q0q1);
+            bx = sqrt((hx * hx) + (hy * hy));
+            bz = 2.0f * mx * (q1q3 - q0q2) + 2.0f * my * (q2q3 + q0q1) + 2.0f * mz * (0.5f - q1q1 - q2q2);
+
+            // Estimated direction of gravity and magnetic field
+            vx = 2.0f * (q1q3 - q0q2);
+            vy = 2.0f * (q0q1 + q2q3);
+            vz = q0q0 - q1q1 - q2q2 + q3q3;
+            wx = 2.0f * bx * (0.5f - q2q2 - q3q3) + 2.0f * bz * (q1q3 - q0q2);
+            wy = 2.0f * bx * (q1q2 - q0q3) + 2.0f * bz * (q0q1 + q2q3);
+            wz = 2.0f * bx * (q0q2 + q1q3) + 2.0f * bz * (0.5f - q1q1 - q2q2);  
+
+            // Error is cross product between estimated direction and measured direction of gravity
+            ex = (ay * vz - az * vy) + (my * wz - mz * wy);
+            ey = (az * vx - ax * vz) + (mz * wx - mx * wz);
+            ez = (ax * vy - ay * vx) + (mx * wy - my * wx);
+            if (twoKi > 0.0f)
+            {
+                eInt[0] += ex;      // accumulate integral error
+                eInt[1] += ey;
+                eInt[2] += ez;
+            }
+            else
+            {
+                eInt[0] = 0.0f;     // prevent integral wind up
+                eInt[1] = 0.0f;
+                eInt[2] = 0.0f;
+            }
+
+            // Apply feedback terms
+            gx = gx + twoKp * ex + twoKi * eInt[0];
+            gy = gy + twoKp * ey + twoKi * eInt[1];
+            gz = gz + twoKp * ez + twoKi * eInt[2];
+
+            // Integrate rate of change of quaternion
+            pa = q1;
+            pb = q2;
+            pc = q3;
+            q0 = q0 + (-q1 * gx - q2 * gy - q3 * gz) * (0.5f * deltat);
+            q1 = pa + (q0 * gx + pb * gz - pc * gy) * (0.5f * deltat);
+            q2 = pb + (q0 * gy - pa * gz + pc * gx) * (0.5f * deltat);
+            q3 = pc + (q0 * gz + pa * gy - pb * gx) * (0.5f * deltat);
+
+            // Normalise quaternion
+            norm = sqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
+
+            // Normalise quaternion
+            norm = sqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
+            norm = 1.0f / norm;
+            q0 = q0 * norm;
+            q1 = q1 * norm;
+            q2 = q2 * norm;
+            q3 = q3 * norm;
+ 
+        }
+
 //====================================================================================================
 // END OF CODE
-//====================================================================================================
