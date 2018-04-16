@@ -33,7 +33,8 @@ int main(void) {
   float dest1[3] = {0,0,0};
   float dest2[3] = {0,0,0};
   //float mag_bias_x = 21.445, mag_bias_y = 246.458, mag_bias_z = -616.647; //AK8963 bias 2018.4.10
-  float mag_bias_x = 57.187515, mag_bias_y = 300.234375, mag_bias_z = -520.242188; //AK8963 bias 2018.4.11
+  //float mag_bias_x = 57.187515, mag_bias_y = 300.234375, mag_bias_z = -520.242188; //AK8963 bias 2018.4.11
+  float mag_bias_x = 85.781265, mag_bias_y = 314.531250, mag_bias_z = -492.679718; //AK8963 bias 2018.4.11
   u8 Mscale = MFS_16BITS;
   initAK8963( Mscale, Mmode, destination);
   //magcalMPU9250(dest1,dest2);
@@ -55,24 +56,26 @@ int main(void) {
         cur_mz -= mag_bias_z;
         dt = (float)(cur_ts - prev_ts) / 1000.0;
         // https://github.com/kriswiner/MPU9250/issues/220#
-	    // https://github.com/kriswiner/MPU9250/issues/51
-		//MahonyAHRSupdate(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_my, prev_mx, -prev_mz, dt);
-          
+	    // https://github.com/kriswiner/MPU9250/issues/51          
         //MahonyAHRSupdate(prev_gx, -prev_gy, -prev_gz, prev_ax, -prev_ay, -prev_az, prev_my, -prev_mx, prev_mz, dt);
-        MahonyQuaternionUpdate(prev_ax, prev_ay, prev_az, prev_gx, prev_gy, prev_gz, prev_my, prev_mx, prev_mz, dt);
+        //MahonyQuaternionUpdate(prev_ax, prev_ay, prev_az, prev_gx, prev_gy, prev_gz, prev_my, prev_mx, prev_mz, dt); //kriswiner/MPU9250 code yaw only 70(90)
+        MahonyQuaternionUpdate(prev_ax, prev_ay, prev_az, prev_gx, prev_gy, prev_gz, prev_my, prev_mx, -prev_mz, dt); //yaw is ok  
           
+     //   MahonyQuaternionUpdate(prev_ay, prev_ax, -prev_az, prev_gy, prev_gx, -prev_gz, prev_mx, prev_my, prev_mz, dt);  //drift
+
         prev_ts = cur_ts;
 	    yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3) * 57.32484076433121;   
         pitch = -asin(2.0f * (q1 * q3 - q0 * q2)) * 57.32484076433121;
         roll  = atan2(2.0f * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3) * 57.32484076433121; // https://github.com/kriswiner/MPU9250/blob/master/STM32F401/main.cpp
 
-     //   printf("ret_code= %d dt= %f\t roll= %f\t pitch= %f\t yaw= %f\t\n", ret_code, dt, roll, pitch, yaw);
+        printf("ret_code= %d dt= %f\t roll= %f\t pitch= %f\t yaw= %f\t\n", ret_code, dt, roll, pitch, yaw);
           
-        //printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
+   //     printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
 		//printf("prev_gx = %f\t prev_gy = %f\t prev_gz = %f\t\n",prev_gx, prev_gy, prev_gz);
-		printf("prev_ax = %f\t prev_ay = %f\t prev_az = %f\t\n",prev_ax, prev_ay, prev_az);
-	//	printf("%f, %f, %f\n",cur_mx, cur_my, cur_mz);
         //printf("%f,%f,%f,%f\n",q[0],q[1],q[2],q[3]);
+		//printf("prev_ax = %f\t prev_ay = %f\t prev_az = %f\t\n",prev_ax, prev_ay, prev_az);
+	//	printf("%f, %f, %f\n",cur_mx, cur_my, cur_mz);
+        
 		//delay_ms(100);
       }
       prev_ax = cur_ax; prev_ay = cur_ay; prev_az = cur_az;
