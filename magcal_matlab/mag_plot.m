@@ -28,21 +28,20 @@ clc;
 % title('LC1860-mine');
 
 % MPU9250 mag x-y,x-z,y-z plot
-figure;
-% mag = load('SaveWindows2018_4_8_11-50-22.TXT');
-mag = load('MPU9250SaveWindows2018_4_11_11-14-36.TXT');
-mag_x = mag(:,1);
-mag_y = mag(:,2);
-mag_z = mag(:,3);
-plot(mag_x, mag_y,'bo');
-hold on;
-plot(mag_x, mag_z,'r*');
-hold on;
-plot(mag_y, mag_z,'kv');
-title('MPU9250');
+% figure;
+% mag = load('412.TXT');
+% mag_x = mag(:,1);
+% mag_y = mag(:,2);
+% mag_z = mag(:,3);
+% plot(mag_x, mag_y,'bo');
+% hold on;
+% plot(mag_x, mag_z,'r*');
+% hold on;
+% plot(mag_y, mag_z,'kv');
+% title('MPU9250');
 
 figure;
-mag = load('MPU9250SaveWindows2018_4_11_11-08-36.TXT');
+mag = load('icm20602-finecalSaveWindows2018_4_13_16-22-56.txt');
 mag_x = mag(:,1);
 mag_y = mag(:,2);
 mag_z = mag(:,3);
@@ -50,8 +49,9 @@ plot(mag_x, mag_y,'bo');
 hold on;
 plot(mag_x, mag_z,'r*');
 hold on;
-plot(mag_y, mag_z,'kv');
-title('New MPU9250');
+plot(mag_z, mag_y,'kv');
+grid on
+title('ICM20602 Fine cal');
 
 
 % figure;
