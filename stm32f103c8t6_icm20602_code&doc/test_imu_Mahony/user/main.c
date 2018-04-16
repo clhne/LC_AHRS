@@ -16,7 +16,7 @@ int main()
 	float dest1[3] = {0,0,0};
     float dest2[3] = {0,0,0};
 	u8 is_first_time = 1;
-    float mag_bias_x = 22, mag_bias_y = 5.5, mag_bias_z = 30;
+    float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;
 
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0);
@@ -52,13 +52,16 @@ int main()
             mag[0] -= mag_bias_x;
             mag[1] -= mag_bias_y;
             mag[2] -= mag_bias_z;           
-            //update(gyro[1],-gyro[0],-gyro[2],acc[1],-acc[0],-acc[2],mag[1],mag[0],mag[2]);
-            update(gyro[0], -gyro[1], -gyro[2], acc[0], -acc[1], -acc[2], -mag[0], -mag[1], mag[2]);
+            //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], mag[1], -mag[2]);     // Initial 
+            //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], -mag[1], -mag[2]);      // better
+            update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], mag[0], -mag[1], -mag[2]);
 			//printf("q0 %f, q1 %f,q2 %f, q3 %f\n",q0,q1,q2,q3);
-            printf("acc_x=%f\tacc_y=%f\tacc_z=%f\t\n",acc[0],acc[1],acc[2]);
+            //printf("acc_x=%f\tacc_y=%f\tacc_z=%f\t\n",acc[0],acc[1],acc[2]);
             //printf("%f\n",mag[1]);
-			//printf("%f, %f, %f\n",mag[0],mag[1],mag[2]);
-         //   printf("roll = %f,pitch = %f,yaw = %f\n",roll, pitch, yaw);
+                
+		//	printf("%f, %f, %f\n",mag[0],mag[1],mag[2]);
+           // printf("roll = %f,pitch = %f,yaw = %f\n",roll, pitch, yaw);
+            printf(" %f, %f, %f\n",roll, pitch, yaw);
             }
 		}
 		
