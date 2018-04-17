@@ -2,7 +2,7 @@ clear all;
 close all;
 clc;
 % RPY plot
-RPY = load('YSaveWindows2018_4_16_15-04-51.TXT');
+RPY = load('Roll-no mag2018_4_17_13-56-41.TXT');
 Roll =  RPY(:,1);
 Pitch = RPY(:,2);
 Yaw =   RPY(:,3);
