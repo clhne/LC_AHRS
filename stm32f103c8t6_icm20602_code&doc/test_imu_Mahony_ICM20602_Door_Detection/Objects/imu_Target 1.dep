@@ -1,0 +1,294 @@
+Dependencies for Project 'imu', Target 'Target 1': (DO NOT MODIFY !)
+F (.\user\main.c)(0x5AD5ABA3)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (.\lib\delay.h)(0x5A9D1318)
+I (.\lib\usart.h)(0x5A535308)
+I (.\driver\icm20602.h)(0x5A536D0F)
+I (.\driver\spl06.h)(0x5A546A1A)
+I (.\driver\ak8975.h)(0x5AC9B8C6)
+I (user\MahonyAHRS.h)(0x5AD59759)
+I (C:\Keiluvision524a\ARM\ARMCC\include\math.h)(0x588B8344)
+I (.\software\ano.h)(0x5A9D1D56)
+I (.\lib\spi.h)(0x5A9D1423)
+F (.\user\sys.c)(0x5A9D1367)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\sys.o --omf_browse .\objects\sys.crf --depend .\objects\sys.d)
+I (user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+F (.\user\MahonyAHRS.h)(0x5AD59759)()
+F (.\driver\icm20602.c)(0x5AC9B8C6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\icm20602.o --omf_browse .\objects\icm20602.crf --depend .\objects\icm20602.d)
+I (driver\icm20602.h)(0x5A536D0F)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (.\lib\delay.h)(0x5A9D1318)
+I (.\lib\spi.h)(0x5A9D1423)
+F (.\driver\ak8975.c)(0x5AC9C190)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\ak8975.o --omf_browse .\objects\ak8975.crf --depend .\objects\ak8975.d)
+I (driver\ak8975.h)(0x5AC9B8C6)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (.\lib\delay.h)(0x5A9D1318)
+I (.\lib\spi.h)(0x5A9D1423)
+F (.\driver\spl06.c)(0x5A9D19AF)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\spl06.o --omf_browse .\objects\spl06.crf --depend .\objects\spl06.d)
+I (driver\spl06.h)(0x5A546A1A)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (.\lib\delay.h)(0x5A9D1318)
+I (.\lib\spi.h)(0x5A9D1423)
+F (.\software\ano.c)(0x5A9D165E)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\ano.o --omf_browse .\objects\ano.crf --depend .\objects\ano.d)
+I (software\ano.h)(0x5A9D1D56)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdarg.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdlib.h)(0x588B8344)
+I (.\lib\usart.h)(0x5A535308)
+F (.\lib\usart.c)(0x5A9D11B3)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\usart.o --omf_browse .\objects\usart.crf --depend .\objects\usart.d)
+I (lib\usart.h)(0x5A535308)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (lib\gpio.h)(0x5A9D1229)
+F (.\lib\gpio.c)(0x5A9D14FD)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\gpio.o --omf_browse .\objects\gpio.crf --depend .\objects\gpio.d)
+I (lib\gpio.h)(0x5A9D1229)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+F (.\lib\delay.c)(0x5A9D1301)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\delay.o --omf_browse .\objects\delay.crf --depend .\objects\delay.d)
+I (lib\delay.h)(0x5A9D1318)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+F (.\lib\retarget.c)(0x5A9D13F2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\retarget.o --omf_browse .\objects\retarget.crf --depend .\objects\retarget.d)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (lib\usart.h)(0x5A535308)
+F (.\lib\spi.c)(0x5A9D14E7)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d)
+I (lib\spi.h)(0x5A9D1423)
+I (.\user\sys.h)(0x5A9D1381)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (lib\gpio.h)(0x5A9D1229)
+F (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\src\misc.c)(0x52F9EB20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+F (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\src\stm32f10x_gpio.c)(0x52F9EB20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_gpio.o --omf_browse .\objects\stm32f10x_gpio.crf --depend .\objects\stm32f10x_gpio.d)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+F (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\src\stm32f10x_rcc.c)(0x52F9EB20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_rcc.o --omf_browse .\objects\stm32f10x_rcc.crf --depend .\objects\stm32f10x_rcc.d)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+F (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\src\stm32f10x_spi.c)(0x52F9EB20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_spi.o --omf_browse .\objects\stm32f10x_spi.crf --depend .\objects\stm32f10x_spi.d)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+F (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\src\stm32f10x_usart.c)(0x52F9EB20)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\stm32f10x_usart.o --omf_browse .\objects\stm32f10x_usart.crf --depend .\objects\stm32f10x_usart.d)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
+F (RTE\Device\STM32F103C8\RTE_Device.h)(0x52431878)()
+F (RTE\Device\STM32F103C8\startup_stm32f10x_md.s)(0x4F1E2E3C)(--cpu Cortex-M3 -g --apcs=interwork -I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list .\listings\startup_stm32f10x_md.lst --xref -o .\objects\startup_stm32f10x_md.o --depend .\objects\startup_stm32f10x_md.d)
+F (RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)()
+F (RTE\Device\STM32F103C8\system_stm32f10x.c)(0x4F1E2E3C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\system_stm32f10x.o --omf_browse .\objects\system_stm32f10x.crf --depend .\objects\system_stm32f10x.d)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
+I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h)(0x5898498A)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h)(0x5825386C)
+I (.\RTE\Device\STM32F103C8\stm32f10x_conf.h)(0x53B66212)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_spi.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
+I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
