@@ -415,6 +415,11 @@
               <FileType>1</FileType>
               <FilePath>.\driver\spl06.c</FilePath>
             </File>
+            <File>
+              <FileName>time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\driver\time.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
