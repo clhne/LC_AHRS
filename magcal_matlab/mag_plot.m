@@ -54,17 +54,17 @@ grid on
 title('ICM20602 Fine cal');
 
 
-% figure;
-% mag = load('22.TXT');
-% mag_x = mag(:,1);
-% mag_y = mag(:,2);
-% mag_z = mag(:,3);
-% plot(mag_x, mag_y,'bo');
-% hold on;
-% plot(mag_x, mag_z,'r*');
-% hold on;
-% plot(mag_y, mag_z,'kv');
-% title('magcal ICM20602');
+figure;
+mag = load('icm206020418.TXT');
+mag_x = mag(:,1);
+mag_y = mag(:,2);
+mag_z = mag(:,3);
+plot(mag_x, mag_y,'bo');
+hold on;
+plot(mag_x, mag_z,'r*');
+hold on;
+plot(mag_y, mag_z,'kv');
+title('magcal ICM20602');
 
 % y = load('1.TXT');
 % y_max = max(y)
