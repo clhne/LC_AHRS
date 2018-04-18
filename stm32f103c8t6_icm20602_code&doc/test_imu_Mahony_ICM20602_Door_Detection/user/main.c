@@ -7,6 +7,8 @@
 #include "MahonyAHRS.h"
 #include "ano.h"
 #include "spi.h"
+#include "time.h"
+
 extern float q0,q1,q2,q3;
 int main()
 {
@@ -17,6 +19,8 @@ int main()
     float dest2[3] = {0,0,0};
 	u8 is_first_time = 1;
     //统计一次while循环时间int32
+    u32 prev_ts, cur_ts, time_begin, time_end;
+    float dt;
     float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;
 	float prev_roll = 0, cur_roll =0;
 	float prev_pitch = 0, cur_pitch = 0;
@@ -27,6 +31,7 @@ int main()
 	JTAG_Set(SWD_ENABLE);
 	
 	delay_init();
+    time_init();
 	usart1_init(500000);
 	spi2_init();
 	
@@ -36,7 +41,8 @@ int main()
     
 	while(1)	
 	{
-        //cur_roll = getRoll(); cur_pitch = getPitch();cur_yaw = getYaw();
+        cur_ts = millis();
+        time_begin = millis();
 		if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0 && ak8975_get_mag(cur_mag) == 0) {
 			/*
 			gyro[0] = 0.008514; gyro[1] = -0.004257; gyro[2] = 0.025541;
@@ -49,18 +55,21 @@ int main()
             if(is_first_time){
                 //magcalMPU9250(dest1, dest2, &mag_bias_x, &mag_bias_y, &mag_bias_z);
                 is_first_time = 0;
+                prev_ts = cur_ts;
             }
             else{
             mag[0] -= mag_bias_x;
             mag[1] -= mag_bias_y;
             mag[2] -= mag_bias_z;           
+            dt = (float)(cur_ts - prev_ts) / 1000.0;
             //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], mag[1], -mag[2]);     // Initial 
-            //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], -mag[1], -mag[2]);      // better
+            //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], -mag[1], -mag[2]);    // better
         //    update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], mag[0], -mag[1], -mag[2]);
-             
-                
-                
-            update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], 0, 0, 0);                
+            
+            //printf("dt = %f,cur_ts = %d\n",dt,cur_ts);
+            
+            update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], 0, 0, 0, dt); //no mag
+            prev_ts = cur_ts;
 			//printf("q0 %f, q1 %f,q2 %f, q3 %f\n",q0,q1,q2,q3);
            // printf("acc_x=%f\tacc_y=%f\tacc_z=%f\t\n",cur_acc[0]-prev_acc[0],cur_acc[1]-prev_acc[1],cur_acc[2]-prev_acc[2]);
            // printf("gyro_x=%f\tgyro_y=%f\tgyro_z=%f\t\n",cur_gyro[0]-prev_gyro[0],cur_gyro[1]-prev_gyro[1],cur_gyro[2]-prev_gyro[2]);
@@ -69,8 +78,10 @@ int main()
 		    //printf("%f, %f, %f\n",mag[0],mag[1],mag[2]);                
            
             //Door close/open detection
-             cur_roll = getRoll(); cur_pitch = getPitch();cur_yaw = getYaw();
-             printf("roll = %f,pitch = %f,yaw = %f\n",cur_roll, cur_pitch, cur_yaw);    
+            cur_roll = getRoll();
+            cur_pitch = getPitch();
+            cur_yaw = getYaw();
+            printf("roll = %f,pitch = %f,yaw = %f\n",cur_roll, cur_pitch, cur_yaw);    
             if(cur_roll >= 1.0 | fabs(cur_acc[1]-prev_acc[1])>=0.15 | fabs(cur_gyro[0]-prev_gyro[0]) >=0.09){
                 //printf("Door is open\n");
                 delay_ms(10);
@@ -82,6 +93,8 @@ int main()
             }
             }
 		}
+        time_end = millis();
+        printf("run time = %d ms\n",time_end - time_begin);
 		prev_roll = cur_roll; prev_pitch = cur_pitch; prev_yaw = cur_yaw;
         prev_acc[0] = cur_acc[0]; prev_acc[1] = cur_acc[1]; prev_acc[2] = cur_acc[2];
         prev_gyro[0] = cur_gyro[0]; prev_gyro[1] = cur_gyro[1]; prev_gyro[2] = cur_gyro[2];

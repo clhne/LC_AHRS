@@ -1,5 +1,5 @@
-.\objects\delay.o: lib\delay.c
-.\objects\delay.o: lib\delay.h
+.\objects\delay.o: delay.c
+.\objects\delay.o: delay.h
 .\objects\delay.o: .\user\sys.h
 .\objects\delay.o: C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h
 .\objects\delay.o: .\RTE\_Target_1\RTE_Components.h

@@ -24,3 +24,4 @@
 .\objects\main.o: C:\Keiluvision524a\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: .\software\ano.h
 .\objects\main.o: .\lib\spi.h
+.\objects\main.o: C:\Keiluvision524a\ARM\ARMCC\Bin\..\include\time.h

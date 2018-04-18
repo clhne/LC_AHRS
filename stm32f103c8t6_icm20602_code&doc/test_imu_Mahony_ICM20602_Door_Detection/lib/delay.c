@@ -29,7 +29,7 @@ uint32_t micros(void) {
 
 // return system uptime in milliseconds (rollover in 49 days)
 uint32_t millis(void) {
-  return sysTickUptime;
+  return sysTickUptime/1000.0;
 }
 
 void delay_init() {

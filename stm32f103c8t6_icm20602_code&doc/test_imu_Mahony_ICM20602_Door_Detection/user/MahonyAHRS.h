@@ -36,8 +36,8 @@
 // Function declarations
 
 	void begin(float sampleFrequency) { invSampleFreq = 1.0f / sampleFrequency; }
-	void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz);
-	void updateIMU(float gx, float gy, float gz, float ax, float ay, float az);
+	void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz,float dt);
+	void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt);
 	float getRoll() {
 		if (!anglesComputed) computeAngles();
 		return roll * 57.29578f + 180.0f;
@@ -64,7 +64,7 @@
 	}
     
     
-void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz)
+void update(float gx, float gy, float gz, float ax, float ay, float az, float mx, float my, float mz, float dt)
 {
 	float recipNorm;
 	float q0q0, q0q1, q0q2, q0q3, q1q1, q1q2, q1q3, q2q2, q2q3, q3q3;
@@ -76,7 +76,7 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
 	// Use IMU algorithm if magnetometer measurement invalid
 	// (avoids NaN in magnetometer normalisation)
 	if((mx == 0.0f) && (my == 0.0f) && (mz == 0.0f)) {
-		updateIMU(gx, gy, gz, ax, ay, az);
+		updateIMU(gx, gy, gz, ax, ay, az, dt);
 		return;
 	}
 
@@ -137,9 +137,12 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
 		if(twoKi > 0.0f) {
 			// integral error scaled by Ki
             
-			integralFBx += twoKi * halfex * invSampleFreq;
-			integralFBy += twoKi * halfey * invSampleFreq;
-			integralFBz += twoKi * halfez * invSampleFreq;
+//			integralFBx += twoKi * halfex * invSampleFreq;
+//			integralFBy += twoKi * halfey * invSampleFreq;
+//			integralFBz += twoKi * halfez * invSampleFreq;
+			integralFBx += twoKi * halfex * dt;
+			integralFBy += twoKi * halfey * dt;
+			integralFBz += twoKi * halfez * dt;
       /*
       integralFBx += twoKi * halfex * timestep;
       integralFBy += twoKi * halfey * timestep;
@@ -162,9 +165,12 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
 
 	// Integrate rate of change of quaternion
     
-	gx *= (0.5f * invSampleFreq);		// pre-multiply common factors
-	gy *= (0.5f * invSampleFreq);
-	gz *= (0.5f * invSampleFreq);
+//	gx *= (0.5f * invSampleFreq);		// pre-multiply common factors
+//	gy *= (0.5f * invSampleFreq);
+//	gz *= (0.5f * invSampleFreq);
+	gx *= (0.5f * dt);		// pre-multiply common factors
+	gy *= (0.5f * dt);
+	gz *= (0.5f * dt);
   /*
     gx *= (0.5f * timestep);
     gy *= (0.5f * timestep);
@@ -186,11 +192,10 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
 	q3 *= recipNorm;
 	anglesComputed = 0;
 }
-
 //-------------------------------------------------------------------------------------------
 // IMU algorithm update
 
-void updateIMU(float gx, float gy, float gz, float ax, float ay, float az)
+void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt)
 {
 	float recipNorm;
 	float halfvx, halfvy, halfvz;
@@ -227,9 +232,12 @@ void updateIMU(float gx, float gy, float gz, float ax, float ay, float az)
 		if(twoKi > 0.0f) {
 			// integral error scaled by Ki
             
-			integralFBx += twoKi * halfex * invSampleFreq;
-			integralFBy += twoKi * halfey * invSampleFreq;
-			integralFBz += twoKi * halfez * invSampleFreq;
+//			integralFBx += twoKi * halfex * invSampleFreq;
+//			integralFBy += twoKi * halfey * invSampleFreq;
+//			integralFBz += twoKi * halfez * invSampleFreq;
+			integralFBx += twoKi * halfex * dt;
+			integralFBy += twoKi * halfey * dt;
+			integralFBz += twoKi * halfez * dt;
       /*
       integralFBx += twoKi * halfex * timestep;
       integralFBy += twoKi * halfey * timestep;
@@ -252,9 +260,12 @@ void updateIMU(float gx, float gy, float gz, float ax, float ay, float az)
 
 	// Integrate rate of change of quaternion
   
-	gx *= (0.5f * invSampleFreq);		// pre-multiply common factors
-	gy *= (0.5f * invSampleFreq);
-	gz *= (0.5f * invSampleFreq);
+//	gx *= (0.5f * invSampleFreq);		// pre-multiply common factors
+//	gy *= (0.5f * invSampleFreq);
+//	gz *= (0.5f * invSampleFreq);
+	gx *= (0.5f * dt);		// pre-multiply common factors
+	gy *= (0.5f * dt);
+	gz *= (0.5f * dt);
   /*
   gx *= (0.5f * timestep);
   gy *= (0.5f * timestep);
