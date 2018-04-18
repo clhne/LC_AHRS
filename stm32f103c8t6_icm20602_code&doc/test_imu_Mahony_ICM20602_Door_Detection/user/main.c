@@ -62,9 +62,8 @@ int main()
             mag[1] -= mag_bias_y;
             mag[2] -= mag_bias_z;           
             dt = (float)(cur_ts - prev_ts) / 1000.0;
-            //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], mag[1], -mag[2]);     // Initial 
-            //update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], -mag[0], -mag[1], -mag[2]);    // better
-        //    update(gyro[0], gyro[1], gyro[2], acc[0], acc[1], acc[2], mag[0], -mag[1], -mag[2]);
+            //update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], -cur_mag[0], cur_mag[1], -cur_mag[2],dt);     // Initial 
+            //update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], -cur_mag[0], -cur_mag[1], -cur_mag[2],dt);    // better
             
             //printf("dt = %f,cur_ts = %d\n",dt,cur_ts);
             
@@ -75,31 +74,33 @@ int main()
            // printf("gyro_x=%f\tgyro_y=%f\tgyro_z=%f\t\n",cur_gyro[0]-prev_gyro[0],cur_gyro[1]-prev_gyro[1],cur_gyro[2]-prev_gyro[2]);
             //printf("%f\n",mag[1]);
                 
-		    //printf("%f, %f, %f\n",mag[0],mag[1],mag[2]);                
+		    //printf("%f, %f, %f\n",cur_mag[0],cur_mag[1],cur_mag[2]);                
            
             //Door close/open detection
             cur_roll = getRoll();
             cur_pitch = getPitch();
             cur_yaw = getYaw();
-            printf("roll = %f,pitch = %f,yaw = %f\n",cur_roll, cur_pitch, cur_yaw);    
+            printf("roll = %f,pitch = %f,yaw = %f\n",cur_roll, cur_pitch, cur_yaw);  
             if(cur_roll >= 1.0 | fabs(cur_acc[1]-prev_acc[1])>=0.15 | fabs(cur_gyro[0]-prev_gyro[0]) >=0.09){
-                //printf("Door is open\n");
-                delay_ms(10);
+                printf("Door is open\n");
+                //delay_ms(10);
             }
             else
             {
-                //printf("Door is closed\n");
-                delay_ms(10);
-            }
+                printf("Door is closed\n");
+                //delay_ms(10);
+            }            
             }
 		}
-        time_end = millis();
-        printf("run time = %d ms\n",time_end - time_begin);
 		prev_roll = cur_roll; prev_pitch = cur_pitch; prev_yaw = cur_yaw;
         prev_acc[0] = cur_acc[0]; prev_acc[1] = cur_acc[1]; prev_acc[2] = cur_acc[2];
         prev_gyro[0] = cur_gyro[0]; prev_gyro[1] = cur_gyro[1]; prev_gyro[2] = cur_gyro[2];
-		ak8975_start();
+		//ak8975_start();
+        time_end = millis();
+        printf("run time = %d ms\n",time_end - time_begin);
 		delay_ms(10);
+//        time_end = millis();
+//        printf("run time = %d ms\n",time_end - time_begin);
 	}
 }
 

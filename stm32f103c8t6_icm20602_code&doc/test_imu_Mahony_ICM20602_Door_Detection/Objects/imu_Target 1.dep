@@ -1,5 +1,5 @@
 Dependencies for Project 'imu', Target 'Target 1': (DO NOT MODIFY !)
-F (.\user\main.c)(0x5AD6BDCA)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\user\main.c)(0x5AD6F1CC)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I .\software -I .\user -I .\driver -I .\lib-I.\RTE\Device\STM32F103C8-I.\RTE\_Target_1-IC:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-IC:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (user\sys.h)(0x5A9D1381)
 I (C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
 I (.\RTE\_Target_1\RTE_Components.h)(0x5A53492E)
