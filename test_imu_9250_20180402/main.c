@@ -41,6 +41,7 @@ int main(void) {
   while(1) {
     //if(mpu_9250_is_dry()) {
       cur_ts = millis();
+      printf("cur_ts = %d\n",cur_ts);
       ret_code |= mpu_9250_read_accel_gyro(&cur_ax, &cur_ay, &cur_az, &cur_gx, &cur_gy, &cur_gz);
       //ret_code |= mpu_9250_read_mag(&cur_mx, &cur_my, &cur_mz);
       ret_code |= mpu_9250_read_mag(&cur_mx, &cur_my, &cur_mz);
