@@ -1,0 +1,248 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.24.2.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: a b, c, LIC=KIVLQ-NVNBL-IML9B-2ZHPA-PQ168-1M0F1
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.24.1
+Toolchain Path:  C:\Keiluvision524a\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 5 (build 528)
+Assembler:       Armasm.exe V5.06 update 5 (build 528)
+Linker/Locator:  ArmLink.exe V5.06 update 5 (build 528)
+Library Manager: ArmAr.exe V5.06 update 5 (build 528)
+Hex Converter:   FromElf.exe V5.06 update 5 (build 528)
+CPU DLL:         SARMCM3.DLL V5.24.1
+Dialog DLL:      DCM.DLL V1.16.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
+Dialog DLL:      TCM.DLL V1.32.0.0
+ 
+<h2>Project:</h2>
+E:\projects\LC_AHRS\stm32f103c8t6_icm20602_code&doc\test_imu_Mahony_ICM20602_Door_Detection_oled_added_0420\imu.uvprojx
+Project File Date:  04/20/2018
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keiluvision524a\ARM\ARMCC\Bin'
+Rebuild target 'Target 1'
+compiling sys.c...
+compiling icm20602.c...
+compiling ak8975.c...
+driver\ak8975.c(103): warning:  #550-D: variable "mag_scale"  was set but never used
+   float mag_scale[3] = {0, 0, 0};
+driver\ak8975.c: 1 warning, 0 errors
+compiling main.c...
+user\MahonyAHRS.h(34): warning:  #1295-D: Deprecated declaration computeAngles - give arg types
+  void computeAngles();
+user\main.c(51): warning:  #223-D: function "time_init" declared implicitly
+      time_init();
+user\main.c(83): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+                  oled_show_string(0,0, show_string);
+user\main.c(14): warning:  #177-D: variable "acc"  was declared but never referenced
+      float acc[3] = {0.0f, 0.0f, 0.0f};
+user\main.c(15): warning:  #177-D: variable "gyro"  was declared but never referenced
+      float gyro[3] = {0.0f, 0.0f, 0.0f};
+user\main.c(16): warning:  #177-D: variable "mag"  was declared but never referenced
+      float mag[3] = {0.0f, 0.0f, 0.0f};
+user\main.c(17): warning:  #177-D: variable "dest1"  was declared but never referenced
+      float dest1[3] = {0,0,0};
+user\main.c(18): warning:  #177-D: variable "dest2"  was declared but never referenced
+      float dest2[3] = {0,0,0};
+user\main.c(24): warning:  #550-D: variable "prev_roll"  was set but never used
+      float prev_roll = 0, cur_roll =0;
+user\main.c(25): warning:  #550-D: variable "prev_pitch"  was set but never used
+      float prev_pitch = 0, cur_pitch = 0;
+user\main.c(26): warning:  #550-D: variable "prev_yaw"  was set but never used
+      float prev_yaw = 0, cur_yaw = 0;
+user\main.c(29): warning:  #177-D: variable "aax"  was declared but never referenced
+      float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
+user\main.c(29): warning:  #177-D: variable "aay"  was declared but never referenced
+      float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
+user\main.c(29): warning:  #177-D: variable "aaz"  was declared but never referenced
+      float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
+user\main.c(29): warning:  #177-D: variable "agx"  was declared but never referenced
+      float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
+user\main.c(29): warning:  #177-D: variable "agy"  was declared but never referenced
+      float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
+user\main.c(29): warning:  #177-D: variable "agz"  was declared but never referenced
+      float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
+user\main.c(30): warning:  #177-D: variable "axo"  was declared but never referenced
+      float axo = 0, ayo = 0, azo = 0;   
+user\main.c(30): warning:  #177-D: variable "ayo"  was declared but never referenced
+      float axo = 0, ayo = 0, azo = 0;   
+user\main.c(30): warning:  #177-D: variable "azo"  was declared but never referenced
+      float axo = 0, ayo = 0, azo = 0;   
+user\main.c(31): warning:  #177-D: variable "gxo"  was declared but never referenced
+      float gxo = 0, gyo = 0, gzo = 0;
+user\main.c(31): warning:  #177-D: variable "gyo"  was declared but never referenced
+      float gxo = 0, gyo = 0, gzo = 0;
+user\main.c(31): warning:  #177-D: variable "gzo"  was declared but never referenced
+      float gxo = 0, gyo = 0, gzo = 0;
+user\main.c(32): warning:  #177-D: variable "pi"  was declared but never referenced
+      float pi = 3.1415926;
+user\main.c(33): warning:  #177-D: variable "AcceRatio"  was declared but never referenced
+      float AcceRatio = 16384.0;                 
+user\main.c(34): warning:  #177-D: variable "GyroRatio"  was declared but never referenced
+      float GyroRatio = 131.0;                    
+user\main.c(35): warning:  #177-D: variable "n_sample"  was declared but never referenced
+      uint8_t n_sample = 8;    
+user\main.c(36): warning:  #177-D: variable "i"  was declared but never referenced
+      int i;        
+user\main.c(37): warning:  #177-D: variable "aaxs"  was declared but never referenced
+      float aaxs[8] = {0}, aays[8] = {0}, aazs[8] = {0};   
+user\main.c(37): warning:  #177-D: variable "aays"  was declared but never referenced
+      float aaxs[8] = {0}, aays[8] = {0}, aazs[8] = {0};   
+user\main.c(37): warning:  #177-D: variable "aazs"  was declared but never referenced
+      float aaxs[8] = {0}, aays[8] = {0}, aazs[8] = {0};   
+user\main.c(38): warning:  #177-D: variable "aax_sum"  was declared but never referenced
+      long aax_sum, aay_sum, aaz_sum;    
+user\main.c(38): warning:  #177-D: variable "aay_sum"  was declared but never referenced
+      long aax_sum, aay_sum, aaz_sum;    
+user\main.c(38): warning:  #177-D: variable "aaz_sum"  was declared but never referenced
+      long aax_sum, aay_sum, aaz_sum;    
+user\main.c(39): warning:  #177-D: variable "a_x"  was declared but never referenced
+      float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
+user\main.c(39): warning:  #177-D: variable "a_y"  was declared but never referenced
+      float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
+user\main.c(39): warning:  #177-D: variable "a_z"  was declared but never referenced
+      float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
+user\main.c(39): warning:  #177-D: variable "g_x"  was declared but never referenced
+      float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
+user\main.c(39): warning:  #177-D: variable "g_y"  was declared but never referenced
+      float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
+user\main.c(39): warning:  #177-D: variable "g_z"  was declared but never referenced
+      float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
+user\main.c(40): warning:  #177-D: variable "Px"  was declared but never referenced
+      float Px=1, Rx, Kx, Sx, Vx, Qx; 
+user\main.c(40): warning:  #177-D: variable "Rx"  was declared but never referenced
+      float Px=1, Rx, Kx, Sx, Vx, Qx; 
+user\main.c(40): warning:  #177-D: variable "Kx"  was declared but never referenced
+      float Px=1, Rx, Kx, Sx, Vx, Qx; 
+user\main.c(40): warning:  #177-D: variable "Sx"  was declared but never referenced
+      float Px=1, Rx, Kx, Sx, Vx, Qx; 
+user\main.c(40): warning:  #177-D: variable "Vx"  was declared but never referenced
+      float Px=1, Rx, Kx, Sx, Vx, Qx; 
+user\main.c(40): warning:  #177-D: variable "Qx"  was declared but never referenced
+      float Px=1, Rx, Kx, Sx, Vx, Qx; 
+user\main.c(41): warning:  #177-D: variable "Py"  was declared but never referenced
+      float Py=1, Ry, Ky, Sy, Vy, Qy;
+user\main.c(41): warning:  #177-D: variable "Ry"  was declared but never referenced
+      float Py=1, Ry, Ky, Sy, Vy, Qy;
+user\main.c(41): warning:  #177-D: variable "Ky"  was declared but never referenced
+      float Py=1, Ry, Ky, Sy, Vy, Qy;
+user\main.c(41): warning:  #177-D: variable "Sy"  was declared but never referenced
+      float Py=1, Ry, Ky, Sy, Vy, Qy;
+user\main.c(41): warning:  #177-D: variable "Vy"  was declared but never referenced
+      float Py=1, Ry, Ky, Sy, Vy, Qy;
+user\main.c(41): warning:  #177-D: variable "Qy"  was declared but never referenced
+      float Py=1, Ry, Ky, Sy, Vy, Qy;
+user\main.c(42): warning:  #177-D: variable "Pz"  was declared but never referenced
+      float Pz=1, Rz, Kz, Sz, Vz, Qz; 
+user\main.c(42): warning:  #177-D: variable "Rz"  was declared but never referenced
+      float Pz=1, Rz, Kz, Sz, Vz, Qz; 
+user\main.c(42): warning:  #177-D: variable "Kz"  was declared but never referenced
+      float Pz=1, Rz, Kz, Sz, Vz, Qz; 
+user\main.c(42): warning:  #177-D: variable "Sz"  was declared but never referenced
+      float Pz=1, Rz, Kz, Sz, Vz, Qz; 
+user\main.c(42): warning:  #177-D: variable "Vz"  was declared but never referenced
+      float Pz=1, Rz, Kz, Sz, Vz, Qz; 
+user\main.c(42): warning:  #177-D: variable "Qz"  was declared but never referenced
+      float Pz=1, Rz, Kz, Sz, Vz, Qz; 
+user\main.c(43): warning:  #177-D: variable "gyrox"  was declared but never referenced
+      float gyrox, gyroy, gyroz;
+user\main.c(43): warning:  #177-D: variable "gyroy"  was declared but never referenced
+      float gyrox, gyroy, gyroz;
+user\main.c(43): warning:  #177-D: variable "gyroz"  was declared but never referenced
+      float gyrox, gyroy, gyroz;
+user\main.c(44): warning:  #177-D: variable "accx"  was declared but never referenced
+      float accx, accy, accz;
+user\main.c(44): warning:  #177-D: variable "accy"  was declared but never referenced
+      float accx, accy, accz;
+user\main.c(44): warning:  #177-D: variable "accz"  was declared but never referenced
+      float accx, accy, accz;
+user\main.c(242): warning:  #1-D: last line of file ends without a newline
+  */
+user\main.c: 65 warnings, 0 errors
+compiling usart.c...
+compiling oled.c...
+compiling stm32f10x_tim.c...
+compiling gpio.c...
+compiling spi.c...
+compiling retarget.c...
+compiling time.c...
+compiling delay.c...
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+assembling startup_stm32f10x_md.s...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_usart.c...
+compiling system_stm32f10x.c...
+linking...
+Program Size: Code=18650 RO-data=2558 RW-data=120 ZI-data=1632  
+".\Objects\imu.axf" - 0 Error(s), 66 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.5.0.1.pack
+                ARM.CMSIS.5.0.1
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 5.0.1
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.2.0.pack
+                Keil.STM32F1xx_DFP.2.2.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+   * Component: USART Version: 3.5.0
+   * Component: SPI Version: 3.5.0
+   * Component: RCC Version: 3.5.0
+   * Component: GPIO Version: 3.5.0
+   * Component: Framework Version: 3.5.1
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  .\RTE\Device\STM32F103C8
+  .\RTE\_Target_1
+  C:\Keiluvision524a\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include
+  C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+  C:\Keiluvision524a\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: Keil::Device:StdPeriph Drivers:USART:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_usart.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_usart.c
+
+   * Component: Keil::Device:StdPeriph Drivers:SPI:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_spi.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_spi.c
+
+   * Component: Keil::Device:StdPeriph Drivers:RCC:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_rcc.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_rcc.c
+
+   * Component: Keil::Device:StdPeriph Drivers:GPIO:3.5.0
+      Include file:  Device\StdPeriph_Driver\inc\stm32f10x_gpio.h
+      Source file:   Device\StdPeriph_Driver\src\stm32f10x_gpio.c
+
+   * Component: Keil::Device:StdPeriph Drivers:Framework:3.5.1
+      Include file:  Device\StdPeriph_Driver\inc\misc.h
+      Source file:   Device\StdPeriph_Driver\src\misc.c
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_conf.h
+      Include file:  Device\StdPeriph_Driver\templates\stm32f10x_it.h
+      Source file:   Device\StdPeriph_Driver\templates\stm32f10x_it.c
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\ARM\STM32F1xx_OPT.s
+      Source file:   Device\Source\ARM\startup_stm32f10x_md.s
+      Source file:   Device\Source\system_stm32f10x.c
+      Include file:  RTE_Driver\Config\RTE_Device.h
+
+   * Component: ARM::CMSIS:CORE:5.0.1
+Build Time Elapsed:  00:00:10
+</pre>
+</body>
+</html>
