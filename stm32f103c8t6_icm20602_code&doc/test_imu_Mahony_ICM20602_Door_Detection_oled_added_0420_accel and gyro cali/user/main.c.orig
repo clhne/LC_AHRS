@@ -1,0 +1,110 @@
+#include "sys.h"
+#include "time.h"
+#include "delay.h"
+#include "usart.h"
+#include "spi.h"
+#include "icm20602.h"
+#include "ak8975.h"
+#include "oled.h"
+//#include "MahonyAHRS.h"
+#include "AHRS.h"
+
+//extern float q0,q1,q2,q3;
+int main() {
+    char show_string[128];
+    float acc[3] = {0.0f, 0.0f, 0.0f};
+    float gyro[3] = {0.0f, 0.0f, 0.0f};
+    float mag[3] = {0.0f, 0.0f, 0.0f};
+    float dest1[3] = {0,0,0};
+    float dest2[3] = {0,0,0};
+    u8 is_first_time = 1;
+    u32 prev_ts, cur_ts;
+    float dt, cost;
+    float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
+
+    float prev_roll = 0, cur_roll =0;
+    float prev_pitch = 0, cur_pitch = 0;
+    float prev_yaw = 0, cur_yaw = 0;
+    float prev_acc[3] = {0}, prev_gyro[3]= {0}, cur_acc[3]= {0}, cur_gyro[3]= {0}, cur_mag[3]= {0};
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0);
+    JTAG_Set(SWD_ENABLE);
+
+    delay_init();
+    time_init();
+    usart1_init(115200);
+    spi2_init();
+    ak8975_init();
+    icm20602_init();
+    oled_init();
+    oled_clear();
+    while(1) {
+        cur_ts = millis();
+        if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0 && ak8975_get_mag(cur_mag) == 0) {
+            ak8975_start();
+            if(is_first_time) {
+                //magcalMPU9250(dest1, dest2, &mag_bias_x, &mag_bias_y, &mag_bias_z);
+                is_first_time = 0;
+                prev_ts = cur_ts;
+            } else {
+                cur_mag[0] -= mag_bias_x;
+                cur_mag[1] -= mag_bias_y;
+                cur_mag[2] -= mag_bias_z;
+                dt = (float)(cur_ts - prev_ts) / 1000.0;
+                prev_ts = cur_ts;
+                cost = millis();
+                //update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], -cur_mag[0], -cur_mag[1], -cur_mag[2],dt);    // better
+                //update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], 0, 0, 0, dt); //no mag
+                //update(cur_gyro[1], cur_gyro[0], -cur_gyro[2], cur_acc[1], cur_acc[0], -cur_acc[2], 0, 0, 0, dt); //no mag
+                //updateIMU(cur_gyro[1], cur_gyro[0], -cur_gyro[2], cur_acc[1], cur_acc[0], -cur_acc[2], dt);
+                //Door close/open detection
+                //cur_roll = getRoll();
+                //cur_pitch = getPitch();
+                //cur_yaw = getYaw();
+              
+                //MadgwickAHRSUpdate(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, prev_mx, prev_my, prev_mz, dt);
+            //MahonyAHRSUpdate(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, prev_mx, prev_my, prev_mz, dt);
+            MadgwickAHRSupdateIMU(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, dt);
+            //MahonyAHRSupdateIMU(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, dt);
+            // Define output variables from updated quaternion---these are Tait-Bryan angles, commonly used in aircraft orientation.
+            // In this coordinate system, the positive z-axis is down toward Earth.
+            // Yaw is the angle between gyro&accel x-axis and Earth magnetic North (or true North if corrected for local declination, looking down on the sensor positive yaw is counterclockwise.
+            // Pitch is angle between gyro&accel y-axis and Earth ground plane, toward the Earth is positive, up toward the sky is negative.
+            // Roll is angle between gyro&accel x-axis and Earth ground plane, y-axis up is positive roll.
+            // These arise from the definition of the homogeneous rotation matrix constructed from quaternions.
+            // Tait-Bryan angles as well as Euler angles are non-commutative; that is, the get the correct orientation the rotations must be
+            // applied in the correct order which for this configuration is yaw, pitch, and then roll.
+            // For more see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles which has additional links.
+            yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3);
+            pitch = -asin(2.0f * (q1 * q3 - q0 * q2));
+            roll  = atan2(2.0f * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3);
+            yaw   *= 180.0f / PI;
+            //yaw   -= 13.8f; // Declination at Danville, California is 13 degrees 48 minutes and 47 seconds on 2014-04-04
+            pitch *= 180.0f / PI;
+            roll  *= 180.0f / PI;
+                cost = millis() - cost;
+                printf("cost=%f dt=%f roll=%f pitch=%f yaw=%f\n", cost / 1000.0f, dt, cur_roll, cur_pitch, cur_yaw);
+                sprintf(show_string, "roll=%.3f\npitch=%.3f\nyaw=%.3f\n", cur_roll, cur_pitch, cur_yaw);
+                oled_show_string(0,0, show_string);
+                if(cur_roll >= 1.0 | fabs(cur_acc[1]-prev_acc[1])>=0.15 | fabs(cur_gyro[0]-prev_gyro[0]) >=0.09) {
+                    //printf("Door is open\n");
+                    oled_show_string(0,6, "Door is open ");
+                }
+                else {
+                    //printf("Door is closed\n");
+                    oled_show_string(0,6, "Door is closed");
+                }
+            }
+        }
+        prev_roll = cur_roll;
+        prev_pitch = cur_pitch;
+        prev_yaw = cur_yaw;
+        prev_acc[0] = cur_acc[0];
+        prev_acc[1] = cur_acc[1];
+        prev_acc[2] = cur_acc[2];
+        prev_gyro[0] = cur_gyro[0];
+        prev_gyro[1] = cur_gyro[1];
+        prev_gyro[2] = cur_gyro[2];
+        //delay_ms(10);
+    }
+}
