@@ -53,9 +53,8 @@ plot(mag_z, mag_y,'kv');
 grid on
 title('ICM20602 Fine cal');
 
-
 figure;
-mag = load('icm206020418.TXT');
+mag = load('1100.TXT');
 mag_x = mag(:,1);
 mag_y = mag(:,2);
 mag_z = mag(:,3);
