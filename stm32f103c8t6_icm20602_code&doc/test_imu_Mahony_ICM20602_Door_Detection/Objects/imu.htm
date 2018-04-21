@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\imu.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\imu.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Apr 18 15:20:54 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Apr 18 17:24:27 2018
 <BR><P>
 <H3>Maximum Stack Usage =        480 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -906,8 +906,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 144 + Unknown Stack Size
 <LI>Call Chain = ak8975_init &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_start
-<LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_read_reg
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_read_reg
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_start
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -935,6 +935,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_write_reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_init
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[8e]"></a>ak8975_write_reg</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, ak8975.o(i.ak8975_write_reg))
@@ -1175,7 +1176,7 @@ Global Symbols
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;update
 </UL>
 
-<P><STRONG><a name="[51]"></a>main</STRONG> (Thumb, 544 bytes, Stack size 176 bytes, main.o(i.main))
+<P><STRONG><a name="[51]"></a>main</STRONG> (Thumb, 548 bytes, Stack size 176 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 480 + Unknown Stack Size
 <LI>Call Chain = main &rArr; update &rArr; updateIMU &rArr; invSqrt &rArr; __aeabi_fmul
 </UL>
@@ -1189,6 +1190,7 @@ Global Symbols
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_get_accel
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_start
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_init
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ak8975_get_mag
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetVectorTable
