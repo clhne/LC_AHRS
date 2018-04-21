@@ -1,0 +1,78 @@
+#include <math.h>
+#include <stdio.h>
+#include "usart.h"
+#include "delay.h"
+#include "time.h"
+#include "oled.h"
+#include "mpu9250.h"
+#include "AHRS.h"
+
+int main(void) {
+    u8 ret_code;
+    u8 is_first_time = 1;
+    u32 prev_ts, cur_ts;
+    float prev_ax, prev_ay, prev_az, prev_gx, prev_gy, prev_gz, prev_mx, prev_my, prev_mz;
+    float cur_ax, cur_ay, cur_az, cur_gx, cur_gy, cur_gz, cur_mx, cur_my, cur_mz;
+    float dt, roll, pitch, yaw, cost;
+    char show_string[255];
+    SystemInit();
+    NVIC_Configuration();
+    usart_init(115200);
+    delay_init();
+    time_init();
+    oled_init();
+    oled_clear();
+    oled_show_string(0, 0, "calibrating...\nkeep still.");
+    ret_code = mpu_9250_init();
+    while(1) {
+        //if(mpu_9250_is_dry()) {
+        cur_ts = millis();
+        ret_code |= mpu_9250_read_accel_gyro(&cur_ax, &cur_ay, &cur_az, &cur_gx, &cur_gy, &cur_gz);
+        ret_code |= mpu_9250_read_mag(&cur_mx, &cur_my, &cur_mz);
+        if (is_first_time) {
+            is_first_time = 0;
+            prev_ts = cur_ts;
+        } else {
+            // https://github.com/kriswiner/MPU9250/issues/220#
+            // https://github.com/kriswiner/MPU9250/issues/51
+            dt = (float)(cur_ts - prev_ts) / 1000.0;
+            // Pass gyro rate as rad/s
+            cost = millis();
+            //MadgwickAHRSUpdate(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, prev_mx, prev_my, prev_mz, dt);
+            //MahonyAHRSUpdate(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, prev_mx, prev_my, prev_mz, dt);
+            MadgwickAHRSupdateIMU(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, dt);
+            //MahonyAHRSupdateIMU(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, dt);
+            // Define output variables from updated quaternion---these are Tait-Bryan angles, commonly used in aircraft orientation.
+            // In this coordinate system, the positive z-axis is down toward Earth.
+            // Yaw is the angle between gyro&accel x-axis and Earth magnetic North (or true North if corrected for local declination, looking down on the sensor positive yaw is counterclockwise.
+            // Pitch is angle between gyro&accel y-axis and Earth ground plane, toward the Earth is positive, up toward the sky is negative.
+            // Roll is angle between gyro&accel x-axis and Earth ground plane, y-axis up is positive roll.
+            // These arise from the definition of the homogeneous rotation matrix constructed from quaternions.
+            // Tait-Bryan angles as well as Euler angles are non-commutative; that is, the get the correct orientation the rotations must be
+            // applied in the correct order which for this configuration is yaw, pitch, and then roll.
+            // For more see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles which has additional links.
+            yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3);
+            pitch = -asin(2.0f * (q1 * q3 - q0 * q2));
+            roll  = atan2(2.0f * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3);
+            yaw   *= 180.0f / PI;
+            //yaw   -= 13.8f; // Declination at Danville, California is 13 degrees 48 minutes and 47 seconds on 2014-04-04
+            pitch *= 180.0f / PI;
+            roll  *= 180.0f / PI;
+            cost = millis() - cost;
+            prev_ts = cur_ts;
+            printf("%d %f %f %f %f %f\n", ret_code, dt, cost / 1000.0, roll, pitch, yaw);
+            //printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
+            sprintf(show_string, "roll:%.3f   \npitch:%.3f   \nyaw:%.3f   \ndt: %.1f ms   \n", roll, pitch, yaw, dt * 1000.0f);
+            oled_show_string(0, 0, show_string);
+        }
+        prev_ax = cur_ax;
+        prev_ay = cur_ay;
+        prev_az = cur_az;
+        prev_gx = cur_gx;
+        prev_gy = cur_gy;
+        prev_gz = cur_gz;
+        prev_mx = cur_mx,
+        prev_my = cur_my;
+        prev_mz = cur_mz;
+    }
+}
