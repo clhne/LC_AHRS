@@ -60,6 +60,7 @@ int main(void) {
             roll  *= 180.0f / PI;
             cost = millis() - cost;
             prev_ts = cur_ts;
+           // printf("%f,%f,%f\n",cur_gx,cur_gy,cur_gz);
             printf("%d %f %f %f %f %f\n", ret_code, dt, cost / 1000.0, roll, pitch, yaw);
             //printf("%d %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
             sprintf(show_string, "roll:%.3f   \npitch:%.3f   \nyaw:%.3f   \ndt: %.1f ms   \n", roll, pitch, yaw, dt * 1000.0f);
