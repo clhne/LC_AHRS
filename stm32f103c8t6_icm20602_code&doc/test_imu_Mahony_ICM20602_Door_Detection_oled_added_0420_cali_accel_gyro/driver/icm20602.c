@@ -42,9 +42,10 @@
 
 
 #define	ICM20_FIFO_EN					0x23
+//#define ICM20_
 #define	ICM20_FSYNC_INT					0x36
 #define	ICM20_INT_PIN_CFG				0x37
-//#define	ICM20_INT_ENABLE				0x38
+#define	ICM20_INT_ENABLE				0x38
 #define	ICM20_FIFO_WM_INT_STATUS		0x39
 #define	ICM20_INT_STATUS				0x3A
 
@@ -93,6 +94,12 @@
 #define	ICM20_ZA_OFFSET_H				0x7D
 #define	ICM20_ZA_OFFSET_L 				0x7E
 //===========================================================
+float gyro_bias_x = 0.0f;
+float gyro_bias_y = 0.0f;
+float gyro_bias_z = 0.0f;
+float accel_bias_x = 0.0f;
+float accel_bias_y = 0.0f;
+float accel_bias_z = 0.0f;
 
 static float _accel_scale;
 static float _gyro_scale;
@@ -128,7 +135,13 @@ uint8_t icm20602_read_buffer(uint8_t reg,void *buffer,uint8_t len) {
   return 0;
 }
 
-uint8_t icm20602_init() {
+//ICM20602 Calibrate
+u8 icm20602_calibrate(void){
+    u8 data[12];
+    u16 i, packet_count = 1000;
+    int gyro_bias[3] = {0}, accel_bias[3] = {0};
+    printf("Keep still!Calibrate Gyro&Accel!\n");
+  //reset device, reset all registers, cleaer gyro and accel bias registers  reg_val = 0x80;
   if(icm20602_write_reg(ICM20_PWR_MGMT_1,0x80)) { //复位，复位后位0x41,睡眠模式
     puts("icm_20602 reset fail\r\n");
     return 1;
@@ -144,11 +157,79 @@ uint8_t icm20602_init() {
   icm20602_write_reg(ICM20_CONFIG,DLPF_BW_20); //GYRO低通滤波设置
   icm20602_write_reg(ICM20_ACCEL_CONFIG2,ACCEL_AVER_4|ACCEL_DLPF_BW_21); //ACCEL低通滤波设置
   
+  icm20602_set_accel_fullscale(ICM20_ACCEL_FS_2G);
+  icm20602_set_gyro_fullscale(ICM20_GYRO_FS_250);
+
+  delay_ms(100);
+  for(i = 0;i<packet_count;i++){
+    short fifo_accel[3] = {0, 0, 0}, fifo_gyro[3] = {0, 0, 0};
+    if (icm20602_get_gyro_adc(fifo_gyro)){
+        goto icm20602_cal_error;
+    }
+    if (icm20602_get_accel_adc(fifo_accel)){
+        goto icm20602_cal_error;
+    }
+        accel_bias[0] += (int)fifo_accel[0]; // Sum individual signed 16-bit biases to get accumulated signed 32-bit biases
+        accel_bias[1] += (int)fifo_accel[1];
+        accel_bias[2] += (int)fifo_accel[2];
+        gyro_bias[0] += (int)fifo_gyro[0];
+        gyro_bias[1] += (int)fifo_gyro[1];
+        gyro_bias[2] += (int)fifo_gyro[2];
+    }
+    accel_bias[0] /= (int) packet_count; // Normalize sums to get average count biases
+    accel_bias[1] /= (int) packet_count;
+    accel_bias[2] /= (int) packet_count;
+    gyro_bias[0] /= (int) packet_count;
+    gyro_bias[1] /= (int) packet_count;
+    gyro_bias[2] /= (int) packet_count;
+
+    if (accel_bias[2] > 0L) {
+        accel_bias[2] -= (int)16384;   // Remove gravity from the z-axis accelerometer bias calculation
+    }
+    else {
+        accel_bias[2] += (int)16384;
+    }
+    gyro_bias_x = (float)gyro_bias[0] * _gyro_scale; // construct gyro bias in deg/s for later manual subtraction
+    gyro_bias_y = (float)gyro_bias[1] * _gyro_scale;
+    gyro_bias_z = (float)gyro_bias[2] * _gyro_scale;
+    accel_bias_x = (float)accel_bias[0] * _accel_scale; // construct accel bias in deg/s for later manual subtraction
+    accel_bias_y = (float)accel_bias[1] * _accel_scale;
+    accel_bias_z = (float)accel_bias[2] * _accel_scale;
+    return 0;
+icm20602_cal_error:
+    gyro_bias_x = 0.0f;
+    gyro_bias_y = 0.0f;
+    gyro_bias_z = 0.0f;
+    accel_bias_x = 0.0f;
+    accel_bias_y = 0.0f;
+    accel_bias_z = 0.0f;
+    printf("Gyro&Accel Calibration: error occur, can't read gyro&accel data!\n");
+    return 1;
+}
+
+
+uint8_t icm20602_init() {
+  icm20602_calibrate();
+  printf("Gyro bias: %f, %f, %f Accel bias: %f, %f, %f\n", gyro_bias_x, gyro_bias_y, gyro_bias_z, accel_bias_x, accel_bias_y, accel_bias_z);
+    
+  if(icm20602_write_reg(ICM20_PWR_MGMT_1,0x80)) { //复位，复位后位0x41,睡眠模式
+    puts("icm_20602 reset fail\r\n");
+    return 1;
+	}
+  delay_ms(50);
+  icm20602_write_reg(ICM20_PWR_MGMT_1,0x01); //关闭睡眠，自动选择时钟
+  delay_ms(50);
+	
+  printf("icm_20602 id=%x\r\n",icm20602_read_reg(ICM20_WHO_AM_I)); //读取ID
+	
+  icm20602_write_reg(ICM20_SMPLRT_DIV,0); //分频数=为0+1，数据输出速率为内部采样速率
+  icm20602_write_reg(ICM20_CONFIG,DLPF_BW_20); //GYRO低通滤波设置
+  icm20602_write_reg(ICM20_ACCEL_CONFIG2,ACCEL_AVER_4|ACCEL_DLPF_BW_21); //ACCEL低通滤波设置
+  
   icm20602_set_accel_fullscale(ICM20_ACCEL_FS_8G);
   icm20602_set_gyro_fullscale(ICM20_GYRO_FS_2000);
 
   delay_ms(100);
-  printf("icm20602 init pass\r\n\r\n");
   
   return 0;
 }
@@ -221,18 +302,18 @@ uint8_t icm20602_get_gyro(float *gyro) {
   int16_t gyro_adc[3];
   if(icm20602_get_gyro_adc(gyro_adc))return 1;
 
-  gyro[0] = _gyro_scale * gyro_adc[0];
-  gyro[1] = _gyro_scale * gyro_adc[1];
-  gyro[2] = _gyro_scale * gyro_adc[2];	
+  gyro[0] = _gyro_scale * gyro_adc[0] - gyro_bias_x;
+  gyro[1] = _gyro_scale * gyro_adc[1] - gyro_bias_y;
+  gyro[2] = _gyro_scale * gyro_adc[2] - gyro_bias_z;	
   return 0;
 }
 
 uint8_t icm20602_get_accel(float *accel) {
   int16_t accel_adc[3];
   if(icm20602_get_accel_adc(accel_adc))return 1;
-  accel[0] = _accel_scale * accel_adc[0];
-  accel[1] = _accel_scale * accel_adc[1];
-  accel[2] = _accel_scale * accel_adc[2];	
+  accel[0] = _accel_scale * accel_adc[0] - accel_bias_x;
+  accel[1] = _accel_scale * accel_adc[1] - accel_bias_y;
+  accel[2] = _accel_scale * accel_adc[2] - accel_bias_z;	
   return 0;
 }
 

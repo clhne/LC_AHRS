@@ -82,11 +82,6 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
         return;
     }
 
-    // Convert gyroscope degrees/sec to radians/sec
-    //gx *= 0.0174533f;
-    //gy *= 0.0174533f;
-    //gz *= 0.0174533f;
-
     // Compute feedback only if accelerometer measurement valid
     // (avoids NaN in accelerometer normalisation)
     if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {
@@ -137,19 +132,10 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
 
         // Compute and apply integral feedback if enabled
         if(twoKi > 0.0f) {
-            // integral error scaled by Ki
-
-//			integralFBx += twoKi * halfex * invSampleFreq;
-//			integralFBy += twoKi * halfey * invSampleFreq;
-//			integralFBz += twoKi * halfez * invSampleFreq;
             integralFBx += twoKi * halfex * dt;
             integralFBy += twoKi * halfey * dt;
             integralFBz += twoKi * halfez * dt;
-            /*
-            integralFBx += twoKi * halfex * timestep;
-            integralFBy += twoKi * halfey * timestep;
-            integralFBz += twoKi * halfez * timestep;
-            	*/
+
             gx += integralFBx;	// apply integral feedback
             gy += integralFBy;
             gz += integralFBz;
@@ -166,18 +152,10 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
     }
 
     // Integrate rate of change of quaternion
-
-//	gx *= (0.5f * invSampleFreq);		// pre-multiply common factors
-//	gy *= (0.5f * invSampleFreq);
-//	gz *= (0.5f * invSampleFreq);
     gx *= (0.5f * dt);		// pre-multiply common factors
     gy *= (0.5f * dt);
     gz *= (0.5f * dt);
-    /*
-      gx *= (0.5f * timestep);
-      gy *= (0.5f * timestep);
-      gz *= (0.5f * timestep);
-    */
+
     qa = q0;
     qb = q1;
     qc = q2;
@@ -204,11 +182,6 @@ void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float
     float halfex, halfey, halfez;
     float qa, qb, qc;
 
-    // Convert gyroscope degrees/sec to radians/sec
-//    gx *= 0.0174533f;
-//    gy *= 0.0174533f;
-//    gz *= 0.0174533f;
-
     // Compute feedback only if accelerometer measurement valid
     // (avoids NaN in accelerometer normalisation)
     if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {
@@ -232,19 +205,11 @@ void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float
 
         // Compute and apply integral feedback if enabled
         if(twoKi > 0.0f) {
-            // integral error scaled by Ki
-
-//			integralFBx += twoKi * halfex * invSampleFreq;
-//			integralFBy += twoKi * halfey * invSampleFreq;
-//			integralFBz += twoKi * halfez * invSampleFreq;
+ 
             integralFBx += twoKi * halfex * dt;
             integralFBy += twoKi * halfey * dt;
             integralFBz += twoKi * halfez * dt;
-            /*
-            integralFBx += twoKi * halfex * timestep;
-            integralFBy += twoKi * halfey * timestep;
-            integralFBz += twoKi * halfez * timestep;
-            	*/
+
             gx += integralFBx;	// apply integral feedback
             gy += integralFBy;
             gz += integralFBz;
@@ -261,18 +226,10 @@ void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float
     }
 
     // Integrate rate of change of quaternion
-
-//	gx *= (0.5f * invSampleFreq);		// pre-multiply common factors
-//	gy *= (0.5f * invSampleFreq);
-//	gz *= (0.5f * invSampleFreq);
     gx *= (0.5f * dt);		// pre-multiply common factors
     gy *= (0.5f * dt);
     gz *= (0.5f * dt);
-    /*
-    gx *= (0.5f * timestep);
-    gy *= (0.5f * timestep);
-    gz *= (0.5f * timestep);
-    */
+
     qa = q0;
     qb = q1;
     qc = q2;
