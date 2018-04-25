@@ -23,5 +23,4 @@
 .\objects\main.o: .\driver\ak8975.h
 .\objects\main.o: .\driver\oled.h
 .\objects\main.o: C:\Keiluvision524a\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\main.o: user\MahonyAHRS.h
-.\objects\main.o: C:\Keiluvision524a\ARM\ARMCC\Bin\..\include\math.h
+.\objects\main.o: user\AHRS.h

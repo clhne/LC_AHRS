@@ -179,7 +179,7 @@ uint8_t icm20602_set_gyro_fullscale(uint8_t fs) {
 uint8_t icm20602_set_accel_fullscale(uint8_t fs) {
   switch(fs) {
   case ICM20_ACCEL_FS_2G:
-    _accel_scale = 1.0f/16348.0f;
+    _accel_scale = 1.0f/16384.0f;
     break;
   case ICM20_ACCEL_FS_4G:
     _accel_scale = 1.0f/8192.0f;

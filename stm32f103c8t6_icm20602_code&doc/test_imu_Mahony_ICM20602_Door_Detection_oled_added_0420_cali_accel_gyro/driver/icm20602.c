@@ -1,6 +1,7 @@
 #include "icm20602.h"
 #include "delay.h"
 #include "spi.h"
+#include <math.h>
 
 //========ICM20602寄存器地址========================
 /********************************************
@@ -138,7 +139,7 @@ uint8_t icm20602_read_buffer(uint8_t reg,void *buffer,uint8_t len) {
 //ICM20602 Calibrate
 u8 icm20602_calibrate(void){
     u8 data[12];
-    u16 i, packet_count = 1000;
+    u16 i, packet_count = 3000;
     int gyro_bias[3] = {0}, accel_bias[3] = {0};
     printf("Keep still!Calibrate Gyro&Accel!\n");
   //reset device, reset all registers, cleaer gyro and accel bias registers  reg_val = 0x80;
@@ -151,8 +152,7 @@ u8 icm20602_calibrate(void){
   icm20602_write_reg(ICM20_PWR_MGMT_1,0x01); //关闭睡眠，自动选择时钟
   delay_ms(50);
 	
-  printf("icm_20602 id=%x\r\n",icm20602_read_reg(ICM20_WHO_AM_I)); //读取ID
-	
+  //printf("icm_20602 id=%x\r\n",icm20602_read_reg(ICM20_WHO_AM_I)); //读取ID	
   icm20602_write_reg(ICM20_SMPLRT_DIV,0); //分频数=为0+1，数据输出速率为内部采样速率
   icm20602_write_reg(ICM20_CONFIG,DLPF_BW_20); //GYRO低通滤波设置
   icm20602_write_reg(ICM20_ACCEL_CONFIG2,ACCEL_AVER_4|ACCEL_DLPF_BW_21); //ACCEL低通滤波设置
@@ -183,12 +183,35 @@ u8 icm20602_calibrate(void){
     gyro_bias[1] /= (int) packet_count;
     gyro_bias[2] /= (int) packet_count;
 
+    
+    if (abs(accel_bias[0]) > 15000) {
+    
+    if (accel_bias[0] > 0L) {
+        accel_bias[0] -= (int)16384;   // Remove gravity from the z-axis accelerometer bias calculation
+    }
+    else {
+        accel_bias[0] += (int)16384;
+    }
+} else if (abs(accel_bias[1]) > 15000) {
+    
+    if (accel_bias[1] > 0L) {
+        accel_bias[1] -= (int)16384;   // Remove gravity from the z-axis accelerometer bias calculation
+    }
+    else {
+        accel_bias[1] += (int)16384;
+    }
+} else  {
+    
     if (accel_bias[2] > 0L) {
         accel_bias[2] -= (int)16384;   // Remove gravity from the z-axis accelerometer bias calculation
     }
     else {
         accel_bias[2] += (int)16384;
     }
+}
+    
+    
+
     gyro_bias_x = (float)gyro_bias[0] * _gyro_scale; // construct gyro bias in deg/s for later manual subtraction
     gyro_bias_y = (float)gyro_bias[1] * _gyro_scale;
     gyro_bias_z = (float)gyro_bias[2] * _gyro_scale;
@@ -226,8 +249,8 @@ uint8_t icm20602_init() {
   icm20602_write_reg(ICM20_CONFIG,DLPF_BW_20); //GYRO低通滤波设置
   icm20602_write_reg(ICM20_ACCEL_CONFIG2,ACCEL_AVER_4|ACCEL_DLPF_BW_21); //ACCEL低通滤波设置
   
-  icm20602_set_accel_fullscale(ICM20_ACCEL_FS_8G);
-  icm20602_set_gyro_fullscale(ICM20_GYRO_FS_2000);
+  icm20602_set_accel_fullscale(ICM20_ACCEL_FS_2G);
+  icm20602_set_gyro_fullscale(ICM20_GYRO_FS_250);
 
   delay_ms(100);
   
@@ -260,7 +283,7 @@ uint8_t icm20602_set_gyro_fullscale(uint8_t fs) {
 uint8_t icm20602_set_accel_fullscale(uint8_t fs) {
   switch(fs) {
   case ICM20_ACCEL_FS_2G:
-    _accel_scale = 1.0f/16348.0f;
+    _accel_scale = 1.0f/16384.0f;
     break;
   case ICM20_ACCEL_FS_4G:
     _accel_scale = 1.0f/8192.0f;

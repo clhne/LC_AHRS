@@ -1,6 +1,7 @@
 --cpu Cortex-M3
 ".\objects\main.o"
 ".\objects\sys.o"
+".\objects\ahrs.o"
 ".\objects\icm20602.o"
 ".\objects\ak8975.o"
 ".\objects\stm32f10x_tim.o"

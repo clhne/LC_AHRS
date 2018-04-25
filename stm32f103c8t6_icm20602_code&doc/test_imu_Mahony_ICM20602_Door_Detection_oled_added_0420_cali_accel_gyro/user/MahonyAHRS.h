@@ -42,7 +42,7 @@ void update(float gx, float gy, float gz, float ax, float ay, float az, float mx
 void updateIMU(float gx, float gy, float gz, float ax, float ay, float az, float dt);
 float getRoll() {
     if (!anglesComputed) computeAngles();
-    return roll * 57.29578f + 180.0f;
+    return roll * 57.29578f;// + 180.0f;
 }
 float getPitch() {
     if (!anglesComputed) computeAngles();
@@ -50,7 +50,7 @@ float getPitch() {
 }
 float getYaw() {
     if (!anglesComputed) computeAngles();
-    return yaw * 57.29578f + 180.0f;
+    return yaw * 57.29578f;// + 180.0f;
 }
 float getRollRadians() {
     if (!anglesComputed) computeAngles();

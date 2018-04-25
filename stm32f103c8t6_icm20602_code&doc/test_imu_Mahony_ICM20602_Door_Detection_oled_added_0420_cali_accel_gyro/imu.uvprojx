@@ -391,9 +391,14 @@
               <FilePath>.\user\sys.c</FilePath>
             </File>
             <File>
-              <FileName>MahonyAHRS.h</FileName>
+              <FileName>AHRS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\AHRS.c</FilePath>
+            </File>
+            <File>
+              <FileName>AHRS.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\user\MahonyAHRS.h</FilePath>
+              <FilePath>.\user\AHRS.h</FilePath>
             </File>
           </Files>
         </Group>

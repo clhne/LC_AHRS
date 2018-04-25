@@ -6,9 +6,10 @@
 #include "icm20602.h"
 #include "ak8975.h"
 #include "oled.h"
-#include "MahonyAHRS.h"
+//#include "MahonyAHRS.h"
+#include "AHRS.h"
 
-extern float q0,q1,q2,q3;
+//extern float q0,q1,q2,q3;
 int main() {
     char show_string[128];
     float acc[3] = {0.0f, 0.0f, 0.0f};
@@ -25,23 +26,6 @@ int main() {
     float prev_pitch = 0, cur_pitch = 0;
     float prev_yaw = 0, cur_yaw = 0;
     float prev_acc[3] = {0}, prev_gyro[3]= {0}, cur_acc[3]= {0}, cur_gyro[3]= {0}, cur_mag[3]= {0};
-    //Kalman filter
-    float aax=0, aay=0,aaz=0, agx=0, agy=0, agz=0;   
-    float axo = 0, ayo = 0, azo = 0;   
-    float gxo = 0, gyo = 0, gzo = 0;
-    float pi = 3.1415926;
-    float AcceRatio = 16384.0;                 
-    float GyroRatio = 131.0;                    
-    uint8_t n_sample = 8;    
-    int i;        
-    float aaxs[8] = {0}, aays[8] = {0}, aazs[8] = {0};   
-    long aax_sum, aay_sum, aaz_sum;    
-    float a_x[10]={0}, a_y[10]={0},a_z[10]={0} ,g_x[10]={0} ,g_y[10]={0},g_z[10]={0};
-    float Px=1, Rx, Kx, Sx, Vx, Qx; 
-    float Py=1, Ry, Ky, Sy, Vy, Qy;
-    float Pz=1, Rz, Kz, Sz, Vz, Qz; 
-    float gyrox, gyroy, gyroz;
-    float accx, accy, accz;
     
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0);
@@ -51,15 +35,15 @@ int main() {
     time_init();
     usart1_init(115200);
     spi2_init();
-    ak8975_init();
+    //ak8975_init();
     icm20602_init();
     oled_init();
     oled_clear();
         
     while(1) {
         cur_ts = millis();
-        if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0 && ak8975_get_mag(cur_mag) == 0) {
-            ak8975_start();
+        if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0/* && ak8975_get_mag(cur_mag) == 0*/) {
+            //ak8975_start();
             if(is_first_time) {
                 //magcalMPU9250(dest1, dest2, &mag_bias_x, &mag_bias_y, &mag_bias_z);
                 is_first_time = 0;
@@ -70,25 +54,60 @@ int main() {
                 cur_mag[2] -= mag_bias_z;
                 dt = (float)(cur_ts - prev_ts) / 1000.0;
                 prev_ts = cur_ts;
-                cost = millis();
+                cost = millis();/*
+                if (fabs(cur_gyro[0]) < 0.005)
+                {
+                    cur_gyro[0] = 0.0f;
+                }   
+                if (fabs(cur_gyro[1]) < 0.005)
+                {
+                    cur_gyro[1] = 0.0f;
+                }   
+                if (fabs(cur_gyro[2]) < 0.005)
+                {
+                    cur_gyro[2] = 0.0f;
+                }  */
+                //printf("%f,%f,%f\n",cur_gyro[0],cur_gyro[1],cur_gyro[2]);
                 //update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], -cur_mag[0], cur_mag[1], -cur_mag[2],dt);    // better
-                update(cur_gyro[1], -cur_gyro[0], -cur_gyro[2], cur_acc[1], -cur_acc[0], -cur_acc[2], 0, 0, 0, dt); //no mag
+                //update(cur_gyro[1], -cur_gyro[0], -cur_gyro[2], cur_acc[1], -cur_acc[0], -cur_acc[2], 0, 0, 0, dt); //no mag
+#if 0
+                update(cur_gyro[0], cur_gyro[1], cur_gyro[2], cur_acc[0], cur_acc[1], cur_acc[2], 0, 0, 0, dt); //no mag
                 //Door close/open detection
                 cur_roll = getRoll();
                 cur_pitch = getPitch();
                 cur_yaw = getYaw();
+#else
+                //MahonyAHRSupdateIMU(cur_gyro[2], cur_gyro[1], cur_gyro[0], cur_acc[2], cur_acc[1], cur_acc[0], dt);
+                MahonyAHRSupdateIMU(cur_gyro[1], cur_gyro[0], cur_gyro[2], cur_acc[1], cur_acc[0], cur_acc[2], dt);
+                Quat2Angle();
+                cur_roll = roll;
+                cur_pitch = pitch;
+                cur_yaw = yaw;
+#endif
                 cost = millis() - cost;
-                printf("cost=%f dt=%f roll=%f pitch=%f yaw=%f\n", cost / 1000.0f, dt, cur_roll, cur_pitch, cur_yaw);
+                printf("%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f,%.6f\n", cur_roll, cur_pitch, cur_yaw,
+                cur_acc[0],cur_acc[1],cur_acc[2],cur_gyro[0],cur_gyro[1],cur_gyro[2]);
                 sprintf(show_string, "roll=%.3f\npitch=%.3f\nyaw=%.3f\n", cur_roll, cur_pitch, cur_yaw);
+                //sprintf(show_string,"%f\n%f\n%f\n",cur_acc[0],cur_acc[1],cur_acc[2]);
                 oled_show_string(0,0, show_string);
-                if(cur_roll >= 1.0 | fabs(cur_acc[1]-prev_acc[1])>=0.15 | fabs(cur_gyro[0]-prev_gyro[0]) >=0.09) {
+                //Door Open_Close detection
+                //false close
+//                if(fabs(cur_yaw) > 1.0 && fabs(cur_yaw) < 1.8 )
+//                oled_show_string(0,6, "Door is open    ");
+                if(cur_yaw >= 1.00 ) {
                     //printf("Door is open\n");
+                    if(fabs(cur_acc[1]-prev_acc[1])>=0.35)
                     oled_show_string(0,6, "Door is open    ");
                 }
                 else {
                     //printf("Door is closed\n");
-                    oled_show_string(0,6, "Door is closed    ");
+                    if(fabs(cur_acc[2]) > 0.065 | fabs(cur_gyro[0]) >= 0.1){
+                        oled_show_string(0,6, "Door is open    ");
+                    }
+                    else
+                        oled_show_string(0,6, "Door is closed    ");
                 }
+
             }
         }
         prev_roll = cur_roll;
@@ -100,6 +119,6 @@ int main() {
         prev_gyro[0] = cur_gyro[0];
         prev_gyro[1] = cur_gyro[1];
         prev_gyro[2] = cur_gyro[2];
-        //delay_ms(10);
+        //delay_ms(5);
     }
 }
