@@ -1,0 +1,33 @@
+#include "led.h"
+#define LED PAout(12) // PA12
+/**************************************************************************
+函数功能：led接口初始化
+入口参数：无
+返回  值：无
+**************************************************************************/
+void led_init(void) {
+    GPIO_InitTypeDef GPIO_InitStructure;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); //使能PORTA时钟
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //PA12推挽输出
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    GPIO_SetBits(GPIOA, GPIO_Pin_12); //PA12输出高
+}
+
+/**************************************************************************
+函数功能：led闪烁
+入口参数：闪烁频率
+返回  值：无
+**************************************************************************/
+void led_toggle(u16 freq) {
+    static int counter = 0;
+    if (freq == 0) {
+        LED = 0;
+    } else {
+        if (++counter == freq) {
+            LED = ~LED;
+            counter = 0;
+        }
+    }
+}

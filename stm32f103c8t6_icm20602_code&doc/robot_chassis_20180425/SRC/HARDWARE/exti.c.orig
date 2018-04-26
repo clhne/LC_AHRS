@@ -1,0 +1,97 @@
+#include <stdio.h>
+#include "exti.h"
+#define INT PBin(5) // PB5连接到MPU6050的中断引脚
+/**************************************************************************
+函数功能：外部中断初始化
+入口参数：无
+返回  值：无
+**************************************************************************/
+void exti_init(void) {
+    GPIO_InitTypeDef GPIO_InitStructure;
+    EXTI_InitTypeDef EXTI_InitStructure;
+    NVIC_InitTypeDef NVIC_InitStructure;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE); // 外部中断，需要使能AFIO时钟
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE); // 使能PB端口时钟
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5; // 端口配置
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // 上拉输入
+    GPIO_Init(GPIOB, &GPIO_InitStructure); // 根据设定参数初始化GPIOB
+    GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource5);
+    EXTI_InitStructure.EXTI_Line = EXTI_Line5;
+    EXTI_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
+    EXTI_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; // 下降沿触发
+    EXTI_InitStructure.EXTI_LineCmd = ENABLE;
+    EXTI_Init(&EXTI_InitStructure); // 根据EXTI_InitStruct中指定的参数初始化外设EXTI寄存器
+    NVIC_InitStructure.NVIC_IRQChannel = EXTI9_5_IRQn; // 使能按键所在的外部中断通道
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2; // 抢占优先级2，
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;	 // 子优先级1
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; // 使能外部中断通道
+    NVIC_Init(&NVIC_InitStructure);
+}
+
+/**************************************************************************
+函数功能：所有的控制代码都在这里面
+         5ms定时中断由MPU6050的INT引脚触发
+         严格保证采样和数据处理的时间同步				 
+**************************************************************************/
+int EXTI9_5_IRQHandler(void) {
+    u8 ret_code;
+    if (INT == 0) {
+        u8 is_first_time = 1;
+    u32 prev_ts, cur_ts;
+    float prev_ax, prev_ay, prev_az, prev_gx, prev_gy, prev_gz, prev_mx, prev_my, prev_mz;
+    float cur_ax, cur_ay, cur_az, cur_gx, cur_gy, cur_gz, cur_mx, cur_my, cur_mz;
+    float dt, roll, pitch, yaw, cost;
+      cur_ts = millis();
+        ret_code = mpu_9250_read_accel_gyro(&cur_ax, &cur_ay, &cur_az, &cur_gx, &cur_gy, &cur_gz);
+        ret_code |= mpu_9250_read_mag(&cur_mx, &cur_my, &cur_mz);
+        if (is_first_time) {
+            is_first_time = 0;
+            prev_ts = cur_ts;
+        } else {
+            // https://github.com/kriswiner/MPU9250/issues/220#
+            // https://github.com/kriswiner/MPU9250/issues/51
+            dt = (float)(cur_ts - prev_ts) / 1000.0;
+            // Pass gyro rate as rad/s
+            cost = millis();
+            //MadgwickAHRSUpdate(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, prev_mx, prev_my, prev_mz, dt);
+            //MahonyAHRSUpdate(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, prev_mx, prev_my, prev_mz, dt);
+            MadgwickAHRSupdateIMU(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, dt);
+            //MahonyAHRSupdateIMU(prev_gy, prev_gx, -prev_gz, prev_ay, prev_ax, -prev_az, dt);
+            // Define output variables from updated quaternion---these are Tait-Bryan angles, commonly used in aircraft orientation.
+            // In this coordinate system, the positive z-axis is down toward Earth.
+            // Yaw is the angle between gyro&accel x-axis and Earth magnetic North (or true North if corrected for local declination, looking down on the sensor positive yaw is counterclockwise.
+            // Pitch is angle between gyro&accel y-axis and Earth ground plane, toward the Earth is positive, up toward the sky is negative.
+            // Roll is angle between gyro&accel x-axis and Earth ground plane, y-axis up is positive roll.
+            // These arise from the definition of the homogeneous rotation matrix constructed from quaternions.
+            // Tait-Bryan angles as well as Euler angles are non-commutative; that is, the get the correct orientation the rotations must be
+            // applied in the correct order which for this configuration is yaw, pitch, and then roll.
+            // For more see http://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles which has additional links.
+            yaw   = atan2(2.0f * (q1 * q2 + q0 * q3), q0 * q0 + q1 * q1 - q2 * q2 - q3 * q3);
+            pitch = -asin(2.0f * (q1 * q3 - q0 * q2));
+            roll  = atan2(2.0f * (q0 * q1 + q2 * q3), q0 * q0 - q1 * q1 - q2 * q2 + q3 * q3);
+            yaw   *= 180.0f / PI;
+            //yaw   -= 13.8f; // Declination at Danville, California is 13 degrees 48 minutes and 47 seconds on 2014-04-04
+            pitch *= 180.0f / PI;
+            roll  *= 180.0f / PI;
+            cost = millis() - cost;
+            prev_ts = cur_ts;
+            //printf("%d %f %f %f %f %f\n", ret_code, dt, cost / 1000.0, roll, pitch, yaw);
+            //printf("%d %f %f %f %f %f %f %f %f %f %f %f\n", ret_code, dt, cost, prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, prev_mx, prev_my, prev_mz);
+            sprintf(show_string, "roll:%.3f   \npitch:%.3f   \nyaw:%.3f   \ndt: %.1f ms   \n", roll, pitch, yaw, dt * 1000.0f);
+            oled_show_string(0, 0, show_string);
+            led_toggle(100);
+        }
+        prev_ax = cur_ax;
+        prev_ay = cur_ay;
+        prev_az = cur_az;
+        prev_gx = cur_gx;
+        prev_gy = cur_gy;
+        prev_gz = cur_gz;
+        prev_mx = cur_mx,
+        prev_my = cur_my;
+        prev_mz = cur_mz;
+        EXTI_ClearITPendingBit(EXTI_Line5);
+    }
+    printf("5ms\n");
+    return 0;
+}

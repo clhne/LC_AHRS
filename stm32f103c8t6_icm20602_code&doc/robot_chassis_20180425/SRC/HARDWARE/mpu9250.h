@@ -1,0 +1,26 @@
+#ifndef __MPU9250_H
+#define __MPU9250_H
+u8 mpu_9250_init(void);
+// gyroscope & accelerator
+u8 mpu_9250_read_accel_gyro_raw(short *ax, short *ay, short *az, short *gx, short *gy, short *gz);
+u8 mpu_9250_read_accel_gyro(float *ax, float *ay, float *az, float *gx, float *gy, float *gz);
+u8 mpu_9250_read_accel_gyro_and_statistic(
+    float *ax, float *ay, float *az,
+    float *gx, float *gy, float *gz,
+    float *mean_ax, float *mean_ay, float *mean_az,
+    float *var_ax, float *var_ay, float *var_az,
+    float *mean_gx, float *mean_gy, float *mean_gz,
+    float *var_gx, float *var_gy, float *var_gz
+);
+void mpu_9250_set_accel_gyro_bias(float ax, float ay, float az, float gx, float gy, float gz);
+// magnetic filed
+u8 mpu_9250_prepare_mag_data(void);
+u8 mpu_9250_read_mag_raw(short *mx, short *my, short *mz);
+u8 mpu_9250_read_mag(float *mx, float *my, float *mz);
+u8 mpu_9250_read_mag_and_statistic(
+    float *mx, float *my, float *mz,
+    float *mean_mx, float *mean_my, float *mean_mz,
+    float *var_mx, float *var_my, float *var_mz
+);
+void mpu_9250_set_mag_bias(float mx, float my, float mz);
+#endif
