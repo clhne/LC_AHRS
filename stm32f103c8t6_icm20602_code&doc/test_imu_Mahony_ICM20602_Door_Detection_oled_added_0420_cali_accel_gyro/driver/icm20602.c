@@ -351,8 +351,8 @@ float icm20602_get_temp() {
 u8 icm20602_get_accel_gyro_statistic(
     float *ax, float *ay, float *az, float *gx, float *gy, float *gz,
     float *mean_ax, float *mean_ay, float *mean_az, float *mean_gx, float *mean_gy, float *mean_gz,
-    float *var_ax, float *var_ay, float *var_az, float *var_gx, float *var_gy, float *var_gz
-) {
+    float *var_ax, float *var_ay, float *var_az, float *var_gx, float *var_gy, float *var_gz) 
+{
     const u8 STATISTIC_NUM = 20;
     static u8 statistic_cnt = 0, statistic_full = 0;
     static float axs[STATISTIC_NUM], ays[STATISTIC_NUM], azs[STATISTIC_NUM];
@@ -385,7 +385,7 @@ u8 icm20602_get_accel_gyro_statistic(
     if (icm20602_get_accel(d_accel)) {
         return 1; // invalid
     }
-    if(icm20602_get_gyro(d_gyro)){
+    if(icm20602_get_gyro(d_gyro)) {
         return 1; //invalid
     }
     *ax = d_accel[0];
@@ -467,4 +467,10 @@ void icm20602_set_accel_gyro_bias(float ax, float ay, float az,
     gyro_bias_x = gx;
     gyro_bias_y = gy;
     gyro_bias_z = gz;
+}
+float low_filter(float acc_cur, float acc_prev){
+    float sample_value;
+    float x = 0.01;
+    sample_value = (1 - x) * acc_cur + x * acc_prev;
+    return sample_value;
 }

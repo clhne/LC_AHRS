@@ -22,29 +22,16 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 E:\projects\LC_AHRS\stm32f103c8t6_icm20602_code&doc\test_imu_Mahony_ICM20602_Door_Detection_oled_added_0420_cali_accel_gyro\imu.uvprojx
-Project File Date:  04/24/2018
+Project File Date:  04/28/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'C:\Keiluvision524a\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
 compiling AHRS.c...
-compiling sys.c...
-compiling icm20602.c...
-driver\icm20602.c(187): warning:  #223-D: function "abs" declared implicitly
-      if (abs(accel_bias[0]) > 15000) {
-driver\icm20602.c(141): warning:  #177-D: variable "data"  was declared but never referenced
-      u8 data[12];
-driver\icm20602.c(420): warning:  #177-D: variable "v_gx"  was declared but never referenced
-          float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
-driver\icm20602.c(420): warning:  #177-D: variable "v_gy"  was declared but never referenced
-          float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
-driver\icm20602.c(420): warning:  #177-D: variable "v_gz"  was declared but never referenced
-          float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
-driver\icm20602.c: 5 warnings, 0 errors
 compiling main.c...
-user\main.c(40): warning:  #223-D: function "time_init" declared implicitly
+user\main.c(41): warning:  #223-D: function "time_init" declared implicitly
       time_init();
-user\main.c(88): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
+user\main.c(89): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
               oled_show_string(0, 0, show_string);
 user\main.c(17): warning:  #177-D: variable "acc"  was declared but never referenced
       float acc[3] = {0.0f, 0.0f, 0.0f};
@@ -56,46 +43,59 @@ user\main.c(20): warning:  #177-D: variable "dest1"  was declared but never refe
       float dest1[3] = {0, 0, 0};
 user\main.c(21): warning:  #177-D: variable "dest2"  was declared but never referenced
       float dest2[3] = {0, 0, 0};
-user\main.c(27): warning:  #177-D: variable "mag_bias_x"  was declared but never referenced
+user\main.c(24): warning:  #177-D: variable "is_acc_reverse"  was declared but never referenced
+      static u8 is_acc_reverse = 1;
+user\main.c(28): warning:  #177-D: variable "mag_bias_x"  was declared but never referenced
       float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
-user\main.c(27): warning:  #177-D: variable "mag_bias_y"  was declared but never referenced
+user\main.c(28): warning:  #177-D: variable "mag_bias_y"  was declared but never referenced
       float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
-user\main.c(27): warning:  #177-D: variable "mag_bias_z"  was declared but never referenced
+user\main.c(28): warning:  #177-D: variable "mag_bias_z"  was declared but never referenced
       float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
-user\main.c(29): warning:  #550-D: variable "prev_roll"  was set but never used
+user\main.c(30): warning:  #550-D: variable "prev_roll"  was set but never used
       float prev_roll = 0, cur_roll = 0;
-user\main.c(30): warning:  #550-D: variable "prev_pitch"  was set but never used
+user\main.c(31): warning:  #550-D: variable "prev_pitch"  was set but never used
       float prev_pitch = 0, cur_pitch = 0;
-user\main.c(31): warning:  #550-D: variable "prev_yaw"  was set but never used
+user\main.c(32): warning:  #550-D: variable "prev_yaw"  was set but never used
       float prev_yaw = 0, cur_yaw = 0;
-user\main.c(32): warning:  #550-D: variable "prev_acc"  was set but never used
+user\main.c(33): warning:  #550-D: variable "prev_gyro"  was set but never used
       float prev_acc[3] = {0}, prev_gyro[3] = {0}, cur_acc[3] = {0}, cur_gyro[3] = {0}, cur_mag[3] = {0};
-user\main.c(32): warning:  #550-D: variable "prev_gyro"  was set but never used
-      float prev_acc[3] = {0}, prev_gyro[3] = {0}, cur_acc[3] = {0}, cur_gyro[3] = {0}, cur_mag[3] = {0};
-user\main.c(32): warning:  #177-D: variable "cur_mag"  was declared but never referenced
-      float prev_acc[3] = {0}, prev_gyro[3] = {0}, cur_acc[3] = {0}, cur_gyro[3] = {0}, cur_mag[3] = {0};
-user\main.c: 16 warnings, 0 errors
+user\main.c: 15 warnings, 0 errors
+compiling icm20602.c...
+driver\icm20602.c(187): warning:  #223-D: function "abs" declared implicitly
+      if (abs(accel_bias[0]) > 15000) {
+driver\icm20602.c(141): warning:  #177-D: variable "data"  was declared but never referenced
+      u8 data[12];
+driver\icm20602.c(420): warning:  #177-D: variable "v_gx"  was declared but never referenced
+          float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
+driver\icm20602.c(420): warning:  #177-D: variable "v_gy"  was declared but never referenced
+          float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
+driver\icm20602.c(420): warning:  #177-D: variable "v_gz"  was declared but never referenced
+          float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
+driver\icm20602.c(476): warning:  #1-D: last line of file ends without a newline
+  }
+driver\icm20602.c: 6 warnings, 0 errors
+compiling sys.c...
 compiling ak8975.c...
 driver\ak8975.c(103): warning:  #550-D: variable "mag_scale"  was set but never used
    float mag_scale[3] = {0, 0, 0};
 driver\ak8975.c: 1 warning, 0 errors
+compiling usart.c...
 compiling stm32f10x_tim.c...
 compiling oled.c...
-compiling usart.c...
 compiling gpio.c...
 compiling retarget.c...
-compiling spi.c...
 compiling time.c...
+compiling spi.c...
 compiling delay.c...
 compiling misc.c...
-compiling stm32f10x_gpio.c...
 compiling stm32f10x_rcc.c...
+compiling stm32f10x_gpio.c...
 assembling startup_stm32f10x_md.s...
 compiling stm32f10x_spi.c...
 compiling stm32f10x_usart.c...
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=19274 RO-data=2798 RW-data=152 ZI-data=2112  
+Program Size: Code=21226 RO-data=2798 RW-data=152 ZI-data=2112  
 ".\Objects\imu.axf" - 0 Error(s), 22 Warning(s).
 
 <h2>Software Packages used:</h2>
@@ -156,7 +156,7 @@ Package Vendor: Keil
       Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:08
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>

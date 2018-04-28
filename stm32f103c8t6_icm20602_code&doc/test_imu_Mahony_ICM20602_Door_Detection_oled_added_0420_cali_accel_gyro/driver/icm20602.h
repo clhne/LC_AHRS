@@ -48,6 +48,7 @@ uint8_t icm20602_get_gyro_adc(int16_t *gyro);
 uint8_t icm20602_get_gyro(float *gyro);
 uint8_t icm20602_get_accel(float *accel);
 float icm20602_get_temp(void);
+float low_filter(float acc_cur, float acc_prev);
 void icm20602_set_accel_gyro_bias(float ax,float ay,float az,float gx,float gy,float gz);
 void icm20602_set_gyro_bias(float gx, float gy, float gz);
 u8 icm20602_get_accel_gyro_statistic(
