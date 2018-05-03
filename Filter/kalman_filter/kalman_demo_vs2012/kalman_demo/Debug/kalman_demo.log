@@ -1,0 +1,72 @@
+﻿生成启动时间为 2018/5/2 15:21:48。
+     1>项目“E:\projects\kalman_demo\kalman_demo\kalman_demo.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt eval_camera.c kalman.c kalman_camera.c matmath.c mrqmin.c random.c test.c
+         test.c
+     1>e:\projects\kalman_demo\kalman_demo\test.c(173): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(357) : 参见“sprintf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(227): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(237): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(237) : 参见“fscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(265): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(275): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(237) : 参见“fscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(447): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(357) : 参见“sprintf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(580): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(578): warning C4101: “frame”: 未引用的局部变量
+     1>e:\projects\kalman_demo\kalman_demo\test.c(599): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(630): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(631): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(632): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(633): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(357) : 参见“sprintf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(634): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(357) : 参见“sprintf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(648): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(653): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(658): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+     1>e:\projects\kalman_demo\kalman_demo\test.c(663): warning C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files\microsoft visual studio 11.0\vc\include\stdio.h(311) : 参见“sscanf”的声明
+         random.c
+     1>e:\projects\kalman_demo\kalman_demo\random.c(41): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+     1>e:\projects\kalman_demo\kalman_demo\random.c(42): warning C4305: “return”: 从“double”到“float”截断
+     1>e:\projects\kalman_demo\kalman_demo\random.c(74): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+         mrqmin.c
+         matmath.c
+     1>e:\projects\kalman_demo\kalman_demo\matmath.c(136): warning C4101: “j”: 未引用的局部变量
+         kalman_camera.c
+     1>e:\projects\kalman_demo\kalman_demo\kalman_camera.c(102): warning C4101: “world_pos”: 未引用的局部变量
+         kalman.c
+         eval_camera.c
+     1>e:\projects\kalman_demo\kalman_demo\eval_camera.c(37): warning C4101: “i”: 未引用的局部变量
+     1>e:\projects\kalman_demo\kalman_demo\eval_camera.c(37): warning C4101: “f”: 未引用的局部变量
+         正在生成代码...
+     1>e:\projects\kalman_demo\kalman_demo\eval_camera.c(203): warning C4700: 使用了未初始化的局部变量“x_part”
+     1>e:\projects\kalman_demo\kalman_demo\eval_camera.c(212): warning C4700: 使用了未初始化的局部变量“y_part”
+     1>e:\projects\kalman_demo\kalman_demo\eval_camera.c(221): warning C4700: 使用了未初始化的局部变量“z_part”
+     1>e:\projects\kalman_demo\kalman_demo\matmath.c(300): warning C4716: “quaternion”: 必须返回一个值
+       Link:
+         C:\Program Files\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\projects\kalman_demo\Debug\kalman_demo.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\projects\kalman_demo\Debug\kalman_demo.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\projects\kalman_demo\Debug\kalman_demo.lib" /MACHINE:X86 Debug\eval_camera.obj
+         Debug\kalman.obj
+         Debug\kalman_camera.obj
+         Debug\matmath.obj
+         Debug\mrqmin.obj
+         Debug\random.obj
+         Debug\test.obj
+         kalman_demo.vcxproj -> E:\projects\kalman_demo\Debug\kalman_demo.exe
+     1>已完成生成项目“E:\projects\kalman_demo\kalman_demo\kalman_demo.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.12
