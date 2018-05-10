@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+".\objects\main.o"
+".\objects\sys.o"
+".\objects\ahrs.o"
+".\objects\icm20602.o"
+".\objects\ak8975.o"
+".\objects\stm32f10x_tim.o"
+".\objects\oled.o"
+".\objects\usart.o"
+".\objects\gpio.o"
+".\objects\retarget.o"
+".\objects\spi.o"
+".\objects\time.o"
+".\objects\delay.o"
+".\objects\misc.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_spi.o"
+".\objects\stm32f10x_usart.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\imu.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\imu.map" -o .\Objects\imu.axf
