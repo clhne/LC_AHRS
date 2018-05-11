@@ -61,3 +61,7 @@ yl=ylabel('¡æ^2');
 set(xl,'fontsize',FontSize);
 set(yl,'fontsize',FontSize);
 set(gca,'FontSize',FontSize);
+figure;
+plot(K);
+figure;
+plot(variance_kalman);
