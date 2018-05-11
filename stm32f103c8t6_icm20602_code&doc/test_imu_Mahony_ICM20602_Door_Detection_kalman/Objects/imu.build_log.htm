@@ -21,21 +21,22 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-F:\Projects\stm32f103c8t6_icm20602_code&doc_hongming\test_imu_Mahony_ICM20602_Door_Detection_kalman\imu.uvprojx
+F:\Projects\LC_AHRS\stm32f103c8t6_icm20602_code&doc\test_imu_Mahony_ICM20602_Door_Detection_kalman\imu.uvprojx
 Project File Date:  05/09/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
 compiling AHRS.c...
-compiling sys.c...
 compiling main.c...
 user\main.c(41): warning:  #223-D: function "time_init" declared implicitly
       time_init();
-user\main.c(89): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8 *"
-              oled_show_string(0, 0, show_string);
-user\main.c(223): warning:  #1-D: last line of file ends without a newline
+user\main.c(226): warning:  #177-D: variable "is_invalid"  was declared but never referenced
+          u8 is_invalid = 0;
+user\main.c(244): warning:  #1-D: last line of file ends without a newline
   }
+user\main.c(16): warning:  #177-D: variable "show_string"  was declared but never referenced
+      char show_string[128];
 user\main.c(17): warning:  #177-D: variable "acc"  was declared but never referenced
       float acc[3] = {0.0f, 0.0f, 0.0f};
 user\main.c(18): warning:  #177-D: variable "gyro"  was declared but never referenced
@@ -46,27 +47,60 @@ user\main.c(20): warning:  #177-D: variable "dest1"  was declared but never refe
       float dest1[3] = {0, 0, 0};
 user\main.c(21): warning:  #177-D: variable "dest2"  was declared but never referenced
       float dest2[3] = {0, 0, 0};
+user\main.c(23): warning:  #177-D: variable "is_calibrated"  was declared but never referenced
+      u8 is_calibrated = 0;
 user\main.c(24): warning:  #177-D: variable "is_acc_reverse"  was declared but never referenced
       static u8 is_acc_reverse = 1;
+user\main.c(25): warning:  #177-D: variable "accel_fused_std"  was declared but never referenced
+      float accel_fused_std = 0;
+user\main.c(27): warning:  #177-D: variable "cost"  was declared but never referenced
+      float dt, cost;
 user\main.c(28): warning:  #177-D: variable "mag_bias_x"  was declared but never referenced
       float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
 user\main.c(28): warning:  #177-D: variable "mag_bias_y"  was declared but never referenced
       float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
 user\main.c(28): warning:  #177-D: variable "mag_bias_z"  was declared but never referenced
       float mag_bias_x = 10.0, mag_bias_y = 5.5, mag_bias_z = 38;   //calibrate 2018.4.13
-user\main.c(30): warning:  #550-D: variable "prev_roll"  was set but never used
+user\main.c(30): warning:  #177-D: variable "prev_roll"  was declared but never referenced
       float prev_roll = 0, cur_roll = 0;
-user\main.c(31): warning:  #550-D: variable "prev_pitch"  was set but never used
+user\main.c(30): warning:  #177-D: variable "cur_roll"  was declared but never referenced
+      float prev_roll = 0, cur_roll = 0;
+user\main.c(31): warning:  #177-D: variable "prev_pitch"  was declared but never referenced
       float prev_pitch = 0, cur_pitch = 0;
-user\main.c(32): warning:  #550-D: variable "prev_yaw"  was set but never used
+user\main.c(31): warning:  #177-D: variable "cur_pitch"  was declared but never referenced
+      float prev_pitch = 0, cur_pitch = 0;
+user\main.c(32): warning:  #177-D: variable "prev_yaw"  was declared but never referenced
       float prev_yaw = 0, cur_yaw = 0;
-user\main.c(33): warning:  #550-D: variable "prev_gyro"  was set but never used
+user\main.c(32): warning:  #177-D: variable "cur_yaw"  was declared but never referenced
+      float prev_yaw = 0, cur_yaw = 0;
+user\main.c(33): warning:  #177-D: variable "cur_mag"  was declared but never referenced
       float prev_acc[3] = {0}, prev_gyro[3] = {0}, cur_acc[3] = {0}, cur_gyro[3] = {0}, cur_mag[3] = {0};
-user\main.c: 16 warnings, 0 errors
-compiling ak8975.c...
-driver\ak8975.c(103): warning:  #550-D: variable "mag_scale"  was set but never used
-   float mag_scale[3] = {0, 0, 0};
-driver\ak8975.c: 1 warning, 0 errors
+user\main.c(34): warning:  #177-D: variable "cur_mean_ax"  was declared but never referenced
+      float cur_mean_ax, cur_mean_ay, cur_mean_az, cur_mean_gx, cur_mean_gy, cur_mean_gz;
+user\main.c(34): warning:  #177-D: variable "cur_mean_ay"  was declared but never referenced
+      float cur_mean_ax, cur_mean_ay, cur_mean_az, cur_mean_gx, cur_mean_gy, cur_mean_gz;
+user\main.c(34): warning:  #177-D: variable "cur_mean_az"  was declared but never referenced
+      float cur_mean_ax, cur_mean_ay, cur_mean_az, cur_mean_gx, cur_mean_gy, cur_mean_gz;
+user\main.c(34): warning:  #177-D: variable "cur_mean_gx"  was declared but never referenced
+      float cur_mean_ax, cur_mean_ay, cur_mean_az, cur_mean_gx, cur_mean_gy, cur_mean_gz;
+user\main.c(34): warning:  #177-D: variable "cur_mean_gy"  was declared but never referenced
+      float cur_mean_ax, cur_mean_ay, cur_mean_az, cur_mean_gx, cur_mean_gy, cur_mean_gz;
+user\main.c(34): warning:  #177-D: variable "cur_mean_gz"  was declared but never referenced
+      float cur_mean_ax, cur_mean_ay, cur_mean_az, cur_mean_gx, cur_mean_gy, cur_mean_gz;
+user\main.c(35): warning:  #177-D: variable "cur_var_ax"  was declared but never referenced
+      float cur_var_ax, cur_var_ay, cur_var_az, cur_var_gx, cur_var_gy, cur_var_gz;
+user\main.c(35): warning:  #177-D: variable "cur_var_ay"  was declared but never referenced
+      float cur_var_ax, cur_var_ay, cur_var_az, cur_var_gx, cur_var_gy, cur_var_gz;
+user\main.c(35): warning:  #177-D: variable "cur_var_az"  was declared but never referenced
+      float cur_var_ax, cur_var_ay, cur_var_az, cur_var_gx, cur_var_gy, cur_var_gz;
+user\main.c(35): warning:  #177-D: variable "cur_var_gx"  was declared but never referenced
+      float cur_var_ax, cur_var_ay, cur_var_az, cur_var_gx, cur_var_gy, cur_var_gz;
+user\main.c(35): warning:  #177-D: variable "cur_var_gy"  was declared but never referenced
+      float cur_var_ax, cur_var_ay, cur_var_az, cur_var_gx, cur_var_gy, cur_var_gz;
+user\main.c(35): warning:  #177-D: variable "cur_var_gz"  was declared but never referenced
+      float cur_var_ax, cur_var_ay, cur_var_az, cur_var_gx, cur_var_gy, cur_var_gz;
+user\main.c: 35 warnings, 0 errors
+compiling sys.c...
 compiling icm20602.c...
 driver\icm20602.c(322): warning:  #177-D: variable "v_gx"  was declared but never referenced
           float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
@@ -74,25 +108,35 @@ driver\icm20602.c(322): warning:  #177-D: variable "v_gy"  was declared but neve
           float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
 driver\icm20602.c(322): warning:  #177-D: variable "v_gz"  was declared but never referenced
           float v_ax = 0, v_ay = 0, v_az = 0, v_gx = 0, v_gy = 0, v_gz = 0;
-driver\icm20602.c: 3 warnings, 0 errors
+driver\icm20602.c(401): warning:  #940-D: missing return statement at end of non-void function "kalman_filter" 
+  }
+driver\icm20602.c(384): warning:  #177-D: variable "K_gain_prev"  was declared but never referenced
+      float P_covarience_prev = 1.0, K_gain_prev = 0.0;
+driver\icm20602.c(385): warning:  #177-D: variable "gyro_bias"  was declared but never referenced
+      float P_covarience_cur, K_gain_cur, gyro_bias, gyro_temp, P_temp;
+driver\icm20602.c: 6 warnings, 0 errors
+compiling ak8975.c...
+driver\ak8975.c(103): warning:  #550-D: variable "mag_scale"  was set but never used
+   float mag_scale[3] = {0, 0, 0};
+driver\ak8975.c: 1 warning, 0 errors
 compiling stm32f10x_tim.c...
-compiling usart.c...
 compiling oled.c...
+compiling usart.c...
 compiling gpio.c...
 compiling retarget.c...
 compiling spi.c...
 compiling time.c...
-compiling misc.c...
 compiling delay.c...
+compiling misc.c...
 compiling stm32f10x_gpio.c...
-compiling stm32f10x_spi.c...
 compiling stm32f10x_rcc.c...
 assembling startup_stm32f10x_md.s...
+compiling stm32f10x_spi.c...
 compiling stm32f10x_usart.c...
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=21162 RO-data=2798 RW-data=152 ZI-data=2112  
-".\Objects\imu.axf" - 0 Error(s), 20 Warning(s).
+Program Size: Code=11670 RO-data=486 RW-data=112 ZI-data=1632  
+".\Objects\imu.axf" - 0 Error(s), 42 Warning(s).
 
 <h2>Software Packages used:</h2>
 

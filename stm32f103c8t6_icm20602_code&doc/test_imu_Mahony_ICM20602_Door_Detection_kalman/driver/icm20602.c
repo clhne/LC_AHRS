@@ -1,7 +1,7 @@
 #include "icm20602.h"
 #include "delay.h"
 #include "spi.h"
-
+#include <math.h>
 //========ICM20602寄存器地址========================
 /********************************************
 *复位后所有寄存器地址都为0，除了
@@ -377,6 +377,25 @@ float low_filter(float acc_cur, float acc_prev) {
     return sample_value;
 }
 
-float kalman_filter() {
+float kalman_filter(float *gyro_prev, float *gyro_cur, float *acc_prev, float *acc_cur, float *dt) {
+    float Q_sys_noise = 0.0252;		//equal to gyro resolution
+    float R_measurement_noise = 0.01;
+    float R = 0.0125; 							//m
+    float P_covarience_prev = 1.0, K_gain_prev = 0.0;
+    float P_covarience_cur, K_gain_cur, gyro_bias, gyro_temp, P_temp;
+    //prediction
+    gyro_temp = *gyro_prev + (*acc_prev) * (*dt) / R;
+    P_temp = P_covarience_prev + Q_sys_noise;
 
+    //correction
+    K_gain_cur = P_temp / (P_temp + R_measurement_noise);
+    *gyro_cur = gyro_temp + K_gain_cur * (*gyro_cur - gyro_temp) ;
+    P_covarience_cur = (1 - K_gain_cur) * P_temp;
+
+    P_covarience_prev = P_covarience_cur;
+    //acc_prev = acc_cur;
+    //gyro_prev = gyro_cur;
+    //printf("P_covarience_cur=%f,K_gain_cur=%f,gyro_prev=%f,gyro_cur=%f,gyro_bias=%f\n",
+    //       P_covarience_cur, K_gain_cur, *gyro_prev, *gyro_cur, *gyro_cur - gyro_temp);
+    printf("gyro_bias=%f\n", fabs(*gyro_cur - gyro_temp));
 }

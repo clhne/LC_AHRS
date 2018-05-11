@@ -45,7 +45,7 @@ int main() {
     icm20602_init();
     oled_init();
     oled_clear();
-#if 1
+#if 0
     while(1) {
         u8 is_invalid = 0;
         cur_ts = millis();
@@ -65,7 +65,8 @@ int main() {
             cost = millis();
             if(!is_invalid) {
                 accel_fused_std = sqrt(cur_var_ax + cur_var_ay + cur_var_az);
-                if(is_calibrated && accel_fused_std > 0.03) {                    MahonyAHRSUpdate(cur_gyro[1], cur_gyro[0], cur_gyro[2], cur_acc[1], cur_acc[0], cur_acc[2], cur_mag[1],-cur_mag[0],-cur_mag[2], dt);
+                if(is_calibrated && accel_fused_std > 0.03) {
+                    MahonyAHRSUpdate(cur_gyro[1], cur_gyro[0], cur_gyro[2], cur_acc[1], cur_acc[0], cur_acc[2], cur_mag[1], -cur_mag[0], -cur_mag[2], dt);
                     MahonyAHRSupdateIMU(cur_gyro[1], cur_gyro[0], cur_gyro[2], cur_acc[1], cur_acc[0], cur_acc[2], dt);
                     Quat2Angle();
                     cur_roll = roll;
@@ -138,7 +139,7 @@ int main() {
 #if 0
     while(1) {
         cur_ts = millis();
-        if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0){// && ak8975_get_mag(cur_mag) == 0) {
+        if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0) { // && ak8975_get_mag(cur_mag) == 0) {
             //ak8975_start();
             if(is_first_time) {
                 //magcalMPU9250(dest1, dest2, &mag_bias_x, &mag_bias_y, &mag_bias_z);
@@ -220,4 +221,24 @@ int main() {
     }
 #endif
 
+#if 1
+    while(1) {
+        u8 is_invalid = 0;
+        cur_ts = millis();
+        if (icm20602_get_accel(cur_acc) == 0 && icm20602_get_gyro(cur_gyro) == 0) {
+            if(is_first_time) {
+                is_first_time = 0;
+            }
+            else {
+                dt = (float)(cur_ts - prev_ts) / 1000.0;
+                kalman_filter(&prev_gyro[0], &cur_gyro[0], &prev_acc[2], &cur_acc[2], &dt);
+                //printf("prev_gyro[0]=%f,cur_gyro[0]=%f,prev_acc[2]=%f,cur_acc=%f,dt=%f\n",
+                //       prev_gyro[0], cur_gyro[0], prev_acc[2], cur_acc[2], dt);
+            } 
+        }
+				prev_ts = cur_ts;
+        prev_gyro[0] = cur_gyro[0];
+        prev_acc[2] = cur_acc[2];
+    }
+#endif
 }

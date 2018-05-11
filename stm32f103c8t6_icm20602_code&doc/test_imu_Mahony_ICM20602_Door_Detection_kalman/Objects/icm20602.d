@@ -18,3 +18,4 @@
 .\objects\icm20602.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\icm20602.o: .\lib\delay.h
 .\objects\icm20602.o: .\lib\spi.h
+.\objects\icm20602.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
