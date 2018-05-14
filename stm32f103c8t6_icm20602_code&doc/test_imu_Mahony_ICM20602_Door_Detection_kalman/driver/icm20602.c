@@ -378,8 +378,8 @@ float low_filter(float acc_cur, float acc_prev) {
 }
 
 float kalman_filter(float *gyro_prev, float *gyro_cur, float *acc_prev, float *acc_cur, float *dt) {
-    float Q_sys_noise = 0.0252;		//equal to gyro resolution
-    float R_measurement_noise = 0.01;
+    float Q_sys_noise = 0.00252;		//equal to gyro resolution
+    float R_measurement_noise = 0.5;
     float R = 0.0125; 							//m
     float P_covarience_prev = 1.0, K_gain_prev = 0.0;
     float P_covarience_cur, K_gain_cur, gyro_bias, gyro_temp, P_temp;
@@ -395,7 +395,6 @@ float kalman_filter(float *gyro_prev, float *gyro_cur, float *acc_prev, float *a
     P_covarience_prev = P_covarience_cur;
     //acc_prev = acc_cur;
     //gyro_prev = gyro_cur;
-    //printf("P_covarience_cur=%f,K_gain_cur=%f,gyro_prev=%f,gyro_cur=%f,gyro_bias=%f\n",
-    //       P_covarience_cur, K_gain_cur, *gyro_prev, *gyro_cur, *gyro_cur - gyro_temp);
-    printf("gyro_bias=%f\n", fabs(*gyro_cur - gyro_temp));
+    printf("P_covarience_cur=%f,K_gain_cur=%f,gyro_prev=%f,gyro_cur=%f,gyro_bias=%f\n",
+           P_covarience_cur, K_gain_cur, *gyro_prev, *gyro_cur, fabs(*gyro_cur - gyro_temp));
 }

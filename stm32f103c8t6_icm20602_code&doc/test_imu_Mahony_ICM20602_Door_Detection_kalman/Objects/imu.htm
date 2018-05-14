@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\imu.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\imu.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri May 11 15:11:02 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Mon May 14 11:34:29 2018
 <BR><P>
-<H3>Maximum Stack Usage =        328 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        384 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; kalman_filter &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 <P>
@@ -236,7 +236,7 @@ Global Symbols
 <P><STRONG><a name="[dd]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[4e]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 328 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 384 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; kalman_filter &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -958,8 +958,8 @@ Global Symbols
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
 
-<P><STRONG><a name="[8f]"></a>kalman_filter</STRONG> (Thumb, 180 bytes, Stack size 72 bytes, icm20602.o(i.kalman_filter))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200 + Unknown Stack Size
+<P><STRONG><a name="[8f]"></a>kalman_filter</STRONG> (Thumb, 252 bytes, Stack size 128 bytes, icm20602.o(i.kalman_filter))
+<BR><BR>[Stack]<UL><LI>Max Depth = 256 + Unknown Stack Size
 <LI>Call Chain = kalman_filter &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
@@ -973,7 +973,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4f]"></a>main</STRONG> (Thumb, 246 bytes, Stack size 128 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 328 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 384 + Unknown Stack Size
 <LI>Call Chain = main &rArr; kalman_filter &rArr; __2printf &rArr; _printf_char_file &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_init
