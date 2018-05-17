@@ -1,0 +1,87 @@
+﻿生成启动时间为 2018/5/16 16:47:42。
+     1>项目“C:\Users\hongming\Desktop\BSX\bxs_android\libalgobsx\libalgobsx\libalgobsx.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt AccCalibConfig.c BmaConfig.c BmgConfig.c BmmConfig.c BsxFusionLibrary.c BsxLibraryConfiguration.c BSX_ObserverAccel.c BSX_ObserverGyro.c CompassConfig.c EKFbasedCalibration.c FilterParamConfig.c flip_gesture.c GenericAccSpec.c GenericClockDomain.c GenericGyroSpec.c GenericMagSpec.c GyroCalbration.c GyroCalibConfig.c GyroConfig.c invSqrt.c MagCalibConfig.c MagConfig.c MathOperations.c MatrixOperations.c OrientMath.c SignificantMotion.c ThreeChannelIIR1Ord.c
+         ThreeChannelIIR1Ord.c
+         SignificantMotion.c
+         OrientMath.c
+         MatrixOperations.c
+         MathOperations.c
+         MagConfig.c
+         MagCalibConfig.c
+         invSqrt.c
+         GyroConfig.c
+         GyroCalibConfig.c
+         GyroCalbration.c
+         GenericMagSpec.c
+         GenericGyroSpec.c
+         GenericClockDomain.c
+         GenericAccSpec.c
+         flip_gesture.c
+         FilterParamConfig.c
+         EKFbasedCalibration.c
+         CompassConfig.c
+         BSX_ObserverGyro.c
+         正在生成代码...
+         正在编译...
+         BSX_ObserverAccel.c
+         BsxLibraryConfiguration.c
+         BsxFusionLibrary.c
+         BmmConfig.c
+         BmgConfig.c
+         BmaConfig.c
+         AccCalibConfig.c
+         正在生成代码...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt test.cpp
+         test.cpp
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(74): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : 参见“sprintf”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(77): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : 参见“sprintf”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(78): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(81): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(99): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(109): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(119): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+     1>c:\users\hongming\desktop\bsx\bxs_android\libalgobsx\libalgobsx\test.cpp(128): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : 参见“fopen”的声明
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\hongming\Desktop\BSX\bxs_android\libalgobsx\Debug\libalgobsx.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\hongming\Desktop\BSX\bxs_android\libalgobsx\Debug\libalgobsx.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\hongming\Desktop\BSX\bxs_android\libalgobsx\Debug\libalgobsx.lib" /MACHINE:X86 Debug\AccCalibConfig.obj
+         Debug\BmaConfig.obj
+         Debug\BmgConfig.obj
+         Debug\BmmConfig.obj
+         Debug\BsxFusionLibrary.obj
+         Debug\BsxLibraryConfiguration.obj
+         Debug\BSX_ObserverAccel.obj
+         Debug\BSX_ObserverGyro.obj
+         Debug\CompassConfig.obj
+         Debug\EKFbasedCalibration.obj
+         Debug\FilterParamConfig.obj
+         Debug\flip_gesture.obj
+         Debug\GenericAccSpec.obj
+         Debug\GenericClockDomain.obj
+         Debug\GenericGyroSpec.obj
+         Debug\GenericMagSpec.obj
+         Debug\GyroCalbration.obj
+         Debug\GyroCalibConfig.obj
+         Debug\GyroConfig.obj
+         Debug\invSqrt.obj
+         Debug\MagCalibConfig.obj
+         Debug\MagConfig.obj
+         Debug\MathOperations.obj
+         Debug\MatrixOperations.obj
+         Debug\OrientMath.obj
+         Debug\SignificantMotion.obj
+         Debug\test.obj
+         Debug\ThreeChannelIIR1Ord.obj
+         libalgobsx.vcxproj -> C:\Users\hongming\Desktop\BSX\bxs_android\libalgobsx\Debug\libalgobsx.exe
+     1>已完成生成项目“C:\Users\hongming\Desktop\BSX\bxs_android\libalgobsx\libalgobsx\libalgobsx.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:04.80

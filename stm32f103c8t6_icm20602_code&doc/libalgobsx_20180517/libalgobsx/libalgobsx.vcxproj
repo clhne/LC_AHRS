@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B0B5423D-128B-4179-8F9E-619EC7373C23}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libalgobsx</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AccCalibConfig.c" />
+    <ClCompile Include="BmaConfig.c" />
+    <ClCompile Include="BmgConfig.c" />
+    <ClCompile Include="BmmConfig.c" />
+    <ClCompile Include="BsxFusionLibrary.c" />
+    <ClCompile Include="BsxLibraryConfiguration.c" />
+    <ClCompile Include="BSX_ObserverAccel.c" />
+    <ClCompile Include="BSX_ObserverGyro.c" />
+    <ClCompile Include="CompassConfig.c" />
+    <ClCompile Include="EKFbasedCalibration.c" />
+    <ClCompile Include="FilterParamConfig.c" />
+    <ClCompile Include="flip_gesture.c" />
+    <ClCompile Include="GenericAccSpec.c" />
+    <ClCompile Include="GenericClockDomain.c" />
+    <ClCompile Include="GenericGyroSpec.c" />
+    <ClCompile Include="GenericMagSpec.c" />
+    <ClCompile Include="GyroCalbration.c" />
+    <ClCompile Include="GyroCalibConfig.c" />
+    <ClCompile Include="GyroConfig.c" />
+    <ClCompile Include="invSqrt.c" />
+    <ClCompile Include="MagCalibConfig.c" />
+    <ClCompile Include="MagConfig.c" />
+    <ClCompile Include="MathOperations.c" />
+    <ClCompile Include="MatrixOperations.c" />
+    <ClCompile Include="OrientMath.c" />
+    <ClCompile Include="SignificantMotion.c" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="ThreeChannelIIR1Ord.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AccCalibConfig.h" />
+    <ClInclude Include="BmaConfig.h" />
+    <ClInclude Include="BmgConfig.h" />
+    <ClInclude Include="BmmConfig.h" />
+    <ClInclude Include="BSX_ObserverAccel.h" />
+    <ClInclude Include="BSX_ObserverGyro.h" />
+    <ClInclude Include="CompassConfig.h" />
+    <ClInclude Include="EKFbasedCalibration.h" />
+    <ClInclude Include="FilterParamConfig.h" />
+    <ClInclude Include="flip_gesture.h" />
+    <ClInclude Include="GenericClockDomain.h" />
+    <ClInclude Include="GyroCalbration.h" />
+    <ClInclude Include="GyroCalibConfig.h" />
+    <ClInclude Include="GyroConfig.h" />
+    <ClInclude Include="InternalDataTypes.h" />
+    <ClInclude Include="BsxFusionLibrary.h" />
+    <ClInclude Include="BsxLibraryCalibConstants.h" />
+    <ClInclude Include="BsxLibraryConfiguration.h" />
+    <ClInclude Include="BsxLibraryConstants.h" />
+    <ClInclude Include="BsxLibraryDataTypes.h" />
+    <ClInclude Include="BsxLibraryErrorConstants.h" />
+    <ClInclude Include="cust.h" />
+    <ClInclude Include="feature.h" />
+    <ClInclude Include="GenericAccSpec.h" />
+    <ClInclude Include="GenericGyroSpec.h" />
+    <ClInclude Include="GenericMagSpec.h" />
+    <ClInclude Include="invSqrt.h" />
+    <ClInclude Include="MagCalibConfig.h" />
+    <ClInclude Include="MagConfig.h" />
+    <ClInclude Include="MathOperations.h" />
+    <ClInclude Include="MatrixOperations.h" />
+    <ClInclude Include="OrientMath.h" />
+    <ClInclude Include="SignificantMotion.h" />
+    <ClInclude Include="ThreeChannelIIR1Ord.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

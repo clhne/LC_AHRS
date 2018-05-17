@@ -1,0 +1,50 @@
+#ifndef __BSX_MAGCALIBCONFIG_H__
+#define __BSX_MAGCALIBCONFIG_H__
+#include "BsxLibraryDataTypes.h"
+typedef struct {
+  BSX_F32 cosphi;
+  BSX_F32 cosPhiThresMin;
+  BSX_F32 cosPhiThresMax;
+  BSX_F32 cosPhiDeltaUp;
+  BSX_F32 cosPhiDeltaDown;
+  BSX_F32 calibCovariance[16];
+  BSX_F32 calibProcessNoise[4];
+  BSX_F32 calibMeasurementNoise;
+  BSX_F32 accurCosPhiMaxThres;
+  BSX_F32 accurCosPhiBreakDownThres;
+  BSX_S16 dynBufferSize;
+  BSX_S16 dynReferenceThres;
+  BSX_S16 maxMagField;
+  BSX_S16 minMagField;
+  BSX_S16 typMagField;
+  BSX_S16 magDistDynThres;
+  BSX_S16 radius;
+  BSX_S16 accurBufferSize;
+  BSX_S16 constMaxMagField;
+  BSX_S16 constMinMagField;
+  BSX_S16 constTypMagField;
+  BSX_S16 constMeasRange;
+  BSX_S16 constDynReferenceThres;
+  BSX_S16 constMagDistDynThres;
+  BSX_U8 outOfRangeCnt;
+  BSX_U8 outOfRangeCntThres;
+  BSX_U8 magDistGapCnt;
+  BSX_U8 magDistGapCntThres;
+  BSX_U8 magDistDynCnt;
+  BSX_U8 magDistDynCntThres;
+  BSX_U8 V_magDistInitCount;
+  BSX_U8 V_magDistInitCountThres;
+  BSX_U8 opMode;
+  BSX_U8 source;
+  BSX_U8 cosPhiThres;
+  BSX_U8 cosphiFlag;
+  BSX_U8 cosPhiCntThres;
+  BSX_U8 cosPhiCnt;
+  BSX_U8 orientThres;
+  BSX_U8 orientCntThres;
+  BSX_U8 accurQuiteCnt;
+  BSX_U8 accurQuiteCntThres;
+  BSX_U8 constOrientThres;
+} ts_magcalibconfig;
+BSX_S8 magcalibconfig_setDefaultConfig(ts_magcalibconfig *magCalibConfig);
+#endif
