@@ -395,6 +395,6 @@ float kalman_filter(float *gyro_prev, float *gyro_cur, float *acc_prev, float *a
     P_covarience_prev = P_covarience_cur;
     //acc_prev = acc_cur;
     //gyro_prev = gyro_cur;
-    printf("P_covarience_cur=%f,K_gain_cur=%f,gyro_prev=%f,gyro_cur=%f,gyro_bias=%f\n",
-           P_covarience_cur, K_gain_cur, *gyro_prev, *gyro_cur, fabs(*gyro_cur - gyro_temp));
+    //printf("P_covarience_cur=%f,K_gain_cur=%f,gyro_prev=%f,gyro_cur=%f,gyro_bias=%f\n",
+    //       P_covarience_cur, K_gain_cur, *gyro_prev, *gyro_cur, fabs(*gyro_cur - gyro_temp));
 }

@@ -232,8 +232,7 @@ int main() {
             else {
                 dt = (float)(cur_ts - prev_ts) / 1000.0;
                 kalman_filter(&prev_gyro[0], &cur_gyro[0], &prev_acc[2], &cur_acc[2], &dt);
-                //printf("prev_gyro[0]=%f,cur_gyro[0]=%f,prev_acc[2]=%f,cur_acc=%f,dt=%f\n",
-                //       prev_gyro[0], cur_gyro[0], prev_acc[2], cur_acc[2], dt);
+                printf("%f,%f,%f,%f,%f\n",prev_gyro[0], cur_gyro[0], prev_acc[2], cur_acc[2], dt);
             } 
         }
 				prev_ts = cur_ts;
