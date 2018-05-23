@@ -1,0 +1,6 @@
+acc_xmin  = -10.107000	acc_xmax  = -9.401000	
+acc_ymin  = -0.267000	acc_ymax  = 0.899000	
+acc_zmin  = -2.552000	acc_zmax =  8.602000	
+gyro_xmin = -0.438000	gyro_xmax = 1.030000	
+gyro_ymin = -0.042000	gyro_ymax = 0.053000	
+gyro_zmin = -0.008000	gyro_zmax = 0.004000	
