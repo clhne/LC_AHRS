@@ -355,7 +355,7 @@ typedef struct {
     BSX_U8 magcalib;
     /** select for mag calib module */
     BSX_U8 gyrocalib;
-    /** select for mag calib module */
+    /** select for gyro calib module */
     BSX_U8 usecase;      /** select for usecase module */
 } ts_callflag;
 

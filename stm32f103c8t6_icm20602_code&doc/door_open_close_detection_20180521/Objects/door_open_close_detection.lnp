@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+".\objects\ahrs.o"
+".\objects\delay.o"
+".\objects\gpio.o"
+".\objects\icm20602.o"
+".\objects\main.o"
+".\objects\oled.o"
+".\objects\spi.o"
+".\objects\time.o"
+".\objects\usart.o"
+".\objects\misc.o"
+".\objects\stm32f10x_gpio.o"
+".\objects\stm32f10x_rcc.o"
+".\objects\stm32f10x_spi.o"
+".\objects\stm32f10x_tim.o"
+".\objects\stm32f10x_usart.o"
+".\objects\startup_stm32f10x_md.o"
+".\objects\system_stm32f10x.o"
+--strict --scatter ".\Objects\door_open_close_detection.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\door_open_close_detection.map" -o .\Objects\door_open_close_detection.axf

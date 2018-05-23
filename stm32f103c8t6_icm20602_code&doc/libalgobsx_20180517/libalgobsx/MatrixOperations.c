@@ -358,7 +358,7 @@ BSX_S8 MATRIX_Diagonal(BSX_F32 *p_InMatrix_f32r, BSX_F32 *p_OutMatrix_f32r, BSX_
   if (v_Rows_u8r == v_Columns_u8r) {
     for (i = 0; i < (BSX_S32)v_Rows_u8r; i++) {
       p_OutMatrix_f32r[i] = *p_InMatrix_f32r;
-      ++p_OutMatrix_f32r;
+      //++p_OutMatrix_f32r;
       p_InMatrix_f32r += (BSX_S32)v_Rows_u8r + 1;
     }
     return 0;

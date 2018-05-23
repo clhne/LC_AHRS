@@ -34,11 +34,12 @@ int main() {
               if (is_dynamic && is_calibrated) {
                 deltaT = (float)(cur_ts - prev_ts) / 1000.0;
                 costT = millis();
-                MadgwickAHRSUpdateIMU(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, deltaT);
+                //MadgwickAHRSUpdateIMU(prev_gx, prev_gy, prev_gz, prev_ax, prev_ay, prev_az, deltaT);	//horizontal direction
+								MadgwickAHRSUpdateIMU(prev_gy, prev_gx, prev_gz, prev_ay, prev_ax, prev_az, deltaT); 		//Door/Vertical direction
                 Quat2Angle();
                 costT = millis() - costT;
                 //printf("%f %f %f %f %f %f %f\n", deltaT, prev_ax, prev_ay, prev_az, prev_gx, prev_gy, prev_gz);
-                //printf("%f %f %f %f %f\n", costT / 1000.0f, deltaT, roll, pitch, yaw);
+                printf("%f %f %f %f %f\n", costT / 1000.0f, deltaT, roll, pitch, yaw);
                 sprintf(show_string, "dt:%.3f\nroll:%.3f\npitch:%.3f\nyaw:%.3f\n", deltaT, roll, pitch, yaw);
                 oled_show_string(0, 0, show_string);
               } else {
