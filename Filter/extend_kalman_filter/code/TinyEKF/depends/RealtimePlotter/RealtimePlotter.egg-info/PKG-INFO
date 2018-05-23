@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: RealtimePlotter
+Version: 0.1
+Summary: Real-time plotting in Python
+Home-page: https://github.com/simondlevy/RealtimePlotter
+Author: Simon D. Levy
+Author-email: simon.d.levy@gmail.com
+License: LGPL
+Description: UNKNOWN
+Platform: Linux; Windows; OS X

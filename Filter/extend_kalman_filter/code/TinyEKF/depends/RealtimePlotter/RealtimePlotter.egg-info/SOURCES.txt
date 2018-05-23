@@ -1,0 +1,7 @@
+setup.py
+RealtimePlotter.egg-info/PKG-INFO
+RealtimePlotter.egg-info/SOURCES.txt
+RealtimePlotter.egg-info/dependency_links.txt
+RealtimePlotter.egg-info/requires.txt
+RealtimePlotter.egg-info/top_level.txt
+realtime_plot/__init__.py
