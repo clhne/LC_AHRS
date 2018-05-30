@@ -490,3 +490,7 @@ uint8_t icm20602_get_acc_gyro_with_calib(float *ax, float *ay, float *az, float 
     //printf("gyro_dyn:%d max/min x %d %d y %d %d z %d %d\n", is_acc_dyn, gx_max, gx_min, gy_max, gy_min, gz_max, gz_min);
     return 0;
 }
+//ekf for icm20602
+uint8_t icm20602_ekf(){
+	
+}
