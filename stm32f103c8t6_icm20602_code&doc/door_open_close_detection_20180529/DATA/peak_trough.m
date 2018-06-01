@@ -8,22 +8,22 @@ clc;clear all;close all;
 %dump_file='open_close_door_slow2.txt';
 %dump_file='open_close_door_failed1.txt';
 %dump_file='open_close_door_failed2.txt';
-%dump_file='open_close_door_success1.txt';
-%dump_file='open_close_door_success2.txt';
-%dump_file='open_close_door_success3.txt';
+%dump_file='open_close_door_success1.txt';      % 波谷不单调
+%dump_file='open_close_door_success2.txt';      % 波谷不单调
+%dump_file='open_close_door_success3.txt';      % 波谷不单调
 %dump_file='open_close_door_success4.txt';
-%dump_file='open_close_door_success5.txt';
+%dump_file='open_close_door_success5.txt';      % 波谷不单调
 %dump_file='open_close_door_success6.txt';
 %dump_file='open_close_door_success7_quiet.txt';
 %dump_file='open_close_door_failed3.txt';
 %dump_file='open_close_door_failed_to_sucess1.txt';
 %dump_file='open_close_door_failed_to_sucess2.txt';
-%dump_file='SaveWindows2018-5-29_10-48-17.txt';
-%dump_file='SaveWindows2018-5-29_10-51-08.txt';
-%dump_file='SaveWindows2018-5-29_10-51-50.txt';
-%dump_file='SaveWindows2018-5-29_10-53-01.txt';
-%dump_file='SaveWindows2018-5-29_10-55-40.txt';
-dump_file='SaveWindows2018-5-29_10-58-47.txt';
+%dump_file='SaveWindows2018-5-29_10-48-17.txt';      % 波峰、波谷不单调，考虑关门时，门自身问题
+%dump_file='SaveWindows2018-5-29_10-51-08.txt';      % 波谷不单调
+dump_file='SaveWindows2018-5-29_10-51-50.txt';      % 波峰、波谷不单调
+%dump_file='SaveWindows2018-5-29_10-53-01.txt';      % 波峰、波谷不单调
+%dump_file='SaveWindows2018-5-29_10-55-40.txt';      % 波峰、波谷不单调
+%dump_file='SaveWindows2018-5-29_10-58-47.txt';       % 波峰、波谷不单调
 % [ts, is_gyro_dyn, is_gyro_calib, is_acc_dyn, is_acc_calib, roll, pitch, yaw, raw_ax, raw_ay, raw_az,... 
 %     filt_ax, filt_ay, filt_az, raw_gx, raw_gy, raw_gz, cor_gx, cor_gy, cor_gz] = textread(dump_file,...
 % '%d %d %d %d %d %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f\n');
@@ -71,18 +71,18 @@ count_trough = 0;
 peak_trough_init = 0;
 peak_index = 1;
 trough_index = 1;
-for i = 2:N
+for i = 200:N
    if(abs(pitch(i))<1.5)
-%        if(0 == is_gyro_dyn(i) && 0 == is_acc_dyn(i))     %i == 102
-%            break;
-%        end
+       if(0 == is_gyro_dyn(i) && 0 == is_acc_dyn(i))     %i == 102
+           break;
+       end
         if(cor_gx(i-1) < cor_gx(i))
             cor_gx_peak = cor_gx(i);
-            count_peak = count_peak+1;
+            
             cur_monotonicity = 1;
         elseif(cor_gx(i-1) > cor_gx(i))
             cor_gx_trough = cor_gx(i);
-            count_trough = count_trough + 1;
+            
             cur_monotonicity = 0;
         else
             continue;
@@ -94,13 +94,13 @@ for i = 2:N
                     peak_value(peak_index) = cor_gx(i-1);
                     flag_peak(peak_index) = 1;
                     peak_index = peak_index + 1;
-                    fprintf('peak i=%d ts=%d cor_gx=%f count_peak= %d\n',i,ts(i),cor_gx(i-1),count_peak)
+                    fprintf('peak i=%d ts=%d cor_gx=%f count_peak= %d\n',i,ts(i),cor_gx(i-1),peak_index)
                 elseif(cur_monotonicity == 1 && pre_monotonicity ==0 && cor_gx(i-1)<0)
                     trough_ts(trough_index) = ts(i-1);
                     trough_value(trough_index) = cor_gx(i-1);
                     flag_trough(trough_index) = 0;
                     trough_index = trough_index + 1;
-                    fprintf('trough i=%d ts=%d cor_gx=%f count_trough= %d\n',i,ts(i),cor_gx(i-1),count_trough)
+                    fprintf('trough i=%d ts=%d cor_gx=%f count_trough= %d\n',i,ts(i),cor_gx(i-1),trough_index)
                 end
             end
         else
@@ -115,7 +115,7 @@ for i = 2:N
 end
 peak_plot_first = 0;
 peak_plot_index = 1;
-for i = 2: peak_index 
+for i = 2: peak_index-1 
     if (peak_plot_first == 0)
         if(abs(peak_value(i-1)) > 0.1)
             peak_plot_first = 1;
@@ -127,6 +127,11 @@ for i = 2: peak_index
             break;
         end
     end
+    if(peak_value(i) > peak_value(i-1))
+        fprintf('not monotonicity i=%d,peak_value=%f\n',i,peak_value(i));
+    else%if(peak_value(i-1) >= peak_value(i))
+        count_peak = count_peak+1;
+    end
     plot(peak_ts(i-1),peak_value(i-1),'*r');
     peak_plot_ts(peak_plot_index) = peak_ts(i-1);
     peak_plot_value(peak_plot_index) = peak_value(i-1);
@@ -135,7 +140,7 @@ for i = 2: peak_index
 end
 trough_plot_first = 0;
 trough_plot_index = 1;
-for i = 2: trough_index 
+for i = 2: trough_index-1 
     if (trough_plot_first == 0)
         if(abs(trough_value(i-1)) > 0.1)
             trough_plot_first = 1;
@@ -147,11 +152,19 @@ for i = 2: trough_index
             break;
         end
     end
+    if(abs(trough_value(i)) > abs(trough_value(i-1)))
+        fprintf('not monotonicity i=%d,trough_value=%f\n',i,trough_value(i));
+    else%if(abs(trough_value(i)) <= abs(trough_value(i-1)))
+        count_trough = count_trough + 1;
+    end
     plot(trough_ts(i-1),trough_value(i-1),'*','color',[0.99 0.05 0.99]);     %https://zh.wikipedia.org/zh-cn/%E4%B8%89%E5%8E%9F%E8%89%B2%E5%85%89%E6%A8%A1%E5%BC%8F
     trough_plot_ts(trough_plot_index) = trough_ts(i-1);
     trough_plot_value(trough_plot_index) = trough_value(i-1);
     trough_plot_flag = flag_trough(i-1);
     trough_plot_index = trough_plot_index + 1;
+end
+if(count_peak >= floor(peak_index/4) && count_trough >= floor(trough_index/4))
+    fprintf('door closed\n');
 end
 legend('pitch','filtaz','corgx', 'gyrodyn', 'accdyn');
 grid on

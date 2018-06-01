@@ -75,15 +75,15 @@ int main()
             } else {
                 delay_ms(5);
             }
-        }
-        prev_ts = cur_ts;
-        prev_cor_gx = cur_cor_gx;
-        prev_is_gyro_dyn = cur_is_gyro_dyn;
-        prev_is_acc_dyn = cur_is_acc_dyn;
-        prev_pitch = cur_pitch;
-     
+            }
+            prev_ts = cur_ts;
+            prev_cor_gx = cur_cor_gx;
+            prev_is_gyro_dyn = cur_is_gyro_dyn;
+            prev_is_acc_dyn = cur_is_acc_dyn;
+            prev_pitch = cur_pitch;
+        //}
         //door detection of oscillation detection
-        if(fabs(cur_pitch) < 2 && fabs(cur_pitch) > 0.02) {
+        if(abs(cur_pitch < 2)) {
             //if(0 == cur_is_gyro_dyn && 0 == cur_is_acc_dyn) break;
             if(prev_cor_gx < cur_cor_gx)
                 cur_monotonicity = 1;
@@ -113,7 +113,8 @@ int main()
             trough_index = 1;
         }
         if(abs(cur_pitch < 2) && dt_count < 10 * dt) {
-            dt_count += dt;            //} else {
+            dt_count += dt;
+            //} else {
             dt_count = 0;
             for(i = 1; i < peak_index - 1; i++) {
                 if(peak_value[i] <= peak_value[i - 1])
@@ -128,6 +129,6 @@ int main()
             if(count_peak >= floor(peak_index / 4) && count_trough >= floor(trough_index / 4))
                 printf("pitch %f,door closed\n", cur_pitch);
         } else
-            dt_count = dt;
+            continue;
     }
 }

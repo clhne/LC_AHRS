@@ -1,6 +1,6 @@
 close all;
 %dump_file='open_close_door_fast1.txt';
-dump_file='open_close_door_fast2.txt';
+%dump_file='open_close_door_fast2.txt';
 %dump_file='open_close_door_fast3.txt';
 %dump_file='open_close_door_normal1.txt';
 %dump_file='open_close_door_normal2.txt';
@@ -8,17 +8,22 @@ dump_file='open_close_door_fast2.txt';
 %dump_file='open_close_door_slow2.txt';
 %dump_file='open_close_door_failed1.txt';
 %dump_file='open_close_door_failed2.txt';
-%dump_file='open_close_door_success1.txt';
-%dump_file='open_close_door_success2.txt';
-%dump_file='open_close_door_success3.txt';
+%dump_file='open_close_door_success1.txt';       %not monotonicity 波谷不单调
+%dump_file='open_close_door_success2.txt';      %not monotonicity 波谷不单调
+%dump_file='open_close_door_success3.txt';      %not monotonicity 波谷不单调
 %dump_file='open_close_door_success4.txt';
-%dump_file='open_close_door_success5.txt';
+%dump_file='open_close_door_success5.txt';      %not monotonicity 波谷不单调
 %dump_file='open_close_door_success6.txt';
 %dump_file='open_close_door_success7_quiet.txt';
 %dump_file='open_close_door_failed3.txt';
 %dump_file='open_close_door_failed_to_sucess1.txt';
 %dump_file='open_close_door_failed_to_sucess2.txt';
-%dump_file='SaveWindows2018-5-29_10-58-47.txt';
+%dump_file='SaveWindows2018-5-29_10-48-17.txt';
+%dump_file='SaveWindows2018-5-29_10-51-08.txt';
+%dump_file='SaveWindows2018-5-29_10-51-50.txt';
+%dump_file='SaveWindows2018-5-29_10-53-01.txt';
+%dump_file='SaveWindows2018-5-29_10-55-40.txt';
+dump_file='SaveWindows2018-5-29_10-58-47.txt';
 [ts, is_gyro_dyn, is_gyro_calib, is_acc_dyn, is_acc_calib, roll, pitch, yaw, raw_ax, raw_ay, raw_az, filt_ax, filt_ay, filt_az, raw_gx, raw_gy, raw_gz, cor_gx, cor_gy, cor_gz] = textread(dump_file,'%d %d %d %d %d %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f\n');
 %{
 figure;
@@ -71,7 +76,7 @@ hold on;
 plot(ts, is_acc_dyn, 'c');
 crests_troughs_index = 1;
 crests_troughs_init = 0;
-for i = 3:length(pitch)
+for i = 300:length(pitch)
     if abs(pitch(i)) < 2.0
         if is_gyro_dyn(i) == 0 && is_acc_dyn(i) == 0
             break;
