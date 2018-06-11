@@ -3,13 +3,13 @@
 
 // helper functions
 float Round(float x) {
-  float result;
-  if (x < 0.0f) {
-    result = ceilf(x - 0.5f);
-  } else {
-    result = floorf(x + 0.5f);
-  }
-  return result;
+    float result;
+    if (x < 0.0f) {
+        result = ceilf(x - 0.5f);
+    } else {
+        result = floorf(x + 0.5f);
+    }
+    return result;
 }
 
 void AddXYZDataToFIFO(short data_x, short data_y, short data_z, short *fifo_x, short *fifo_y, short *fifo_z, short *index, short length) {
@@ -136,14 +136,14 @@ void QuatNormalization(const float* quat_in, float *quat_out) {
 }
 
 void QuatPointRot(const float* quat_in, const float* point_in, float* quat_out) {
-  float qw = point_in[1] * quat_in[1] - quat_in[0] * 0.0f + point_in[2] * quat_in[2] + point_in[3] * quat_in[3];
-  float qx = point_in[1] * quat_in[0] + quat_in[1] * 0.0f - point_in[2] * quat_in[3] + point_in[3] * quat_in[2];
-  float qy = point_in[2] * quat_in[0] + quat_in[2] * 0.0f + point_in[1] * quat_in[3] - point_in[3] * quat_in[1];
-  float qz = quat_in[3] * 0.0f - point_in[1] * quat_in[2] + point_in[2] * quat_in[1] + point_in[3] * quat_in[0];
-  quat_out[0] = quat_in[1] * qx - quat_in[0] * qw + quat_in[2] * qy + quat_in[3] * qz;
-  quat_out[1] = quat_in[1] * qw + quat_in[0] * qx + quat_in[2] * qz - quat_in[3] * qy;
-  quat_out[2] = quat_in[0] * qy - quat_in[1] * qz + quat_in[2] * qw + quat_in[3] * qx;
-  quat_out[3] = quat_in[1] * qy + quat_in[0] * qz - quat_in[2] * qx + quat_in[3] * qw;
+    float qw = point_in[1] * quat_in[1] - quat_in[0] * 0.0f + point_in[2] * quat_in[2] + point_in[3] * quat_in[3];
+    float qx = point_in[1] * quat_in[0] + quat_in[1] * 0.0f - point_in[2] * quat_in[3] + point_in[3] * quat_in[2];
+    float qy = point_in[2] * quat_in[0] + quat_in[2] * 0.0f + point_in[1] * quat_in[3] - point_in[3] * quat_in[1];
+    float qz = quat_in[3] * 0.0f - point_in[1] * quat_in[2] + point_in[2] * quat_in[1] + point_in[3] * quat_in[0];
+    quat_out[0] = quat_in[1] * qx - quat_in[0] * qw + quat_in[2] * qy + quat_in[3] * qz;
+    quat_out[1] = quat_in[1] * qw + quat_in[0] * qx + quat_in[2] * qz - quat_in[3] * qy;
+    quat_out[2] = quat_in[0] * qy - quat_in[1] * qz + quat_in[2] * qw + quat_in[3] * qx;
+    quat_out[3] = quat_in[1] * qy + quat_in[0] * qz - quat_in[2] * qx + quat_in[3] * qw;
 }
 
 void GetEulerAngle(const float *quat_in, float *roll, float *pitch, float *yaw) {
@@ -498,8 +498,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     acc_dyn_ref_y = ndof.ay_fifo[acc_dyn_ref_idx];
     acc_dyn_ref_z = ndof.az_fifo[acc_dyn_ref_idx];
     if (fabsf((float)acc_dyn_cur_x - (float)acc_dyn_ref_x) > (float)ndof.acc_dyn_det_th
-     || fabsf((float)acc_dyn_cur_y - (float)acc_dyn_ref_y) > (float)ndof.acc_dyn_det_th
-     || fabsf((float)acc_dyn_cur_z - (float)acc_dyn_ref_z) > (float)ndof.acc_dyn_det_th) {
+            || fabsf((float)acc_dyn_cur_y - (float)acc_dyn_ref_y) > (float)ndof.acc_dyn_det_th
+            || fabsf((float)acc_dyn_cur_z - (float)acc_dyn_ref_z) > (float)ndof.acc_dyn_det_th) {
         ndof.acc_dyn_det_count = 0;
     } else {
         ndof.acc_dyn_det_count++;
@@ -510,7 +510,7 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     ndof.acc_dyn_status = ndof.acc_dyn_det_count < ndof.acc_no_dyn_det_time;
     acc_vector_length = ndof.iir_ax * ndof.iir_ax + ndof.iir_ay * ndof.iir_ay + ndof.iir_az * ndof.iir_az;
     ndof.acc_oneG_status = acc_vector_length > ndof.acc_oneG_th_min && acc_vector_length < ndof.acc_oneG_th_max;
-    // check if gyro is dynamic and shaked ?
+    // check if gyro is dynamic and shaked ? shook
     gyro_dyn_ref_idx = ndof.gyro_fifo_idx;
     gyro_dyn_ref_x = ndof.gx_fifo[gyro_dyn_ref_idx];
     gyro_dyn_ref_y = ndof.gy_fifo[gyro_dyn_ref_idx];
@@ -569,8 +569,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     delta_y = (float)ndof.gy_max - (float)ndof.gy_min;
     delta_z = (float)ndof.gz_max - (float)ndof.gz_min;
     if (fabsf(delta_x) >= (float)ndof.gyro_dyn_det_th
-     || fabsf(delta_y) >= (float)ndof.gyro_dyn_det_th
-     || fabsf(delta_z) >= (float)ndof.gyro_dyn_det_th) {
+            || fabsf(delta_y) >= (float)ndof.gyro_dyn_det_th
+            || fabsf(delta_z) >= (float)ndof.gyro_dyn_det_th) {
         ndof.gyro_dyn_det_count = 0;
     } else {
         ndof.gyro_dyn_det_count++;
@@ -580,8 +580,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     }
     ndof.gyro_dyn_status = ndof.gyro_dyn_det_count < ndof.gyro_no_dyn_det_time;
     if (delta_x > (float)ndof.gyro_shake_det_th
-     || delta_y > (float)ndof.gyro_shake_det_th
-     || delta_z > (float)ndof.gyro_shake_det_th) {
+            || delta_y > (float)ndof.gyro_shake_det_th
+            || delta_z > (float)ndof.gyro_shake_det_th) {
         if (ndof.gyro_shake_det_count >= ndof.gyro_shake_det_time) {
             ndof.gyro_shake_det_count = ndof.gyro_shake_det_time + 1;
         } else {
@@ -605,8 +605,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
         gy_fifo_mean = GetMeanFromFIFO(ndof.gy_fifo, 0, calc_mean_fifo_size);
         gz_fifo_mean = GetMeanFromFIFO(ndof.gz_fifo, 0, calc_mean_fifo_size);
         if (fabsf(gx_fifo_mean) < (float)ndof.gyro_offset_th_max
-         && fabsf(gy_fifo_mean) < (float)ndof.gyro_offset_th_max
-         && fabsf(gz_fifo_mean) < (float)ndof.gyro_offset_th_max ) {
+                && fabsf(gy_fifo_mean) < (float)ndof.gyro_offset_th_max
+                && fabsf(gz_fifo_mean) < (float)ndof.gyro_offset_th_max ) {
             if (!ndof.gyro_calibrated_accuracy) {
                 ndof.iir_gx_bias = gx_fifo_mean;
                 ndof.iir_gy_bias = gy_fifo_mean;
@@ -641,8 +641,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
             float cor_gz = ndof.cor_gz * 0.061f;
             UpdateOrientation(ndof.ori_quat, cor_gx, cor_gy, cor_gz, (ts - ndof.ts) / 1000.0f, 0.6f, gyro_quat);
             if (fabsf(cor_gx) > (float)ndof.ori_motion_threshold
-             || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
-             || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
+                    || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
+                    || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
                 ndof.ori_motion_status = 1;
             } else {
                 ndof.ori_motion_status = 0;
@@ -658,8 +658,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
                 cor_gyro_vector_length = cor_gx * cor_gx + cor_gy * cor_gy + cor_gz * cor_gz;
                 if (cor_gyro_vector_length < ndof.ori_acc_gyro_rate_threshold) {
                     if (fabs(acc_quat[1]) >= ndof.ori_acc_noise_threshold
-                     || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
-                     || ndof.ori_motion_status) {
+                            || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
+                            || ndof.ori_motion_status) {
                         ndof.ori_acc_coupling_timer = 0;
                     } else {
                         ndof.ori_acc_coupling_timer++;
@@ -754,11 +754,11 @@ int NDOF_IsGyroCalibrated(void) {
 }
 
 int NDOF_IsAccDynamic(void) {
-  return ndof.acc_dyn_status;
+    return ndof.acc_dyn_status;
 }
 
 int NDOF_IsGyroDynamic(void) {
-  return ndof.gyro_dyn_status;
+    return ndof.gyro_dyn_status;
 }
 
 int NDOF_GetAccBias(float *ax_bias, float *ay_bias, float *az_bias) {
