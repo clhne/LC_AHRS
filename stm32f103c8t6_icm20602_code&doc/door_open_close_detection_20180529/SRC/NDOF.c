@@ -510,7 +510,7 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     ndof.acc_dyn_status = ndof.acc_dyn_det_count < ndof.acc_no_dyn_det_time;
     acc_vector_length = ndof.iir_ax * ndof.iir_ax + ndof.iir_ay * ndof.iir_ay + ndof.iir_az * ndof.iir_az;
     ndof.acc_oneG_status = acc_vector_length > ndof.acc_oneG_th_min && acc_vector_length < ndof.acc_oneG_th_max;
-    // check if gyro is dynamic and shaked ?
+    // check if gyro is dynamic and shaked ? shook
     gyro_dyn_ref_idx = ndof.gyro_fifo_idx;
     gyro_dyn_ref_x = ndof.gx_fifo[gyro_dyn_ref_idx];
     gyro_dyn_ref_y = ndof.gy_fifo[gyro_dyn_ref_idx];

@@ -1,6 +1,6 @@
 clc;clear all;close all;
-%dump_file='open_close_door_fast1.txt';
-dump_file='open_close_door_fast2.txt';
+dump_file='open_close_door_fast1.txt';
+%dump_file='open_close_door_fast2.txt';
 %dump_file='open_close_door_fast3.txt';
 %dump_file='open_close_door_normal1.txt';
 %dump_file='open_close_door_normal2.txt';
