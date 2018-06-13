@@ -16,6 +16,7 @@ int main()
     //door detection declear
     u32 count_peak = 0;
     u32 count_trough = 0;
+    u32 count_peak_trough = 0;
     u32 count_peak_equal = 0;
     u32 count_trough_equal = 0;
     u32 peak_trough_init = 0;
@@ -24,6 +25,8 @@ int main()
     u32 i = 0, j = 0;
     float peak_value[10];
     float trough_value[10];
+    float peak_trough_value[20];
+    u32 peak_trough_index = 1;
     //int oscillation_det;
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0);
@@ -85,16 +88,92 @@ int main()
         prev_is_gyro_dyn = cur_is_gyro_dyn;
         prev_is_acc_dyn = cur_is_acc_dyn;
         prev_pitch = cur_pitch;
-
-        //door detection of oscillation detection
+        /*
+                //door detection of oscillation detection
+                if(fabs(cur_pitch) >= 1.46) {
+                    //printf("door opened\n");
+        						oscillation_det = 0;
+                    sprintf(show_string, "Door opened.  %d\n",oscillation_det);
+                    oled_show_string(0, 6, show_string);
+        //				continue;
+                } else if(fabs(cur_pitch) < 1.46 && fabs(cur_pitch) > 0.63) {
+                    //if(0 == cur_is_gyro_dyn && 0 == cur_is_acc_dyn) break;
+                    if(prev_cor_gx < cur_cor_gx)
+                        cur_monotonicity = 1;
+                    else if(prev_cor_gx > cur_cor_gx)
+                        cur_monotonicity = 0;
+                    else
+                        continue;
+                    if(peak_trough_init == 1) {
+                        if(cur_monotonicity != prev_monotonicity) {
+                            if(cur_monotonicity == 0 && prev_monotonicity == 1 && prev_cor_gx > 0) {
+                                peak_value[peak_index] = prev_cor_gx;
+                                peak_index ++;
+                                if(peak_value[peak_index] < 0.065) break;
+                                //if(peak_value[peak_index] == peak_value[peak_index-1]) break;
+                                //if(peak_index >= 6) break;
+                            } else if(cur_monotonicity == 1 && prev_monotonicity == 0 && prev_cor_gx < 0) {
+                                trough_value[peak_index] = prev_cor_gx;
+                                trough_index ++;
+                                if(fabs(trough_value[trough_index]) < 0.065) break;
+                                //if(trough_value[trough_index] == trough_value[trough_index-1]) break;
+                                //if(trough_index >= 6) break;
+                            }
+                        } else
+                            peak_trough_init = 1;
+                    }
+                    prev_monotonicity = cur_monotonicity;
+                } else {
+                    //printf("door closed!\n");
+                    peak_trough_init = 0;
+                    peak_index = 1;
+                    trough_index = 1;
+                    oscillation_det = 1;
+                    sprintf(show_string, "Door closed.  %d\n", oscillation_det);
+                    oled_show_string(0, 6, show_string);
+                }
+                if(fabs(cur_pitch) < 1.46 && fabs(cur_pitch) > 0.63 && dt_count < 10 * dt) {
+                    dt_count += dt;
+                    dt_count = 0;
+                    for(i = 1; i < peak_index - 1; i++) {
+                        if(peak_value[i] < peak_value[i - 1]) {
+                            count_peak++;
+                        } else if(peak_value[i] == peak_value[i - 1]) {
+                            count_peak_equal++;
+                        } else
+                            continue;
+                    }
+                    for(j = 1; j < trough_index - 1; j++) {
+                        if(fabs(trough_value[i]) <= fabs(trough_value[i - 1])) {
+                            count_trough++;
+                        } else if(trough_value[i] == trough_value[i - 1]) {
+                            count_trough_equal++;
+                        } else
+                            continue;
+                    }
+                    if(count_peak_equal >= 2) {
+                        break;
+                    }
+                    if(count_trough_equal >= 2) {
+                        break;
+                    }
+                    if(count_peak >= floor(peak_index / 4) && count_trough >= floor(trough_index / 4)) {
+                        //printf("count_peak=%d,floor(peak_index/4)=%f,count_trough=%d,floor(trough_index/4)=%f,pitch=%f,door closed\n",count_peak, floor(peak_index/4), count_trough, floor(trough_index/4), cur_pitch);
+                        oscillation_det = 1;
+                        sprintf(show_string, "Door closed  %d\n", oscillation_det);
+                        oled_show_string(0, 6, show_string);
+                        break;
+                    }
+                } else
+                    oscillation_det = 0;
+                //dt_count = dt;
+        				*/
+        //seq monotonicity
         if(fabs(cur_pitch) >= 1.46) {
-            //printf("door opened\n");
-						oscillation_det = 0;
-            sprintf(show_string, "Door opened.  %d\n",oscillation_det);
+            oscillation_det = 0;
+            sprintf(show_string, "Door opened.  %d\n", oscillation_det);
             oled_show_string(0, 6, show_string);
-//				continue;
-        } else if(fabs(cur_pitch) < 1.46 && fabs(cur_pitch) > 0.53) {
-            //if(0 == cur_is_gyro_dyn && 0 == cur_is_acc_dyn) break;
+        } else if(fabs(cur_pitch) < 1.46 && fabs(cur_pitch) > 0.63) {
             if(prev_cor_gx < cur_cor_gx)
                 cur_monotonicity = 1;
             else if(prev_cor_gx > cur_cor_gx)
@@ -104,65 +183,37 @@ int main()
             if(peak_trough_init == 1) {
                 if(cur_monotonicity != prev_monotonicity) {
                     if(cur_monotonicity == 0 && prev_monotonicity == 1 && prev_cor_gx > 0) {
-                        peak_value[peak_index] = prev_cor_gx;
-                        peak_index ++;
-                        if(peak_value[peak_index] < 0.062) break;
-                        //if(peak_value[peak_index] == peak_value[peak_index-1]) break;
-                        //if(peak_index >= 6) break;
+                        peak_trough_value[peak_trough_index] = prev_cor_gx;
+                        peak_trough_index ++;
+                        if(peak_trough_value[peak_index] < 0.125) break;
                     } else if(cur_monotonicity == 1 && prev_monotonicity == 0 && prev_cor_gx < 0) {
-                        trough_value[peak_index] = prev_cor_gx;
-                        trough_index ++;
-                        if(trough_value[trough_index] < 0.062) break;
-                        //if(trough_value[trough_index] == trough_value[trough_index-1]) break;
-                        //if(trough_index >= 6) break;
+                        peak_trough_value[peak_trough_index] = prev_cor_gx;
+                        peak_trough_index ++;
+                        if(fabs(peak_trough_value[peak_trough_index]) < 0.125) break;
                     }
+										for(i = 1; i < peak_trough_index - 1; i++) {
+											if(peak_trough_value[i] <= peak_trough_value[i - 1]) {
+													count_peak_trough++;
+											} else
+													continue;
+									  }
+										if(count_peak_trough >= floor(peak_trough_index * 0.5)) {
+												oscillation_det = 1;
+												sprintf(show_string, "Door closed  %d\n", oscillation_det);
+												oled_show_string(0, 6, show_string);
+												break;
+										} else
+												oscillation_det = 0;
                 } else
                     peak_trough_init = 1;
             }
             prev_monotonicity = cur_monotonicity;
         } else {
-            //printf("door closed!\n");
             peak_trough_init = 0;
-            peak_index = 1;
-            trough_index = 1;
+            peak_trough_index = 1;
             oscillation_det = 1;
             sprintf(show_string, "Door closed.  %d\n", oscillation_det);
             oled_show_string(0, 6, show_string);
         }
-        if(fabs(cur_pitch) < 1.46 && fabs(cur_pitch) > 0.53 && dt_count < 10 * dt) {
-            dt_count += dt;
-            dt_count = 0;
-            for(i = 1; i < peak_index - 1; i++) {
-                if(peak_value[i] < peak_value[i - 1]) {
-                    count_peak++;
-                } else if(peak_value[i] == peak_value[i - 1]) {
-                    count_peak_equal++;
-                } else
-                    continue;
-            }
-            for(j = 1; j < trough_index - 1; j++) {
-                if(fabs(trough_value[i]) <= fabs(trough_value[i - 1])) {
-                    count_trough++;
-                } else if(trough_value[i] == trough_value[i - 1]) {
-                    count_trough_equal++;
-                } else
-                    continue;
-            }
-            if(count_peak_equal >= 2) {
-                break;
-            }
-            if(count_trough_equal >= 2) {
-                break;
-            }
-            if(count_peak >= floor(peak_index / 4) && count_trough >= floor(trough_index / 4)) {
-                //printf("count_peak=%d,floor(peak_index/4)=%f,count_trough=%d,floor(trough_index/4)=%f,pitch=%f,door closed\n",count_peak, floor(peak_index/4), count_trough, floor(trough_index/4), cur_pitch);
-                oscillation_det = 1;
-                sprintf(show_string, "Door closed  %d\n", oscillation_det);
-                oled_show_string(0, 6, show_string);
-                break;
-            }
-        } else
-            oscillation_det = 0;
-        /*dt_count = dt;*/
     }
 }

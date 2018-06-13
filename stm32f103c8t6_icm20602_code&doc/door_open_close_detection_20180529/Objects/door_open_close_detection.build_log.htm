@@ -27,19 +27,37 @@ Project File Date:  05/24/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target'
-compiling delay.c...
 compiling gpio.c...
+compiling delay.c...
 compiling icm20602.c...
 compiling spi.c...
-compiling oled.c...
 compiling main.c...
-SRC\main.c(52): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
+SRC\main.c(53): warning:  #177-D: variable "dt_count"  was declared but never referenced
+          float dt_count;
+SRC\main.c(55): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
           u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
-SRC\main.c(52): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
+SRC\main.c(55): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
           u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
 SRC\main.c(15): warning:  #550-D: variable "prev_pitch"  was set but never used
       float dt, roll, prev_pitch, cur_pitch, yaw;
-SRC\main.c: 3 warnings, 0 errors
+SRC\main.c(17): warning:  #177-D: variable "count_peak"  was declared but never referenced
+      u32 count_peak = 0;
+SRC\main.c(18): warning:  #177-D: variable "count_trough"  was declared but never referenced
+      u32 count_trough = 0;
+SRC\main.c(20): warning:  #177-D: variable "count_peak_equal"  was declared but never referenced
+      u32 count_peak_equal = 0;
+SRC\main.c(21): warning:  #177-D: variable "count_trough_equal"  was declared but never referenced
+      u32 count_trough_equal = 0;
+SRC\main.c(24): warning:  #177-D: variable "trough_index"  was declared but never referenced
+      u32 trough_index = 1;
+SRC\main.c(25): warning:  #177-D: variable "j"  was declared but never referenced
+      u32 i = 0, j = 0;
+SRC\main.c(26): warning:  #177-D: variable "peak_value"  was declared but never referenced
+      float peak_value[10];
+SRC\main.c(27): warning:  #177-D: variable "trough_value"  was declared but never referenced
+      float trough_value[10];
+SRC\main.c: 12 warnings, 0 errors
+compiling oled.c...
 compiling NDOF.c...
 compiling time.c...
 compiling usart.c...
@@ -52,8 +70,8 @@ compiling stm32f10x_usart.c...
 compiling stm32f10x_tim.c...
 compiling system_stm32f10x.c...
 linking...
-Program Size: Code=24986 RO-data=2602 RW-data=64 ZI-data=2064  
-".\Objects\door_open_close_detection.axf" - 0 Error(s), 3 Warning(s).
+Program Size: Code=24734 RO-data=2602 RW-data=64 ZI-data=2064  
+".\Objects\door_open_close_detection.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -1,4 +1,5 @@
 clc;clear all;close all;
+fprintf('--------------------------------------------------\nPeak and trough detection:\n');
 %dump_file='open_close_door_fast1.txt';
 %dump_file='open_close_door_fast2.txt';
 %dump_file='open_close_door_fast3.txt';
@@ -6,8 +7,6 @@ clc;clear all;close all;
 %dump_file='open_close_door_normal2.txt';
 %dump_file='open_close_door_slow1.txt';
 %dump_file='open_close_door_slow2.txt';
-%dump_file='open_close_door_failed1.txt';
-%dump_file='open_close_door_failed2.txt';
 %dump_file='open_close_door_success1.txt';      % 波谷不单调
 %dump_file='open_close_door_success2.txt';      % 波谷不单调
 %dump_file='open_close_door_success3.txt';      % 波谷不单调
@@ -15,9 +14,6 @@ clc;clear all;close all;
 %dump_file='open_close_door_success5.txt';      % 波谷不单调
 %dump_file='open_close_door_success6.txt';
 %dump_file='open_close_door_success7_quiet.txt';
-%dump_file='open_close_door_failed3.txt';
-%dump_file='open_close_door_failed_to_sucess1.txt';
-%dump_file='open_close_door_failed_to_sucess2.txt';
 %dump_file='SaveWindows2018-5-29_10-48-17.txt';      % 波峰、波谷不单调，考虑关门时，门自身问题
 %dump_file='SaveWindows2018-5-29_10-51-08.txt';      % 波谷不单调
 %dump_file='SaveWindows2018-5-29_10-51-50.txt';      % 波峰、波谷不单调
@@ -28,6 +24,8 @@ dump_file='SaveWindows2018-5-29_10-55-40.txt';      % 波峰、波谷不单调
 %dump_file='SaveWindows2018_6_1_13-56-26.txt';
 %dump_file = 'SaveWindows2018_6_6_8-54-04.txt';
 %dump_file = 'SaveWindows2018_6_6_9-20-36.txt';
+%dump_file = 'SaveWindows2018-6-12_16-29-08.txt';
+
 % [ts, is_gyro_dyn, is_gyro_calib, is_acc_dyn, is_acc_calib, roll, pitch, yaw, raw_ax, raw_ay, raw_az,... 
 %     filt_ax, filt_ay, filt_az, raw_gx, raw_gy, raw_gz, cor_gx, cor_gy, cor_gz] = textread(dump_file,...
 % '%d %d %d %d %d %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f\n');
@@ -107,7 +105,8 @@ for i = 200:N
 %                     if(peak_index >= 6)
 %                         break;
 %                     end
-                    fprintf('peak i=%d ts=%d cor_gx=%f count_peak= %d\n',i,ts(i),cor_gx(i-1),peak_index-2)
+                    %fprintf('peak i=%d ts=%d cor_gx=%f count_peak= %d\n',i,ts(i),cor_gx(i-1),peak_index-2)
+                   peak_ts;
                 elseif(cur_monotonicity == 1 && pre_monotonicity ==0 && cor_gx(i-1)<0)
                     trough_ts(trough_index) = ts(i-1);
                     trough_value(trough_index) = cor_gx(i-1);
@@ -122,7 +121,8 @@ for i = 200:N
 %                     if(trough_index >= 6) 
 %                         break;
 %                     end
-                    fprintf('trough i=%d ts=%d cor_gx=%f count_trough= %d\n',i,ts(i),cor_gx(i-1),trough_index-2)
+                    %fprintf('trough i=%d ts=%d cor_gx=%f count_trough= %d\n',i,ts(i),cor_gx(i-1),trough_index-2)
+                    trough_ts;
                 end
             end
         else
@@ -187,12 +187,12 @@ for i = 2: trough_index-1
     trough_plot_flag = flag_trough(i-1);
     trough_plot_index = trough_plot_index + 1;
 end
-if(count_peak >= floor(peak_index-2)/2 && count_trough >= floor(trough_index-2)/2)
-    fprintf('%d,%d,%d,%d door closed\n',count_peak,floor(peak_index/3),count_trough,floor(trough_index/3));
+if(count_peak >= floor((peak_index-2)/2) && count_trough >= floor((trough_index-2)/2))
+    fprintf('%d,%d,%d,%d door closed\n',count_peak,floor((peak_index-2)/2),count_trough,floor((trough_index-2)/2));
 end
 legend('pitch','filtaz','corgx', 'gyrodyn', 'accdyn');
 grid on
-peak_value
-trough_value
-
+peak_value;
+trough_value;
+fprintf('--------------------------------------------------\n');
 

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\door_open_close_detection.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\door_open_close_detection.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Jun 12 09:44:00 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Jun 12 17:01:06 2018
 <BR><P>
-<H3>Maximum Stack Usage =        704 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        712 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 <P>
@@ -243,7 +243,7 @@ Global Symbols
 <P><STRONG><a name="[12e]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[51]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 704 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 712 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1352,8 +1352,8 @@ Global Symbols
 <LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
 
-<P><STRONG><a name="[52]"></a>main</STRONG> (Thumb, 1232 bytes, Stack size 464 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 704 + Unknown Stack Size
+<P><STRONG><a name="[52]"></a>main</STRONG> (Thumb, 876 bytes, Stack size 472 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 712 + Unknown Stack Size
 <LI>Call Chain = main &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_init
@@ -1384,14 +1384,13 @@ Global Symbols
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floor
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
@@ -1654,6 +1653,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[f5]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -1741,7 +1741,6 @@ Global Symbols
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
@@ -1878,7 +1877,6 @@ Global Symbols
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetCorGyroData
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetCorAccData
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_set_accel_fullscale
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
