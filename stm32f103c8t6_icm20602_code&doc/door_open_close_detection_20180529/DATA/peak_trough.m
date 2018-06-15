@@ -1,7 +1,7 @@
 clc;clear all;close all;
 fprintf('--------------------------------------------------\nPeak and trough detection:\n');
 %dump_file='open_close_door_fast1.txt';
-%dump_file='open_close_door_fast2.txt';
+dump_file='open_close_door_fast2.txt';
 %dump_file='open_close_door_fast3.txt';
 %dump_file='open_close_door_normal1.txt';
 %dump_file='open_close_door_normal2.txt';
@@ -18,7 +18,7 @@ fprintf('--------------------------------------------------\nPeak and trough det
 %dump_file='SaveWindows2018-5-29_10-51-08.txt';      % 波谷不单调
 %dump_file='SaveWindows2018-5-29_10-51-50.txt';      % 波峰、波谷不单调
 %dump_file='SaveWindows2018-5-29_10-53-01.txt';      % 波峰、波谷不单调
-dump_file='SaveWindows2018-5-29_10-55-40.txt';      % 波峰、波谷不单调
+%dump_file='SaveWindows2018-5-29_10-55-40.txt';      % 波峰、波谷不单调
 %dump_file='SaveWindows2018-5-29_10-58-47.txt';       % 波峰、波谷不单调
 %dump_file='SaveWindows2018_6_1_13-47-43.txt'; 
 %dump_file='SaveWindows2018_6_1_13-56-26.txt';

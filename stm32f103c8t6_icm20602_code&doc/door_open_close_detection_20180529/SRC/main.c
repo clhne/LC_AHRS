@@ -168,7 +168,7 @@ int main()
                     oscillation_det = 0;
                 //dt_count = dt;
         				*/
-        //seq monotonicity
+        //seq/array monotonicity detection
         if(fabs(cur_pitch) >= 1.46) {
             oscillation_det = 0;
             sprintf(show_string, "Door opened.  %d\n", oscillation_det);
