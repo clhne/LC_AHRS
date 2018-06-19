@@ -1,7 +1,7 @@
 clc;clear all;close all;
 fprintf('--------------------------------------------------\nPeak and trough detection:\n');
 %dump_file='open_close_door_fast1.txt';
-dump_file='open_close_door_fast2.txt';
+%dump_file='open_close_door_fast2.txt';
 %dump_file='open_close_door_fast3.txt';
 %dump_file='open_close_door_normal1.txt';
 %dump_file='open_close_door_normal2.txt';
@@ -24,7 +24,7 @@ dump_file='open_close_door_fast2.txt';
 %dump_file='SaveWindows2018_6_1_13-56-26.txt';
 %dump_file = 'SaveWindows2018_6_6_8-54-04.txt';
 %dump_file = 'SaveWindows2018_6_6_9-20-36.txt';
-%dump_file = 'SaveWindows2018-6-12_16-29-08.txt';
+dump_file = 'SaveWindows2018-6-12_16-29-08.txt';
 
 % [ts, is_gyro_dyn, is_gyro_calib, is_acc_dyn, is_acc_calib, roll, pitch, yaw, raw_ax, raw_ay, raw_az,... 
 %     filt_ax, filt_ay, filt_az, raw_gx, raw_gy, raw_gz, cor_gx, cor_gy, cor_gz] = textread(dump_file,...
