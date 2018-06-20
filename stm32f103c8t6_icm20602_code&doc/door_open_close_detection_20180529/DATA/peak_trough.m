@@ -11,7 +11,7 @@ fprintf('--------------------------------------------------\nPeak and trough det
 %dump_file='open_close_door_success2.txt';      % 波谷不单调
 %dump_file='open_close_door_success3.txt';      % 波谷不单调
 %dump_file='open_close_door_success4.txt';
-%dump_file='open_close_door_success5.txt';      % 波谷不单调
+dump_file='open_close_door_success5.txt';      % 波谷不单调
 %dump_file='open_close_door_success6.txt';
 %dump_file='open_close_door_success7_quiet.txt';
 %dump_file='SaveWindows2018-5-29_10-48-17.txt';      % 波峰、波谷不单调，考虑关门时，门自身问题
@@ -24,7 +24,7 @@ fprintf('--------------------------------------------------\nPeak and trough det
 %dump_file='SaveWindows2018_6_1_13-56-26.txt';
 %dump_file = 'SaveWindows2018_6_6_8-54-04.txt';
 %dump_file = 'SaveWindows2018_6_6_9-20-36.txt';
-dump_file = 'SaveWindows2018-6-12_16-29-08.txt';
+%dump_file = 'SaveWindows2018-6-12_16-29-08.txt';
 
 % [ts, is_gyro_dyn, is_gyro_calib, is_acc_dyn, is_acc_calib, roll, pitch, yaw, raw_ax, raw_ay, raw_az,... 
 %     filt_ax, filt_ay, filt_az, raw_gx, raw_gy, raw_gz, cor_gx, cor_gy, cor_gz] = textread(dump_file,...
