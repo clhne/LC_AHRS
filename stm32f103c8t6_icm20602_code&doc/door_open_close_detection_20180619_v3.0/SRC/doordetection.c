@@ -75,7 +75,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                             door.peak_trough_value[door.peak_trough_index] = prev_cor_gx;
                             door.peak_trough_index ++;
                         }
-                        if(fabs(door.peak_trough_value[door.peak_trough_index]) >= 0.125) {
+                        if(door.peak_trough_value[door.peak_trough_index] >= 0.125) {
                             for(i = 1; i < door.peak_trough_index - 1; i++) {
                                 if(door.peak_trough_value[i] <= door.peak_trough_value[i - 1]) {
                                     door.count_peak_trough++;
