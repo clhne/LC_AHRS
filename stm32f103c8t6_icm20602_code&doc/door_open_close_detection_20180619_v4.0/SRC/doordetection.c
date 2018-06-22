@@ -10,6 +10,7 @@ typedef struct {
     short ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc;
     float dt, roll, prev_pitch, cur_pitch, yaw;
     float prev_monotonicity, cur_monotonicity;
+		float dt_count;
     char show_string[SHOW_STRING_SIZE];
     u32 prev_ts, cur_ts;
     u32 peak_trough_init;
@@ -22,8 +23,9 @@ DOOR_DETECTION door;
 void DOOR_DETECTION_Init()
 {
     door.peak_trough_init = 0;
-    door.peak_trough_index = 1;
+    door.peak_trough_index = 0;
     door.count_peak_trough = 0;
+	  door.dt_count = 0;
 }
 int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_yaw, float *cur_cor_gx, float *cor_gy, float *cor_gz)
 {
@@ -49,18 +51,21 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
             NDOF_GetRawGyroData(&raw_gx, &raw_gy, &raw_gz);
             NDOF_GetCorGyroData(cur_cor_gx, cor_gy, cor_gz);
             NDOF_GetGyroBias(&gx_bias, &gy_bias, &gz_bias);
+
             sprintf(door.show_string, "%.3f %d %d %d %d \n\n%.3f  ", door.dt, NDOF_IsGyroDynamic(), NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), door.cur_pitch);//, yaw);
             oled_show_string(0, 0, door.show_string);
             cur_is_gyro_dyn = NDOF_IsGyroDynamic();
             cur_is_acc_dyn = NDOF_IsAccDynamic();
 
             //seq/array monotonicity detection
-            if(fabs(door.cur_pitch) >= 3) {
+            if(fabs(door.cur_pitch) >= 4) {
                 oscillation_det = 0;
                 sprintf(door.show_string, "Door opened.  %d\n", oscillation_det);
                 oled_show_string(0, 6, door.show_string);
                 *door_status = DOOR_STATUS_OPEN;
-            } else {
+            }
+            if(fabs(door.cur_pitch) < 4 && door.dt_count < 15* door.dt) {
+							door.dt_count += door.dt;
                 if(prev_cor_gx < *cur_cor_gx)
                     door.cur_monotonicity = 1;
                 else if(prev_cor_gx > *cur_cor_gx)
@@ -69,36 +74,43 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                     if(door.cur_monotonicity != door.prev_monotonicity) {
                         if(door.cur_monotonicity == 0 && door.prev_monotonicity == 1 && prev_cor_gx > 0.125) {
                             door.peak_trough_value[door.peak_trough_index] = prev_cor_gx;
+                            printf("value %f, ", prev_cor_gx);
                             if(door.peak_trough_value[door.peak_trough_index] < 0.25)
                                 prev_dt = millis();
                             door.peak_trough_index ++;
-                        } else if(door.cur_monotonicity == 1 && door.prev_monotonicity == 0 && prev_cor_gx < 0) {
+                        } else if(door.cur_monotonicity == 1 && door.prev_monotonicity == 0 && prev_cor_gx <= -0.125) {
                             door.peak_trough_value[door.peak_trough_index] = prev_cor_gx;
+                            printf("value %f, ", prev_cor_gx);
                             if(door.peak_trough_value[door.peak_trough_index] > -0.25)
                                 prev_dt = millis();
                             door.peak_trough_index ++;
                         }
-                    } else
-                        door.peak_trough_init = 1;
-                    //acc and gyro static?
-                    if(cur_is_gyro_dyn == 0 && cur_is_acc_dyn == 0) {
-                        cur_dt = millis();
-                    }
-                    if(door.peak_trough_value[door.peak_trough_index - 1] <= door.peak_trough_value[door.peak_trough_index - 2])
-                        door.count_peak_trough++;
-                    if(door.count_peak_trough >= floor(door.peak_trough_index * 0.5)) {
-                        //gyro stable?
-                        if(cur_dt - prev_dt > 300) {
+
+                        //acc and gyro static?
+                        if(cur_is_gyro_dyn == 0 && cur_is_acc_dyn == 0) {
+                            cur_dt = millis();
+                        }
+                        if(door.peak_trough_value[door.peak_trough_index] <= door.peak_trough_value[door.peak_trough_index - 1])
+                            door.count_peak_trough++;
+                        if(door.count_peak_trough >= floor(door.peak_trough_index * 0.5)) {
+                            //gyro stable?
+//                        if(cur_dt - prev_dt > 300) {
                             oscillation_det = 1;
                             sprintf(door.show_string, "Door closed  %d\n", oscillation_det);
                             oled_show_string(0, 6, door.show_string);
                             *door_status = DOOR_STATUS_CLOSE;
-                        }
-                    } else
-                        oscillation_det = 0;
-                }
+//                        }
+                        } else
+                            oscillation_det = 0;
+                    }
+                }else
+                    door.peak_trough_init = 1;
+
+                //printf("value %f, ",door.peak_trough_value[door.peak_trough_index-1]);
+                //printf("prev_dt %f, cur_dt %f, count_peak_trough %d,peak_trough_index %d\n", prev_dt,cur_dt,door.count_peak_trough,door.peak_trough_index);
                 door.prev_monotonicity = door.cur_monotonicity;
                 *door_status = DOOR_STATUS_DETECTING;
+            } else {
                 door.peak_trough_init = 0;
                 door.peak_trough_index = 1;
             }

@@ -16,10 +16,10 @@ fprintf('--------------------------------------------------\nMonotonicity detect
 %dump_file='open_close_door_success7_quiet.txt';
 %dump_file='SaveWindows2018-5-29_10-48-17.txt';      % 波峰、波谷不单调，考虑关门时，门自身问题
 %dump_file='SaveWindows2018-5-29_10-51-08.txt';      % 波谷不单调         
-dump_file='SaveWindows2018-5-29_10-51-50.txt';      % 波峰、波谷不单调
+%dump_file='SaveWindows2018-5-29_10-51-50.txt';      % 波峰、波谷不单调
 %dump_file='SaveWindows2018-5-29_10-53-01.txt';      % 波峰、波谷不单调   时间戳相差2个gryo周期
 %dump_file='SaveWindows2018-5-29_10-55-40.txt';      % 波峰、波谷不单调
-%dump_file='SaveWindows2018-5-29_10-58-47.txt';       % 波峰、波谷不单调
+dump_file='SaveWindows2018-5-29_10-58-47.txt';       % 波峰、波谷不单调
 %dump_file='SaveWindows2018_6_1_13-47-43.txt'; 
 %dump_file='SaveWindows2018_6_1_13-56-26.txt';
 %dump_file = 'SaveWindows2018_6_6_8-54-04.txt';
@@ -42,7 +42,8 @@ crests_troughs_index = 1;
 crests_troughs_init = 0;
 prev_dt = 0;
 cur_dt = 0;
-for i = 200:length(pitch)
+count_monotonicity = 0;
+for i = 700:length(pitch)
     if  abs(pitch(i)) >= 4
         else if abs(pitch(i)) < 4
                 if cor_gx(i - 1) < cor_gx(i)
