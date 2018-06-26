@@ -30,6 +30,7 @@ int main()
 
     while(1) {
         //Detection Door Status
+        //delay_ms(14);
         door_detection(&door_status, &cur_roll, &pitch, &cur_yaw, &cor_gx, &cor_gy, &cor_gz);
     }
 }

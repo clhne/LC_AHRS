@@ -21,49 +21,29 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.1.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-C:\Users\luchenglin\Desktop\door_open_close_detection_20180619_v5.0\door_open_close_detection.uvprojx
+F:\Projects\LC_AHRS\stm32f103c8t6_icm20602_code&doc\door_open_close_detection_20180619_v6.0\door_open_close_detection.uvprojx
 Project File Date:  06/19/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
-Rebuild target 'Target'
-compiling gpio.c...
-compiling icm20602.c...
-compiling delay.c...
-compiling spi.c...
-compiling oled.c...
-compiling main.c...
-SRC\doordetection.h(10): warning:  #1-D: last line of file ends without a newline
-  #endif
-SRC\main.c: 1 warning, 0 errors
-compiling NDOF.c...
-compiling time.c...
-compiling usart.c...
+Build target 'Target'
 compiling doordetection.c...
 SRC\doordetection.h(10): warning:  #1-D: last line of file ends without a newline
   #endif
-SRC\doordetection.c(46): warning:  #223-D: function "millis" declared implicitly
+SRC\doordetection.c(48): warning:  #223-D: function "millis" declared implicitly
       door.cur_ts = millis();
-SRC\doordetection.c(48): warning:  #223-D: function "delay_ms" declared implicitly
+SRC\doordetection.c(50): warning:  #223-D: function "delay_ms" declared implicitly
           delay_ms(2);
-SRC\doordetection.c(134): warning:  #223-D: function "delay_ms" declared implicitly
+SRC\doordetection.c(153): warning:  #223-D: function "delay_ms" declared implicitly
               delay_ms(2);
-SRC\doordetection.c(44): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
+SRC\doordetection.c(46): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
       u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
-SRC\doordetection.c(44): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
+SRC\doordetection.c(46): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
       u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
 SRC\doordetection.c: 6 warnings, 0 errors
-compiling stm32f10x_gpio.c...
-compiling misc.c...
-compiling stm32f10x_spi.c...
-compiling stm32f10x_rcc.c...
-compiling stm32f10x_tim.c...
-assembling startup_stm32f10x_md.s...
-compiling system_stm32f10x.c...
-compiling stm32f10x_usart.c...
 linking...
-Program Size: Code=25538 RO-data=2682 RW-data=64 ZI-data=2344  
-".\Objects\door_open_close_detection.axf" - 0 Error(s), 7 Warning(s).
+Program Size: Code=25670 RO-data=2702 RW-data=64 ZI-data=2856  
+".\Objects\door_open_close_detection.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -128,7 +108,7 @@ Package Vendor: Keil
       Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

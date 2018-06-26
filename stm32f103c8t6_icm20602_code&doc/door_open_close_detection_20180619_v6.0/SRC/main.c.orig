@@ -23,13 +23,14 @@ int main()
     sprintf(show_string, "init...\n");
     oled_show_string(0, 0, show_string);
     NDOF_Init(NDOF_ACC_RANGE_2G, 16, NDOF_GYRORANGE_2000DPS, 16);
-	
-	  //Door param
-    int *door_status;
-  	float *cur_roll, * pitch, *cur_yaw, *cor_gx, *cor_gy, *cor_gz;
-	
+
+    //Door param
+    int door_status;
+    float cur_roll, pitch, cur_yaw, cor_gx, cor_gy, cor_gz;
+
     while(1) {
-			//Detection Door Status
+        //Detection Door Status
+			delay_ms(14);
         door_detection(&door_status, &cur_roll, &pitch, &cur_yaw, &cor_gx, &cor_gy, &cor_gz);
     }
 }

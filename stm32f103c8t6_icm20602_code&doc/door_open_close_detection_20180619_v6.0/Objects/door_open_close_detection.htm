@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\door_open_close_detection.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\door_open_close_detection.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri Jun 22 16:56:41 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Tue Jun 26 17:06:43 2018
 <BR><P>
-<H3>Maximum Stack Usage =        784 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        624 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; door_detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 <P>
@@ -243,7 +243,7 @@ Global Symbols
 <P><STRONG><a name="[12f]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[51]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 784 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 624 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; door_detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1236,8 +1236,8 @@ Global Symbols
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
 
-<P><STRONG><a name="[b7]"></a>door_detection</STRONG> (Thumb, 1640 bytes, Stack size 376 bytes, doordetection.o(i.door_detection))
-<BR><BR>[Stack]<UL><LI>Max Depth = 616 + Unknown Stack Size
+<P><STRONG><a name="[b7]"></a>door_detection</STRONG> (Thumb, 1768 bytes, Stack size 216 bytes, doordetection.o(i.door_detection))
+<BR><BR>[Stack]<UL><LI>Max Depth = 456 + Unknown Stack Size
 <LI>Call Chain = door_detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsGyroDynamic
@@ -1258,10 +1258,12 @@ Global Symbols
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_ms
 <LI><a href="#[c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floor
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
@@ -1392,7 +1394,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[52]"></a>main</STRONG> (Thumb, 110 bytes, Stack size 168 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 784 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 624 + Unknown Stack Size
 <LI>Call Chain = main &rArr; door_detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_init
@@ -1756,6 +1758,7 @@ Global Symbols
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;door_detection
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
@@ -1891,6 +1894,7 @@ Global Symbols
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;door_detection
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_set_accel_fullscale
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
