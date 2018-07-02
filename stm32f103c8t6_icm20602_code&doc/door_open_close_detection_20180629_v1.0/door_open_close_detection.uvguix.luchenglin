@@ -3543,9 +3543,9 @@
       </Doc>
       <Doc>
         <Name>.\SRC\doordetection.c</Name>
-        <ColumnNumber>83</ColumnNumber>
-        <TopLine>65</TopLine>
-        <CurrentLine>86</CurrentLine>
+        <ColumnNumber>45</ColumnNumber>
+        <TopLine>59</TopLine>
+        <CurrentLine>88</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>

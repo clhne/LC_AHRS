@@ -83,7 +83,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                 sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
                 oled_show_string(0, 6, door.show_string);
                 *door_status = DOOR_STATUS_OPEN;
-            } else if(fabs(door.cur_pitch) < 4 /*&& door.dt_count < 128 * door.dt*/) {
+            } else if(fabs(door.cur_pitch) < 4 /***&& door.dt_count < 128 * door.dt **/) {
                 door.dt_count += door.dt;
                 if(prev_cor_gx < *cur_cor_gx)
                     door.cur_monotonicity = 1;
