@@ -101,9 +101,9 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                             door.flag_peak_trough[door.peak_trough_index] = 0;
                             door.peak_trough_value[door.peak_trough_index] = prev_cor_gx;
                             if((door.flag_peak_trough[door.peak_trough_index] == 0) && (door.flag_peak_trough[door.peak_trough_index - 1] == 0)) {
-                                door.peak_trough_value[door.peak_trough_index] = MAX(door.peak_trough_value[door.peak_trough_index], door.peak_trough_value[door.peak_trough_index - 1]);
+                                door.peak_trough_value[door.peak_trough_index] = -MAX(-door.peak_trough_value[door.peak_trough_index], -door.peak_trough_value[door.peak_trough_index - 1]);
                             }
-                            if(door.peak_trough_value[door.peak_trough_index] <= door.peak_trough_value[door.peak_trough_index - 1]) {
+                            if(fabs(door.peak_trough_value[door.peak_trough_index]) <= fabs(door.peak_trough_value[door.peak_trough_index - 1])) {
                                 door.count_peak_trough++;
                             }
                             //printf("value %f, ", door.peak_trough_value[door.peak_trough_index]);

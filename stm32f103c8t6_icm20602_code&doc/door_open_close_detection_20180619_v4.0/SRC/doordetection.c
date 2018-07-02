@@ -90,7 +90,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                         if(cur_is_gyro_dyn == 0 && cur_is_acc_dyn == 0) {
                             cur_dt = millis();
                         }
-                        if(door.peak_trough_value[door.peak_trough_index] <= door.peak_trough_value[door.peak_trough_index - 1])
+                        if(fabs(door.peak_trough_value[door.peak_trough_index]) <= fabs(door.peak_trough_value[door.peak_trough_index - 1]))
                             door.count_peak_trough++;
                         if(door.count_peak_trough >= floor(door.peak_trough_index * 0.5)) {
                             //gyro stable?

@@ -171,7 +171,7 @@ F (.\SRC\NDOF.c)(0x5B284EB9)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (SRC\NDOF.h)(0x5B09388B)
 F (.\SRC\NDOF.h)(0x5B09388B)()
-F (.\SRC\doordetection.c)(0x5B2C5E79)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\doordetection.o --omf_browse .\objects\doordetection.crf --depend .\objects\doordetection.d)
+F (.\SRC\doordetection.c)(0x5B35EFC7)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\doordetection.o --omf_browse .\objects\doordetection.crf --depend .\objects\doordetection.d)
 I (SRC\doordetection.h)(0x5B28D756)
 I (SRC\icm20602.h)(0x5B054825)
 I (SRC\sys.h)(0x5AFA75E5)
