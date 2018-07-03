@@ -9,7 +9,8 @@ fprintf('--------------------------------------------------\nMonotonicity detect
 %dump_file='SaveWindows2018-7-2_16-33-27.txt';
 %dump_file='SaveWindows2018-7-2_16-57-45.txt';
 %dump_file='SaveWindows2018_7_2_19-28-02.txt';
-dump_file='SaveWindows2018_7_2_19-37-55.txt';
+%dump_file='SaveWindows2018_7_2_19-37-55.txt';
+dump_file='SaveWindows2018_7_3_10-35-26.txt';
 data = load(dump_file);
 ts = data(:,7); is_gyro_dyn = data(:,8); is_acc_dyn = data(:,9);
 is_acc_calib = data(:,10); pitch = data(:,6);  
