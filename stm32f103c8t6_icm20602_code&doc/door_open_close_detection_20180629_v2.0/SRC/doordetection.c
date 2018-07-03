@@ -52,7 +52,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
     float raw_gx, raw_gy, raw_gz;
     float prev_cor_gx;
     float gx_bias, gy_bias, gz_bias;
-	  float peak_trough_value;
+    float peak_trough_value;
     int oscillation_det;
     u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
     //u32 cur_dt, prev_dt;
@@ -106,10 +106,10 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                                     door.count_peak_trough++;
                                 }
                                 door.peak_trough_index ++;
-																door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
-																door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
-																door.prev_flag_peak_trough = 1;
-																door.prev_peak_trough_value = peak_trough_value;
+                                door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
+                                door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
+                                door.prev_flag_peak_trough = 1;
+                                door.prev_peak_trough_value = peak_trough_value;
                             }
                         } else if(door.cur_monotonicity == 1 && door.prev_monotonicity == 0 && prev_cor_gx <= -0.125) {
                             peak_trough_value = fabs(prev_cor_gx);
@@ -123,10 +123,10 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                                     door.count_peak_trough++;
                                 }
                                 door.peak_trough_index++;
-																door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
-																door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
-																door.prev_flag_peak_trough = 0;
-																door.prev_peak_trough_value = peak_trough_value;
+                                door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
+                                door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
+                                door.prev_flag_peak_trough = 0;
+                                door.prev_peak_trough_value = peak_trough_value;
                             }
                         }
                     }
