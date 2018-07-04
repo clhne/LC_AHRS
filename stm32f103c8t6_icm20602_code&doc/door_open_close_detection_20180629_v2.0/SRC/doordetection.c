@@ -5,6 +5,7 @@
 #include <math.h>
 #define IS_TROUGH 1
 #define IS_PEAK 0
+#define IS_NOT_INIT -1
 #define PEAK_TROUGH_SIZE (128)
 #define SHOW_STRING_SIZE (128)
 #define FLAG_PEAK_TROUGH (20)
@@ -20,13 +21,10 @@ typedef struct {
     u32 peak_trough_init;
     u32 peak_trough_index ;
     u32 count_peak_trough ;
-    u32 cur_flag_peak_trough;
-    u32 prev_flag_peak_trough;
+    u32 prev_flag_peak_trough;  // IS_TROUGH, IS_PEAK, IS_INIT=-1
     u32 prev_prev_flag_peak_trough;
     float prev_prev_peak_trough_value;
     float prev_peak_trough_value;
-    float cur_peak_trough_value;
-    float peak_trough_value[PEAK_TROUGH_SIZE];
 } DOOR_DETECTION;
 
 DOOR_DETECTION door;
@@ -40,9 +38,10 @@ void DOOR_DETECTION_Init()
     door.peak_trough_index = 0;
     door.count_peak_trough = 0;
     door.dt_count = 0;
-    door.prev_prev_flag_peak_trough = 0;
+	  door.prev_flag_peak_trough = IS_NOT_INIT;
+    door.prev_prev_flag_peak_trough = IS_NOT_INIT;
     door.prev_peak_trough_value = 0;
-    door.cur_peak_trough_value = 0;
+	  door.prev_prev_peak_trough_value = 0;
 }
 int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_yaw, float *cur_cor_gx, float *cor_gy, float *cor_gz)
 {
@@ -59,6 +58,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
     door.cur_ts = millis();
     if (icm20602_get_acc_gyro_adc(&door.ax_adc, &door.ay_adc, &door.az_adc, &door.gx_adc, &door.gy_adc, &door.gz_adc)) {
         delay_ms(2);
+			  *door_status =  NOT_READY;
     } else {
         if (NDOF_DoStep(door.ax_adc, door.ay_adc, door.az_adc, door.gx_adc, door.gy_adc, door.gz_adc, door.cur_ts)) {
             door.dt = (float)(door.cur_ts - door.prev_ts) / 1000.0f;
@@ -83,10 +83,18 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                 door.peak_trough_index = 0;
                 door.dt_count = 0;
                 door.count_peak_trough = 0;
+							
+							  door.peak_trough_init = 0;
+								door.prev_flag_peak_trough = IS_NOT_INIT;
+                door.prev_prev_flag_peak_trough = IS_NOT_INIT;
+                door.prev_peak_trough_value = 0;
+	              door.prev_prev_peak_trough_value = 0;
+							
                 sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
                 oled_show_string(0, 6, door.show_string);
                 *door_status = DOOR_STATUS_OPEN;
             } else if(fabs(door.cur_pitch) < 4 /***&& door.dt_count < 128 * door.dt **/) {
+							  static int status = DOOR_STATUS_DETECTING;
                 door.dt_count += door.dt;
                 if(prev_cor_gx < *cur_cor_gx)
                     door.cur_monotonicity = 1;
@@ -96,78 +104,86 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                     if(door.cur_monotonicity != door.prev_monotonicity) {
                         if(door.cur_monotonicity == 0 && door.prev_monotonicity == 1 && prev_cor_gx > 0.125) {
                             peak_trough_value = prev_cor_gx;
-                            if(door.prev_flag_peak_trough == IS_TROUGH) {
-                                door.prev_peak_trough_value = MAX(door.prev_peak_trough_value, peak_trough_value);
-                                if(door.prev_peak_trough_value < 0.25) {
-                                    door.prev_dt = millis();
-                                }
-                            } else {
-                                if(fabs(door.prev_peak_trough_value) <= fabs(door.prev_prev_peak_trough_value)) {
-                                    door.count_peak_trough++;
-                                }
-                                door.peak_trough_index ++;
-                                door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
-                                door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
-                                door.prev_flag_peak_trough = 1;
-                                door.prev_peak_trough_value = peak_trough_value;
-                            }
-                        } else if(door.cur_monotonicity == 1 && door.prev_monotonicity == 0 && prev_cor_gx <= -0.125) {
-                            peak_trough_value = fabs(prev_cor_gx);
                             if(door.prev_flag_peak_trough == IS_PEAK) {
                                 door.prev_peak_trough_value = MAX(door.prev_peak_trough_value, peak_trough_value);
                                 if(door.prev_peak_trough_value < 0.25) {
                                     door.prev_dt = millis();
                                 }
-                            } else {
+                            } else if (door.prev_flag_peak_trough == IS_TROUGH) {
+															if(door.prev_prev_flag_peak_trough != IS_NOT_INIT) {
                                 if(fabs(door.prev_peak_trough_value) <= fabs(door.prev_prev_peak_trough_value)) {
                                     door.count_peak_trough++;
                                 }
-                                door.peak_trough_index++;
+ //                               door.peak_trough_index ++;
+															}
+															  door.peak_trough_index ++;
                                 door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
                                 door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
-                                door.prev_flag_peak_trough = 0;
+                                door.prev_flag_peak_trough = IS_PEAK;
                                 door.prev_peak_trough_value = peak_trough_value;
-                            }
+                            } else {
+															// IS_NOT_INIT
+															door.prev_flag_peak_trough = IS_PEAK;
+                              door.prev_peak_trough_value = peak_trough_value;
+														}
+                        } else if(door.cur_monotonicity == 1 && door.prev_monotonicity == 0 && prev_cor_gx <= -0.125) {
+                            peak_trough_value = fabs(prev_cor_gx);
+                            if(door.prev_flag_peak_trough == IS_TROUGH) {
+                                door.prev_peak_trough_value = MAX(door.prev_peak_trough_value, peak_trough_value);
+                                if(door.prev_peak_trough_value < 0.25) {
+                                    door.prev_dt = millis();
+                                }
+                            } else if (door.prev_flag_peak_trough == IS_PEAK)  {
+															  if(door.prev_prev_flag_peak_trough != IS_NOT_INIT) {
+                                  if(fabs(door.prev_peak_trough_value) <= fabs(door.prev_prev_peak_trough_value)) {															  //if(peak_trough_value <= fabs(door.prev_peak_trough_value)){
+                                    door.count_peak_trough++;
+                                  }
+//                                  door.peak_trough_index++;
+															  }
+																door.peak_trough_index ++;
+                                door.prev_prev_flag_peak_trough = door.prev_flag_peak_trough;
+                                door.prev_prev_peak_trough_value = door.prev_peak_trough_value;
+                                door.prev_flag_peak_trough = IS_TROUGH;
+                                door.prev_peak_trough_value = peak_trough_value;
+                            } else {
+															// IS_NOT_INIT
+															door.prev_flag_peak_trough = IS_TROUGH;
+                              door.prev_peak_trough_value = peak_trough_value;
+														}
                         }
                     }
+										if(cur_is_gyro_dyn == 0 && cur_is_acc_dyn == 0) {
+											door.cur_dt = millis();
+										  if(door.count_peak_trough >= floor(door.peak_trough_index  * 0.5)) {
+                        //acc and gyro static?
+                        //gyro stable?
+                        if(fabs(door.cur_pitch) < 1.2) {
+                          oscillation_det = 1;
+                          sprintf(door.show_string, "Door closed.   %d\n", oscillation_det);
+                          oled_show_string(0, 6, door.show_string);
+                          status = DOOR_STATUS_CLOSE;
+                        } else {
+                          oscillation_det = 0;
+                          sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
+                          oled_show_string(0, 6, door.show_string);
+                          status = DOOR_STATUS_OPEN;
+                        }
+                     } else {
+                      oscillation_det = 0;
+                      sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
+                      oled_show_string(0, 6, door.show_string);
+                      status = DOOR_STATUS_OPEN;
+                     }
+								   }
                 } else {
                     door.peak_trough_init = 1;
+									  status = DOOR_STATUS_DETECTING;
                 }
-                if(door.count_peak_trough >= floor(door.peak_trough_index  * 0.5)) {
-                    //acc and gyro static?
-                    if(cur_is_gyro_dyn == 0 && cur_is_acc_dyn == 0) {
-                        door.cur_dt = millis();
-                    }
-                    //gyro stable?
-                    if(fabs(door.cur_pitch) < 1.2) {
-                        oscillation_det = 1;
-                        sprintf(door.show_string, "Door closed.   %d\n", oscillation_det);
-                        oled_show_string(0, 6, door.show_string);
-                        *door_status = DOOR_STATUS_CLOSE;
-                    } else {
-                        oscillation_det = 0;
-                        sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
-                        oled_show_string(0, 6, door.show_string);
-                        *door_status = DOOR_STATUS_OPEN;
-                    }
-
-                } else {
-                    oscillation_det = 0;
-                    sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
-                    oled_show_string(0, 6, door.show_string);
-                    *door_status = DOOR_STATUS_OPEN;
-                }
-
                 door.prev_monotonicity = door.cur_monotonicity;
-                *door_status = DOOR_STATUS_DETECTING;
-            } else {
-                door.peak_trough_init = 0;
-//                door.peak_trough_index = 0;
-//							  door.dt_count = 0;
-//							  door.count_peak_trough = 0;
-                *door_status = READY;
-            }
+								*door_status = status;
+            } 
         } else {
+					*door_status =  NOT_READY;
             delay_ms(2);
         }
     }
@@ -177,7 +193,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
     prev_is_acc_dyn = cur_is_acc_dyn;
     door.prev_pitch = door.cur_pitch;
 
-    *door_status =  NOT_READY;
+    
 
     //printf("prev_dt %d, cur_dt %d, value %f, count_peak_trough %d, peak_trough_index %d\n", door.prev_dt, door.cur_dt, door.peak_trough_value[door.peak_trough_index - 1], door.count_peak_trough, door.peak_trough_index);
 

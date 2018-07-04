@@ -26,24 +26,62 @@ Project File Date:  06/19/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
-Build target 'Target'
+Rebuild target 'Target'
+compiling gpio.c...
+compiling icm20602.c...
+compiling delay.c...
+compiling oled.c...
+compiling spi.c...
+compiling main.c...
+SRC\doordetection.h(10): warning:  #1-D: last line of file ends without a newline
+  #endif
+SRC\main.c: 1 warning, 0 errors
+compiling NDOF.c...
+compiling usart.c...
+compiling time.c...
 compiling doordetection.c...
 SRC\doordetection.h(10): warning:  #1-D: last line of file ends without a newline
   #endif
-SRC\doordetection.c(59): warning:  #223-D: function "millis" declared implicitly
+SRC\doordetection.c(41): warning:  #68-D: integer conversion resulted in a change of sign
+  	  door.prev_flag_peak_trough = 
+S_NOT_INIT;
+SRC\doordetection.c(42): warning:  #68-D: integer conversion resulted in a change of sign
+      door.prev_prev_flag_peak_trough = 
+S_NOT_INIT;
+SRC\doordetection.c(58): warning:  #223-D: function "millis" declared implicitly
       door.cur_ts = millis();
-SRC\doordetection.c(61): warning:  #223-D: function "delay_ms" declared implicitly
+SRC\doordetection.c(60): warning:  #223-D: function "delay_ms" declared implicitly
           delay_ms(2);
-SRC\doordetection.c(171): warning:  #223-D: function "delay_ms" declared implicitly
+SRC\doordetection.c(88): warning:  #68-D: integer conversion resulted in a change of sign
+  								door.prev_flag_peak_trough = 
+S_NOT_INIT;
+SRC\doordetection.c(89): warning:  #68-D: integer conversion resulted in a change of sign
+                  door.prev_prev_flag_peak_trough = 
+S_NOT_INIT;
+SRC\doordetection.c(113): warning:  #68-D: integer conversion resulted in a change of sign
+  															if(door.prev_prev_flag_peak_trough != 
+S_NOT_INIT) {
+SRC\doordetection.c(137): warning:  #68-D: integer conversion resulted in a change of sign
+  															  if(door.prev_prev_flag_peak_trough != 
+S_NOT_INIT) {
+SRC\doordetection.c(187): warning:  #223-D: function "delay_ms" declared implicitly
               delay_ms(2);
-SRC\doordetection.c(57): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
+SRC\doordetection.c(56): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
       u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
-SRC\doordetection.c(57): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
+SRC\doordetection.c(56): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
       u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
-SRC\doordetection.c: 6 warnings, 0 errors
+SRC\doordetection.c: 12 warnings, 0 errors
+compiling misc.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling stm32f10x_spi.c...
+compiling stm32f10x_tim.c...
+assembling startup_stm32f10x_md.s...
+compiling stm32f10x_usart.c...
+compiling system_stm32f10x.c...
 linking...
-Program Size: Code=25542 RO-data=2602 RW-data=64 ZI-data=2800  
-".\Objects\door_open_close_detection.axf" - 0 Error(s), 6 Warning(s).
+Program Size: Code=25650 RO-data=2602 RW-data=68 ZI-data=2284  
+".\Objects\door_open_close_detection.axf" - 0 Error(s), 13 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -108,7 +146,7 @@ Package Vendor: Keil
       Include file:  RTE_Driver\Config\RTE_Device.h
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:07
 </pre>
 </body>
 </html>
