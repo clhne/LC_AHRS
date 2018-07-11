@@ -55,6 +55,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
     float gx_bias, gy_bias, gz_bias;
     float peak_trough_value;
     int oscillation_det;
+	  float cur_cor_gx1;
     u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
     door.cur_ts = millis();
 	    if (icm20602_get_acc_gyro_adc(&door.ax_adc, &door.ay_adc, &door.az_adc, &door.gx_adc, &door.gy_adc, &door.gz_adc)) {
@@ -67,7 +68,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
         NDOF_GetCorAccData(&cor_ax, &cor_ay, &cor_az);
         NDOF_GetFiltAccData(&filt_ax, &filt_ay, &filt_az);
         NDOF_GetRawGyroData(&raw_gx, &raw_gy, &raw_gz);
-        NDOF_GetCorGyroData(cur_cor_gx, cor_gy, cor_gz);
+        NDOF_GetCorGyroData(&cur_cor_gx1, cor_gy, cor_gz);
         NDOF_GetGyroBias(&gx_bias, &gy_bias, &gz_bias);
 
         sprintf(door.show_string, "%.3f %d %d %d %d \n\n%.3f  ", door.dt, NDOF_IsGyroDynamic(), NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), door.cur_pitch);//, yaw);
@@ -76,7 +77,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
         cur_is_acc_dyn = NDOF_IsAccDynamic();
 
         //seq/array monotonicity detection
-        if(fabs(door.cur_pitch) >= 4) {
+        if(fabs(door.cur_pitch) >= 50) {
             oscillation_det = 0;
             door.peak_trough_index = 0;
             door.dt_count = 0;
@@ -91,12 +92,12 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
             sprintf(door.show_string, "Door opened.   %d\n", oscillation_det);
             oled_show_string(0, 6, door.show_string);
             *door_status = DOOR_STATUS_OPEN;
-        } else if(fabs(door.cur_pitch) < 4 /***&& door.dt_count < 128 * door.dt **/) {
+        } else if(fabs(door.cur_pitch) < 50 /***&& door.dt_count < 128 * door.dt **/) {
             static int status = DOOR_STATUS_DETECTING;
             door.dt_count += door.dt;
-            if(prev_cor_gx < *cur_cor_gx)
+            if(prev_cor_gx < cur_cor_gx1)
                 door.cur_monotonicity = 1;
-            else if(prev_cor_gx > *cur_cor_gx)
+            else if(prev_cor_gx > cur_cor_gx1)
                 door.cur_monotonicity = 0;
             if(door.peak_trough_init == 1) {
                 if(door.cur_monotonicity != door.prev_monotonicity) {
@@ -104,6 +105,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                         peak_trough_value = prev_cor_gx;
                         if(door.prev_flag_peak_trough == IS_PEAK) {
                             door.prev_peak_trough_value = MAX(door.prev_peak_trough_value, peak_trough_value);
+													printf("value1 %f\n",door.prev_peak_trough_value);
                             if(door.prev_peak_trough_value < 0.25) {
                                 door.prev_dt = millis();
                             }
@@ -128,6 +130,7 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
                         peak_trough_value = fabs(prev_cor_gx);
                         if(door.prev_flag_peak_trough == IS_TROUGH) {
                             door.prev_peak_trough_value = MAX(door.prev_peak_trough_value, peak_trough_value);
+													printf("value2 %f\n",door.prev_peak_trough_value);
                             if(door.prev_peak_trough_value < 0.25) {
                                 door.prev_dt = millis();
                             }
@@ -180,18 +183,20 @@ int door_detection(int *door_status, float *cur_roll, float * pitch, float *cur_
             door.prev_monotonicity = door.cur_monotonicity;
             *door_status = status;
         }
+				//printf("value %f\n",door.prev_peak_trough_value);
+				
     } else {
         *door_status =  NOT_READY;
         delay_ms(2);
     }
    }
     door.prev_ts = door.cur_ts;
-    prev_cor_gx = *cur_cor_gx;
+    prev_cor_gx = cur_cor_gx1;
     prev_is_gyro_dyn = cur_is_gyro_dyn;
     prev_is_acc_dyn = cur_is_acc_dyn;
     door.prev_pitch = door.cur_pitch;
-
-    printf("%d %d %f %d %d %f %d %d %d %d %f %f\n", door.prev_dt, door.cur_dt, door.prev_peak_trough_value,
-           door.count_peak_trough, door.peak_trough_index, door.cur_pitch, door.cur_ts, NDOF_IsGyroDynamic(),  NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), raw_gx, *cur_cor_gx);
+		printf("[1]%f %f %f\n",door.cur_pitch, door.prev_peak_trough_value, cur_cor_gx1);
+	  //printf("ts %d, value %f\n",door.cur_ts, door.prev_peak_trough_value);
+    //printf("%d %d %f %d %d %f %d %d %d %d %f %f\n", door.prev_dt, door.cur_dt, door.prev_peak_trough_value, door.count_peak_trough, door.peak_trough_index, door.cur_pitch, door.cur_ts, NDOF_IsGyroDynamic(),  NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), raw_gx, *cur_cor_gx);
     return *door_status;
 }

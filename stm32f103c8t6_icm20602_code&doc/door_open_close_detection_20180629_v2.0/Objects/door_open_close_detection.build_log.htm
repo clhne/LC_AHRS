@@ -22,13 +22,13 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 F:\Projects\LC_AHRS\stm32f103c8t6_icm20602_code&doc\door_open_close_detection_20180629_v2.0\door_open_close_detection.uvprojx
-Project File Date:  06/19/2018
+Project File Date:  07/06/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Program Files\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target'
 compiling doordetection.c...
-SRC\doordetection.h(11): warning:  #1-D: last line of file ends without a newline
+SRC\doordetection.h(12): warning:  #1-D: last line of file ends without a newline
   #endif
 SRC\doordetection.c(43): warning:  #68-D: integer conversion resulted in a change of sign
       door.prev_flag_peak_trough = 
@@ -36,31 +36,31 @@ S_NOT_INIT;
 SRC\doordetection.c(44): warning:  #68-D: integer conversion resulted in a change of sign
       door.prev_prev_flag_peak_trough = 
 S_NOT_INIT;
-SRC\doordetection.c(59): warning:  #223-D: function "millis" declared implicitly
+SRC\doordetection.c(60): warning:  #223-D: function "millis" declared implicitly
       door.cur_ts = millis();
-SRC\doordetection.c(61): warning:  #223-D: function "delay_ms" declared implicitly
+SRC\doordetection.c(62): warning:  #223-D: function "delay_ms" declared implicitly
           delay_ms(2);
-SRC\doordetection.c(86): warning:  #68-D: integer conversion resulted in a change of sign
+SRC\doordetection.c(87): warning:  #68-D: integer conversion resulted in a change of sign
               door.prev_flag_peak_trough = 
 S_NOT_INIT;
-SRC\doordetection.c(87): warning:  #68-D: integer conversion resulted in a change of sign
+SRC\doordetection.c(88): warning:  #68-D: integer conversion resulted in a change of sign
               door.prev_prev_flag_peak_trough = 
 S_NOT_INIT;
-SRC\doordetection.c(111): warning:  #68-D: integer conversion resulted in a change of sign
+SRC\doordetection.c(113): warning:  #68-D: integer conversion resulted in a change of sign
                               if(door.prev_prev_flag_peak_trough != 
 S_NOT_INIT) {
-SRC\doordetection.c(135): warning:  #68-D: integer conversion resulted in a change of sign
+SRC\doordetection.c(138): warning:  #68-D: integer conversion resulted in a change of sign
                               if(door.prev_prev_flag_peak_trough != 
 S_NOT_INIT) {
-SRC\doordetection.c(185): warning:  #223-D: function "delay_ms" declared implicitly
+SRC\doordetection.c(190): warning:  #223-D: function "delay_ms" declared implicitly
           delay_ms(2);
-SRC\doordetection.c(58): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
+SRC\doordetection.c(59): warning:  #550-D: variable "prev_is_gyro_dyn"  was set but never used
       u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
-SRC\doordetection.c(58): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
+SRC\doordetection.c(59): warning:  #550-D: variable "prev_is_acc_dyn"  was set but never used
       u32 prev_is_gyro_dyn, cur_is_gyro_dyn, prev_is_acc_dyn, cur_is_acc_dyn;
 SRC\doordetection.c: 12 warnings, 0 errors
 linking...
-Program Size: Code=25642 RO-data=2602 RW-data=68 ZI-data=2284  
+Program Size: Code=25590 RO-data=2602 RW-data=68 ZI-data=2284  
 ".\Objects\door_open_close_detection.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Software Packages used:</h2>

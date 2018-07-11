@@ -28,15 +28,12 @@ int main()
     //Door param
     int door_status;
     float cur_roll, pitch, cur_yaw, cor_gx, cor_gy, cor_gz;
-
+//DOOR_DETECTION_Init();
     while(1) {
         //Detection Door Status
         //delay_ms(14);
-//			  if(icm20602_get_acc_gyro_adc(&ax_adc, &ay_adc, &az_adc, &gx_adc, &gy_adc, &gz_adc)){
-//					delay_ms(2);
-//					door_status = NOT_READY;
-//				}
-				
+delay_ms(5);
         door_detection(&door_status, &cur_roll, &pitch, &cur_yaw, &cor_gx, &cor_gy, &cor_gz);//, &ax_adc,&ay_adc, &az_adc,&gx_adc, &gy_adc, &gz_adc);
+			//printf("%f\n", cor_gx);
     }
 }
