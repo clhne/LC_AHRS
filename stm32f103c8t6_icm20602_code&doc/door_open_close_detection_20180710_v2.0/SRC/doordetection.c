@@ -24,7 +24,6 @@ typedef struct {
 
 } Door;
 
-
 Door door;
 void Door_Detection_Init()
 {
@@ -145,7 +144,6 @@ int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short
 
     } else {
         *door_status =  NOT_READY;
-
     }
     door.prev_cor_gx = *cor_gx;
     prev_is_gyro_dyn = cur_is_gyro_dyn;
