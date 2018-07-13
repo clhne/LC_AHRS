@@ -37,6 +37,7 @@ int main()
         if (icm20602_get_acc_gyro_adc(&ax_adc, &ay_adc, &az_adc, &gx_adc, &gy_adc, &gz_adc)) {
             delay_ms(5);
         } else {
+					  //sample time must greater than 5ms!
             prev_ts = millis();
             door_status = Door_Detection(ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc, &pitch, &cor_gx, prev_ts);
 					  cur_ts = millis();
