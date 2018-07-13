@@ -24,5 +24,5 @@
 .\objects\main.o: SRC\icm20602.h
 .\objects\main.o: SRC\oled.h
 .\objects\main.o: D:\Program Files\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
-.\objects\main.o: SRC\NDOF.h
 .\objects\main.o: SRC\doordetection.h
+.\objects\main.o: SRC\NDOF.h

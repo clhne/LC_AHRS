@@ -59,7 +59,7 @@ I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (SRC\delay.h)(0x5AFA6CF7)
 I (SRC\spi.h)(0x5AD8773E)
 F (.\SRC\icm20602.h)(0x5B054825)()
-F (.\SRC\main.c)(0x5B459FFA)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\SRC\main.c)(0x5B483E9D)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (SRC\sys.h)(0x5AFA75E5)
 I (D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
@@ -84,8 +84,8 @@ I (SRC\spi.h)(0x5AD8773E)
 I (SRC\icm20602.h)(0x5B054825)
 I (SRC\oled.h)(0x5AFA737C)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
+I (SRC\doordetection.h)(0x5B480B6A)
 I (SRC\NDOF.h)(0x5B45A1A8)
-I (SRC\doordetection.h)(0x5B459D2F)
 F (.\SRC\oled.c)(0x5AFA7392)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\oled.o --omf_browse .\objects\oled.crf --depend .\objects\oled.d)
 I (SRC\oled.h)(0x5AFA737C)
 I (SRC\sys.h)(0x5AFA75E5)
@@ -171,11 +171,11 @@ F (.\SRC\NDOF.c)(0x5B455E1F)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
 I (SRC\NDOF.h)(0x5B45A1A8)
 F (.\SRC\NDOF.h)(0x5B45A1A8)()
-F (.\SRC\doordetection.c)(0x5B459FF7)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\doordetection.o --omf_browse .\objects\doordetection.crf --depend .\objects\doordetection.d)
-I (SRC\doordetection.h)(0x5B459D2F)
+F (.\SRC\doordetection.c)(0x5B481278)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\doordetection.o --omf_browse .\objects\doordetection.crf --depend .\objects\doordetection.d)
+I (SRC\doordetection.h)(0x5B480B6A)
 I (SRC\NDOF.h)(0x5B45A1A8)
 I (D:\Program Files\Keil_v5\ARM\ARMCC\include\math.h)(0x588B8344)
-F (.\SRC\doordetection.h)(0x5B459D2F)()
+F (.\SRC\doordetection.h)(0x5B480B6A)()
 F (D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\src\misc.c)(0x52F9EB20)(--c99 -c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-I.\RTE\Device\STM32F103C8-I.\RTE\_Target-I"D:\Program Files\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include"-I"D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc"-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
 I (D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
 I (D:\Program Files\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h)(0x5825386C)
