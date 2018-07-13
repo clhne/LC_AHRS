@@ -656,8 +656,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
             float cor_gz = ndof.cor_gz * 0.061f;
             UpdateOrientation(ndof.ori_quat, cor_gx, cor_gy, cor_gz, (ts - ndof.ts) / 1000.0f, 0.6f, gyro_quat);
             if (fabsf(cor_gx) > (float)ndof.ori_motion_threshold
-                    || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
-                    || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
+             || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
+             || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
                 ndof.ori_motion_status = 1;
             } else {
                 ndof.ori_motion_status = 0;
@@ -673,8 +673,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
                 cor_gyro_vector_length = cor_gx * cor_gx + cor_gy * cor_gy + cor_gz * cor_gz;
                 if (cor_gyro_vector_length < ndof.ori_acc_gyro_rate_threshold) {
                     if (fabs(acc_quat[1]) >= ndof.ori_acc_noise_threshold
-                            || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
-                            || ndof.ori_motion_status) {
+                     || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
+                     || ndof.ori_motion_status) {
                         ndof.ori_acc_coupling_timer = 0;
                     } else {
                         ndof.ori_acc_coupling_timer++;

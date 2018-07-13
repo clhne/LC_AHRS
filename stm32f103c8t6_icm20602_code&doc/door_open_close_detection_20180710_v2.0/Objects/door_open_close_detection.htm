@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\door_open_close_detection.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\door_open_close_detection.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri Jul 13 13:55:19 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri Jul 13 15:21:46 2018
 <BR><P>
-<H3>Maximum Stack Usage =        536 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        568 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 <P>
@@ -252,7 +252,7 @@ Global Symbols
 <P><STRONG><a name="[12f]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[53]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 536 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 568 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -735,7 +735,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 </UL>
 
-<P><STRONG><a name="[78]"></a>Door_Detection</STRONG> (Thumb, 744 bytes, Stack size 104 bytes, doordetection.o(i.Door_Detection))
+<P><STRONG><a name="[78]"></a>Door_Detection</STRONG> (Thumb, 784 bytes, Stack size 104 bytes, doordetection.o(i.Door_Detection))
 <BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetEulerAngle
@@ -745,32 +745,33 @@ Global Symbols
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsAccDynamic
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floor
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
-<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[87]"></a>Door_Detection_Init</STRONG> (Thumb, 32 bytes, Stack size 24 bytes, doordetection.o(i.Door_Detection_Init))
+<P><STRONG><a name="[88]"></a>Door_Detection_Init</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, doordetection.o(i.Door_Detection_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Door_Detection_Init &rArr; NDOF_Init &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Reset
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
+<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Reset
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[89]"></a>Door_Detection_Reset</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, doordetection.o(i.Door_Detection_Reset))
+<P><STRONG><a name="[8a]"></a>Door_Detection_Reset</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, doordetection.o(i.Door_Detection_Reset))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Door_Detection_Reset
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Reset
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Init
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Init
 </UL>
 
 <P><STRONG><a name="[c0]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
@@ -786,22 +787,22 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;oled_init
 </UL>
 
-<P><STRONG><a name="[8b]"></a>GetEulerAngle</STRONG> (Thumb, 1172 bytes, Stack size 144 bytes, ndof.o(i.GetEulerAngle))
+<P><STRONG><a name="[8c]"></a>GetEulerAngle</STRONG> (Thumb, 1172 bytes, Stack size 144 bytes, ndof.o(i.GetEulerAngle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
@@ -810,14 +811,14 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetEulerAngle
 </UL>
 
-<P><STRONG><a name="[8c]"></a>GetGravity</STRONG> (Thumb, 204 bytes, Stack size 40 bytes, ndof.o(i.GetGravity))
+<P><STRONG><a name="[8d]"></a>GetGravity</STRONG> (Thumb, 204 bytes, Stack size 40 bytes, ndof.o(i.GetGravity))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = GetGravity &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[9e]"></a>GetMaxFromFIFO</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, ndof.o(i.GetMaxFromFIFO))
@@ -826,10 +827,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 </UL>
 
-<P><STRONG><a name="[99]"></a>GetMeanFromFIFO</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, ndof.o(i.GetMeanFromFIFO))
+<P><STRONG><a name="[9a]"></a>GetMeanFromFIFO</STRONG> (Thumb, 74 bytes, Stack size 32 bytes, ndof.o(i.GetMeanFromFIFO))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = GetMeanFromFIFO &rArr; __aeabi_fdiv
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
@@ -850,18 +851,18 @@ Global Symbols
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Round
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMinFromFIFO
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMaxFromFIFO
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;AddXYZDataToFIFO
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsGyroCalibrated
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_l2f
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
@@ -871,7 +872,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = NDOF_GetCorGyroData &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsGyroCalibrated
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 </UL>
@@ -879,23 +880,23 @@ Global Symbols
 <P><STRONG><a name="[7a]"></a>NDOF_GetEulerAngle</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ndof.o(i.NDOF_GetEulerAngle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Calls]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsGyroCalibrated
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 </UL>
 
-<P><STRONG><a name="[88]"></a>NDOF_Init</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, ndof.o(i.NDOF_Init))
+<P><STRONG><a name="[89]"></a>NDOF_Init</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, ndof.o(i.NDOF_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = NDOF_Init &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Reset
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Reset
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Init
+<BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Init
 </UL>
 
 <P><STRONG><a name="[d7]"></a>NDOF_IsAccCalibrated</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ndof.o(i.NDOF_IsAccCalibrated))
@@ -919,9 +920,9 @@ Global Symbols
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[8a]"></a>NDOF_Reset</STRONG> (Thumb, 322 bytes, Stack size 0 bytes, ndof.o(i.NDOF_Reset))
-<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Reset
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
+<P><STRONG><a name="[8b]"></a>NDOF_Reset</STRONG> (Thumb, 322 bytes, Stack size 0 bytes, ndof.o(i.NDOF_Reset))
+<BR><BR>[Called By]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Reset
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 </UL>
 
 <P><STRONG><a name="[e8]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
@@ -940,20 +941,20 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[97]"></a>QuatMultiplication</STRONG> (Thumb, 270 bytes, Stack size 40 bytes, ndof.o(i.QuatMultiplication))
+<P><STRONG><a name="[98]"></a>QuatMultiplication</STRONG> (Thumb, 270 bytes, Stack size 40 bytes, ndof.o(i.QuatMultiplication))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = QuatMultiplication &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[a4]"></a>QuatNormalization</STRONG> (Thumb, 192 bytes, Stack size 40 bytes, ndof.o(i.QuatNormalization))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = QuatNormalization &rArr; sqrtf &rArr; _fsqrt &rArr; __fpl_fnaninf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmpeq
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
@@ -986,7 +987,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ceilf
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
@@ -1088,10 +1089,10 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = UpdateOffsetStepwise &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
@@ -1101,9 +1102,9 @@ Global Symbols
 <P><STRONG><a name="[a3]"></a>UpdateOrientation</STRONG> (Thumb, 356 bytes, Stack size 72 bytes, ndof.o(i.UpdateOrientation))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = UpdateOrientation &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
@@ -1155,10 +1156,10 @@ Global Symbols
 <P><STRONG><a name="[b7]"></a>__mathlib_rredf2</STRONG> (Thumb, 344 bytes, Stack size 32 bytes, rredf.o(i.__mathlib_rredf2))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2f
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbnf
@@ -1178,8 +1179,8 @@ Global Symbols
 <P><STRONG><a name="[94]"></a>acosf</STRONG> (Thumb, 242 bytes, Stack size 24 bytes, acosf.o(i.acosf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = acosf &rArr; sqrtf &rArr; _fsqrt &rArr; __fpl_fnaninf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
@@ -1188,22 +1189,22 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[8f]"></a>atan2f</STRONG> (Thumb, 528 bytes, Stack size 32 bytes, atan2f.o(i.atan2f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = atan2f &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_underflow
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan2
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassifyf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[13e]"></a>__mathlib_ceilf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, ceilf.o(i.ceilf), UNUSED)
@@ -1219,9 +1220,9 @@ Global Symbols
 <P><STRONG><a name="[96]"></a>cosf</STRONG> (Thumb, 328 bytes, Stack size 32 bytes, cosf.o(i.cosf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = cosf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
@@ -1230,7 +1231,7 @@ Global Symbols
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frnd
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[cf]"></a>delay_init</STRONG> (Thumb, 96 bytes, Stack size 12 bytes, delay.o(i.delay_init))
@@ -1344,7 +1345,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = icm20602_set_accel_fullscale &rArr; icm20602_write_reg &rArr; spi2_write_reg
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_write_reg
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
@@ -1367,8 +1368,8 @@ Global Symbols
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
 
-<P><STRONG><a name="[54]"></a>main</STRONG> (Thumb, 336 bytes, Stack size 192 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 536 + Unknown Stack Size
+<P><STRONG><a name="[54]"></a>main</STRONG> (Thumb, 392 bytes, Stack size 224 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 568 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_init
@@ -1384,7 +1385,7 @@ Global Symbols
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsGyroCalibrated
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsAccDynamic
 <LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsAccCalibrated
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Init
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Init
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_get_acc_gyro_adc
@@ -1474,9 +1475,9 @@ Global Symbols
 <P><STRONG><a name="[95]"></a>sinf</STRONG> (Thumb, 338 bytes, Stack size 32 bytes, sinf.o(i.sinf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
+<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_frsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
@@ -1487,7 +1488,7 @@ Global Symbols
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frnd
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[d2]"></a>spi2_init</STRONG> (Thumb, 174 bytes, Stack size 24 bytes, spi.o(i.spi2_init))
@@ -1539,7 +1540,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dsqrt
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[90]"></a>sqrtf</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, sqrtf.o(i.sqrtf))
@@ -1549,7 +1550,7 @@ Global Symbols
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__set_errno
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 </UL>
 
@@ -1591,7 +1592,7 @@ Global Symbols
 <P><STRONG><a name="[83]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2f
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 </UL>
 
@@ -1619,7 +1620,7 @@ Global Symbols
 <P><STRONG><a name="[93]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[f2]"></a>_ddiv</STRONG> (Thumb, 552 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv), UNUSED)
@@ -1627,7 +1628,7 @@ Global Symbols
 <LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_dnaninf
 </UL>
 
-<P><STRONG><a name="[84]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
+<P><STRONG><a name="[87]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
 <BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 </UL>
 
@@ -1648,11 +1649,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_drcmple
 </UL>
 
-<P><STRONG><a name="[85]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
+<P><STRONG><a name="[97]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
-<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[f5]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -1719,7 +1719,7 @@ Global Symbols
 <P><STRONG><a name="[7e]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1736,11 +1736,11 @@ Global Symbols
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOffsetStepwise
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Round
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
@@ -1772,9 +1772,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fdiv
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_invalid
 </UL>
@@ -1788,7 +1788,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cfcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 </UL>
 
 <P><STRONG><a name="[102]"></a>_fcmpeq</STRONG> (Thumb, 104 bytes, Stack size 16 bytes, feqf.o(x$fpl$feqf), UNUSED)
@@ -1808,11 +1808,12 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__fpl_fnaninf
 </UL>
 
-<P><STRONG><a name="[9a]"></a>__aeabi_i2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$fflt))
+<P><STRONG><a name="[84]"></a>__aeabi_i2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$fflt))
 <BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOffsetStepwise
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
 </UL>
 
@@ -1829,7 +1830,7 @@ Global Symbols
 <P><STRONG><a name="[144]"></a>_ll_sto_f</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, ffltll_clz.o(x$fpl$ffltll), UNUSED)
 
 <P><STRONG><a name="[a6]"></a>__aeabi_ui2f</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, fflt_clz.o(x$fpl$ffltu))
-<BR><BR>[Called By]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
+<BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
 </UL>
 
@@ -1843,7 +1844,7 @@ Global Symbols
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Round
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 </UL>
 
@@ -1856,19 +1857,20 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[107]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_frcmple
 </UL>
 
-<P><STRONG><a name="[8d]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
+<P><STRONG><a name="[85]"></a>__aeabi_fmul</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fmul
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOrientation
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOffsetStepwise
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatNormalization
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
+<LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_Init
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetEulerAngle
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetCorGyroData
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_set_accel_fullscale
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
@@ -1907,7 +1909,7 @@ Global Symbols
 <P><STRONG><a name="[82]"></a>__aeabi_cfrcmple</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, frleqf.o(x$fpl$frleqf))
 <BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOffsetStepwise
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 </UL>
 
@@ -1947,15 +1949,15 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
 </UL>
 
-<P><STRONG><a name="[98]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub))
+<P><STRONG><a name="[99]"></a>__aeabi_fsub</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_fsub
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOrientation
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOffsetStepwise
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Round
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
+<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f

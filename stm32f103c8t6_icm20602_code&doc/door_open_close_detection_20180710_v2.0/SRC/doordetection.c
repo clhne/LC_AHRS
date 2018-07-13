@@ -6,6 +6,7 @@
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
 typedef struct {
+	  //Sensor detection param
     float prev_cor_gx;
     int prev_monotonicity;
 	  int cur_monotonicity;
@@ -16,11 +17,19 @@ typedef struct {
     int prev_prev_flag_peak_trough;
     float prev_prev_peak_trough_value;
     float prev_peak_trough_value;
+	  //Door param
+	  float Opened_angle;
+	  float Closed_angle;
+	  float Detection_factor;
 } Door;
 
 Door door;
 void Door_Detection_Init(unsigned char acc_range_idx, unsigned char acc_res_bits, unsigned char gyro_range_idx, unsigned char gyro_res_bits)
 {
+	  //Door param
+	  door.Opened_angle = 4.0;
+	  door.Detection_factor = 0.5;
+	  door.Closed_angle = 1.2;
 	  NDOF_Init(acc_range_idx, acc_res_bits, gyro_range_idx, gyro_res_bits);
     //Reset Door Detection
     Door_Detection_Reset();
@@ -54,7 +63,7 @@ int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short
         is_acc_dyn = NDOF_IsAccDynamic();
 
         //seq/array monotonicity detection
-        if(fabs(*pitch) >= 4) {
+        if(fabs(*pitch) >= door.Opened_angle) {		//Opened_angle need modified!
 					  door.peak_trough_init = 0;
             door.peak_trough_index = 0;
             door.count_peak_trough = 0;
@@ -63,7 +72,7 @@ int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short
             door.prev_peak_trough_value = 0;
             door.prev_prev_peak_trough_value = 0;
             door_status = DOOR_STATUS_OPEN;
-        } else if(fabs(*pitch) < 4 ) {
+        } else if(fabs(*pitch) < door.Opened_angle ) {
             static int status = DOOR_STATUS_DETECTING;
             if(door.prev_cor_gx < *cor_gx)
                 door.cur_monotonicity = 1;
@@ -113,10 +122,10 @@ int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short
                         }
                     }
                 }
+								//acc and gyro static?
                 if(is_gyro_dyn == 0 && is_acc_dyn == 0) {
-                    if(door.count_peak_trough >= floor(door.peak_trough_index  * 0.5)) {
-                        //acc and gyro static? gyro stable?
-                        if(fabs(*pitch) < 1.2) {
+                    if(door.count_peak_trough >= floor(door.peak_trough_index  * door.Detection_factor )) {   //Detection_factor need modified!
+                        if(fabs(*pitch) < door.Closed_angle) {   //Closed_angle need modified!
                             status = DOOR_STATUS_CLOSE;
                         } else {
                             status = DOOR_STATUS_OPEN;

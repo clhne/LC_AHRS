@@ -25,17 +25,23 @@ int main()
 
     //Door param
     int door_status;
-    float pitch, cor_gx;
-    long long ts;
+    float pitch;
+	  float cor_gx;
+	  long long Detection_dt;
+	  long long Total_dt = 0;
+    long long prev_ts;
+		long long cur_ts;
     Door_Detection_Init(NDOF_ACC_RANGE_2G, 16, NDOF_GYRORANGE_2000DPS, 16);
     while(1) {
         //Detection Door Status
         if (icm20602_get_acc_gyro_adc(&ax_adc, &ay_adc, &az_adc, &gx_adc, &gy_adc, &gz_adc)) {
             delay_ms(5);
         } else {
-            ts = millis();
-            door_status = Door_Detection(ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc, &pitch, &cor_gx, ts);
-            sprintf(show_string, "%lld %d %d %d %d \n\n%.3f  ", ts, NDOF_IsGyroDynamic(), NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), pitch);
+            prev_ts = millis();
+            door_status = Door_Detection(ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc, &pitch, &cor_gx, prev_ts);
+					  cur_ts = millis();
+					  Detection_dt = cur_ts - prev_ts;
+            sprintf(show_string, "%lld %lld %d %d %d %d \n%.3f\n", Detection_dt, Total_dt, NDOF_IsGyroDynamic(), NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), pitch);
             oled_show_string(0, 0, show_string);
             if(door_status == DOOR_STATUS_OPEN) {
                 sprintf(show_string, "Door opened.   \n");
@@ -51,6 +57,7 @@ int main()
                 oled_show_string(0, 6, show_string);
                 delay_ms(2);
             }
+						Total_dt = millis() - prev_ts;
         }
     }
 }
