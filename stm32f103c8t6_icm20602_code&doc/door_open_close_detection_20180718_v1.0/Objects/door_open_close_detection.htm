@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\door_open_close_detection.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\door_open_close_detection.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Jul 18 09:30:36 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Wed Jul 18 17:13:00 2018
 <BR><P>
 <H3>Maximum Stack Usage =        568 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -557,11 +557,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_errno_addr
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 
 <P><STRONG><a name="[5e]"></a>_printf_int_common</STRONG> (Thumb, 178 bytes, Stack size 32 bytes, _printf_intcommon.o(.text))
@@ -743,6 +743,7 @@ Global Symbols
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsGyroDynamic
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_IsAccDynamic
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floor
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
@@ -752,12 +753,11 @@ Global Symbols
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floor
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[88]"></a>Door_Detection_Init</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, doordetection.o(i.Door_Detection_Init))
+<P><STRONG><a name="[88]"></a>Door_Detection_Init</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, doordetection.o(i.Door_Detection_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Door_Detection_Init &rArr; NDOF_Init &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection_Reset
@@ -792,6 +792,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfrcmple
@@ -805,8 +807,6 @@ Global Symbols
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrtf
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sqrt
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetEulerAngle
 </UL>
@@ -982,13 +982,13 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a1]"></a>Round</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, ndof.o(i.Round))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Round &rArr; ceilf &rArr; __aeabi_fadd
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Round &rArr; floorf &rArr; __aeabi_fadd
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ceilf
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ceilf
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 </UL>
@@ -1116,16 +1116,16 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b8]"></a>__ARM_fpclassifyf</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fpclassifyf.o(i.__ARM_fpclassifyf))
-<BR><BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<BR><BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 </UL>
 
 <P><STRONG><a name="[b2]"></a>__mathlib_flt_infnan</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_infnan))
 <BR><BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbnf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 </UL>
 
 <P><STRONG><a name="[b4]"></a>__mathlib_flt_infnan2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_infnan2))
@@ -1141,16 +1141,16 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fdiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 </UL>
 
 <P><STRONG><a name="[b6]"></a>__mathlib_flt_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_underflow))
 <BR><BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_scalbnf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 </UL>
 
 <P><STRONG><a name="[b7]"></a>__mathlib_rredf2</STRONG> (Thumb, 344 bytes, Stack size 32 bytes, rredf.o(i.__mathlib_rredf2))
@@ -1741,14 +1741,14 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetMeanFromFIFO
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ceilf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_infnan2
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;floorf
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 
 <P><STRONG><a name="[fd]"></a>_fadd</STRONG> (Thumb, 196 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fadd), UNUSED)
@@ -1872,11 +1872,11 @@ Global Symbols
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetEulerAngle
 <LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Door_Detection
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_set_accel_fullscale
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 
 <P><STRONG><a name="[106]"></a>_fmul</STRONG> (Thumb, 258 bytes, Stack size 16 bytes, fmul.o(x$fpl$fmul), UNUSED)
@@ -1929,11 +1929,11 @@ Global Symbols
 <P><STRONG><a name="[b1]"></a>__aeabi_frsub</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, faddsub_clz.o(x$fpl$frsb))
 <BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOrientation
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOffsetStepwise
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 
 <P><STRONG><a name="[109]"></a>_frsb</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, faddsub_clz.o(x$fpl$frsb), UNUSED)
@@ -1958,11 +1958,11 @@ Global Symbols
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QuatMultiplication
 <LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetGravity
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;atan2f
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;acosf
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_rredf2
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sinf
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cosf
 </UL>
 
 <P><STRONG><a name="[10b]"></a>_fsub</STRONG> (Thumb, 234 bytes, Stack size 16 bytes, faddsub_clz.o(x$fpl$fsub), UNUSED)

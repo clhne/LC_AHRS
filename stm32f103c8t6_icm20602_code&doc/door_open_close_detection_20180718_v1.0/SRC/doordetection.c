@@ -29,7 +29,7 @@ void Door_Detection_Init(unsigned char acc_range_idx, unsigned char acc_res_bits
 	  //Door param
 	  door.Opened_angle = 4.0;
 	  door.Detection_factor = 0.5;
-	  door.Closed_angle = 1.2;
+	  door.Closed_angle = 0.5;
 	  NDOF_Init(acc_range_idx, acc_res_bits, gyro_range_idx, gyro_res_bits);
     //Reset Door Detection
     Door_Detection_Reset();

@@ -32,12 +32,14 @@ int main()
     long long prev_ts;
 		long long cur_ts;
     Door_Detection_Init(NDOF_ACC_RANGE_2G, 16, NDOF_GYRORANGE_2000DPS, 16);
+	  /*
 		//Debug param
 		float cor_ax;
 		float cor_ay;
 		float cor_az;
 		float cor_gy;
 	  float cor_gz;
+		*/
     while(1) {
         //Detection Door Status
         if (icm20602_get_acc_gyro_adc(&ax_adc, &ay_adc, &az_adc, &gx_adc, &gy_adc, &gz_adc)) {
