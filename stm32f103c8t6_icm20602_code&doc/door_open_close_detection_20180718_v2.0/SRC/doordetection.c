@@ -48,7 +48,8 @@ void Door_Detection_Reset()
 }
 //Input ax_adc,ay_adc,az_adc,gx_adc,gy_adc,gz_adc
 //Output door_status, pitch,cur_cor_gx,cor_gy,cor_gz
-int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy_adc, short gz_adc, float *pitch, float *cor_gx, int *peak_trough_index, int *peak_trough_count, long long ts)
+int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy_adc, short gz_adc, float *pitch, float *cor_gx, float *cor_gy, float *cor_gz,
+	  int *peak_trough_index, int *peak_trough_count, long long ts)
 {
 	  int door_status;
     float peak_trough_value;
@@ -56,9 +57,9 @@ int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short
     //Check if NDOF_IsGyroCalibrated
     if (NDOF_DoStep(ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc, ts)) {
         float roll, yaw;
-        float cor_gy, cor_gz;
+        //float cor_gy, cor_gz;
         NDOF_GetEulerAngle(&roll, pitch, &yaw);
-        NDOF_GetCorGyroData(cor_gx, &cor_gy, &cor_gz);
+        NDOF_GetCorGyroData(cor_gx, cor_gy, cor_gz);
         is_gyro_dyn = NDOF_IsGyroDynamic();
         is_acc_dyn = NDOF_IsAccDynamic();
 

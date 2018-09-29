@@ -29,6 +29,8 @@ int main()
 	  int peak_trough_count = 0;
     float pitch = 0;
 	  float cor_gx = 0;
+	  float cor_gy = 0;
+		float cor_gz = 0;
 	  long long Detection_dt = 0;
 	  long long Total_dt = 0;
     long long prev_ts;
@@ -38,9 +40,7 @@ int main()
 		//Debug param
 		float cor_ax;
 		float cor_ay;
-		float cor_az;
-		float cor_gy;
-	  float cor_gz;
+		float cor_az;			  
 		*/
     while(1) {
         //Detection Door Status
@@ -49,13 +49,15 @@ int main()
         } else {
 					  //sample time must greater than 5ms!
             prev_ts = millis();
-            door_status = Door_Detection(ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc, &pitch, &cor_gx, &peak_trough_index, &peak_trough_count,prev_ts);
+            door_status = Door_Detection(ax_adc, ay_adc, az_adc, gx_adc, gy_adc, gz_adc, &pitch, &cor_gx, &cor_gy, &cor_gz, &peak_trough_index, &peak_trough_count,prev_ts);
 					  cur_ts = millis();
 					  Detection_dt = cur_ts - prev_ts;
 //            sprintf(show_string, "%lld %lld %d %d %d %d \n%.3f\n%.3f %d %d\n", Detection_dt, Total_dt, NDOF_IsGyroDynamic(), 
 //					      NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), cor_gx, pitch, peak_trough_index, peak_trough_count);
 					sprintf(show_string, "%lld %lld %d %d %d %d \n%d %d %.3f\n%.3f\n", Detection_dt, Total_dt, NDOF_IsGyroDynamic(), 
 					      NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), peak_trough_index, peak_trough_count, cor_gx, pitch);
+					printf("%lld %lld %d %d %d %d, %d %d %.3f, %.3f, %.3f, %.3f\n", Detection_dt, Total_dt, NDOF_IsGyroDynamic(), 
+					      NDOF_IsGyroCalibrated(), NDOF_IsAccDynamic(), NDOF_IsAccCalibrated(), peak_trough_index, peak_trough_count, cor_gx, cor_gy, cor_gz, pitch);
             oled_show_string(0, 0, show_string);
             if(door_status == DOOR_STATUS_OPEN) {
                 sprintf(show_string, "Door opened.   \n");

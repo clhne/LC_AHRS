@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\door_open_close_detection.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\door_open_close_detection.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri Jul 20 14:47:36 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Sat Sep 29 16:46:59 2018
 <BR><P>
-<H3>Maximum Stack Usage =        608 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        640 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 <P>
@@ -252,7 +252,7 @@ Global Symbols
 <P><STRONG><a name="[12f]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[53]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 608 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 640 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -473,7 +473,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_file
 </UL>
-<BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
+<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
 
 <P><STRONG><a name="[5c]"></a>__2sprintf</STRONG> (Thumb, 34 bytes, Stack size 32 bytes, noretval__2sprintf.o(.text))
@@ -735,8 +736,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 </UL>
 
-<P><STRONG><a name="[78]"></a>Door_Detection</STRONG> (Thumb, 824 bytes, Stack size 112 bytes, doordetection.o(i.Door_Detection))
-<BR><BR>[Stack]<UL><LI>Max Depth = 352<LI>Call Chain = Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
+<P><STRONG><a name="[78]"></a>Door_Detection</STRONG> (Thumb, 824 bytes, Stack size 104 bytes, doordetection.o(i.Door_Detection))
+<BR><BR>[Stack]<UL><LI>Max Depth = 344<LI>Call Chain = Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetEulerAngle
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_GetCorGyroData
@@ -843,7 +844,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NDOF_DoStep
 </UL>
 
-<P><STRONG><a name="[79]"></a>NDOF_DoStep</STRONG> (Thumb, 2692 bytes, Stack size 136 bytes, ndof.o(i.NDOF_DoStep))
+<P><STRONG><a name="[79]"></a>NDOF_DoStep</STRONG> (Thumb, 2680 bytes, Stack size 136 bytes, ndof.o(i.NDOF_DoStep))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = NDOF_DoStep &rArr; UpdateOrientation &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UpdateOrientation
@@ -1368,8 +1369,8 @@ Global Symbols
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;icm20602_init
 </UL>
 
-<P><STRONG><a name="[54]"></a>main</STRONG> (Thumb, 434 bytes, Stack size 256 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 608 + Unknown Stack Size
+<P><STRONG><a name="[54]"></a>main</STRONG> (Thumb, 580 bytes, Stack size 296 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 640 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Door_Detection &rArr; NDOF_GetEulerAngle &rArr; GetEulerAngle &rArr; sinf &rArr; __mathlib_rredf2 &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart1_init
@@ -1393,6 +1394,7 @@ Global Symbols
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 <LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>

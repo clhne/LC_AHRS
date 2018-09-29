@@ -7,5 +7,6 @@
 #include "NDOF.h"
 void Door_Detection_Init(unsigned char acc_range_idx, unsigned char acc_res_bits, unsigned char gyro_range_idx, unsigned char gyro_res_bits);
 void Door_Detection_Reset(void);
-int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy_adc, short gz_adc, float *pitch, float *cur_cor_gx, int *peak_trough_index, int *peak_trough_count,long long ts);
+int Door_Detection(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy_adc, short gz_adc, float *pitch, float *cur_cor_gx, float *cor_gy, float *cor_gz, 
+	  int *peak_trough_index, int *peak_trough_count,long long ts);
 #endif

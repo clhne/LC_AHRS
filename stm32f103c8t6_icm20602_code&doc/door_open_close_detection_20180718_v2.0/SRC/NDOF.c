@@ -612,7 +612,6 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     if (!ndof.acc_dyn_status && !ndof.gyro_dyn_status) {
         float gx_fifo_mean, gy_fifo_mean, gz_fifo_mean;
         short calc_mean_fifo_size = ndof.gyro_no_dyn_det_time;
-			  short update_count = 0;
         ndof.gyro_dyn_det_count = 0;
         if (calc_mean_fifo_size > GYRO_FIFO_SIZE) {
             calc_mean_fifo_size = GYRO_FIFO_SIZE;
@@ -630,15 +629,12 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
                 ndof.gyro_calibrated_accuracy = 1;
             } else {
                 // use iir-filter 1ord to update gyro bias
-							  if(update_count <= 5){
                 UpdateOffsetStepwise(&ndof.iir_gx_bias, gx_fifo_mean, ndof.gyro_offset_th_step);
                 UpdateOffsetStepwise(&ndof.iir_gy_bias, gy_fifo_mean, ndof.gyro_offset_th_step);
                 UpdateOffsetStepwise(&ndof.iir_gz_bias, gz_fifo_mean, ndof.gyro_offset_th_step);
                 if (ndof.gyro_calibrated_accuracy < 3) {
                     ndof.gyro_calibrated_accuracy++;
                 }
-							}
-								update_count ++;
             }
             ndof.gx_bias = (short)Round(ndof.iir_gx_bias);
             ndof.gy_bias = (short)Round(ndof.iir_gy_bias);
@@ -658,10 +654,10 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
             float cor_gx = ndof.cor_gx * 0.061f;
             float cor_gy = ndof.cor_gy * 0.061f;
             float cor_gz = ndof.cor_gz * 0.061f;
-            UpdateOrientation(ndof.ori_quat, cor_gx, cor_gy, cor_gz, (ts - ndof.ts) / 1000.0f, 0.6f, gyro_quat);
+            UpdateOrientation(ndof.ori_quat, cor_gx, cor_gy, cor_gz, (ts - ndof.ts) / 1000.0f, 0.2f, gyro_quat);
             if (fabsf(cor_gx) > (float)ndof.ori_motion_threshold
-             || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
-             || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
+                    || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
+                    || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
                 ndof.ori_motion_status = 1;
             } else {
                 ndof.ori_motion_status = 0;
@@ -677,8 +673,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
                 cor_gyro_vector_length = cor_gx * cor_gx + cor_gy * cor_gy + cor_gz * cor_gz;
                 if (cor_gyro_vector_length < ndof.ori_acc_gyro_rate_threshold) {
                     if (fabs(acc_quat[1]) >= ndof.ori_acc_noise_threshold
-                     || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
-                     || ndof.ori_motion_status) {
+                            || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
+                            || ndof.ori_motion_status) {
                         ndof.ori_acc_coupling_timer = 0;
                     } else {
                         ndof.ori_acc_coupling_timer++;

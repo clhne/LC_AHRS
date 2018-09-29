@@ -81,29 +81,32 @@ void UpdateOrientation(float *quat_in, float gyro_in_x, float gyro_in_y, float g
 {
     float quat_rot[4];
     float half_dt = samplingtimegyro * 0.0087267f; // 0.0087267f = 0.5 * 3.1415926 / 180.0
-    if (quat_in == quat_out) {
+    if (quat_in == quat_out){
         return;
     }
-    quat_rot[0] = 1.0f;
-    if (fabsf(gyro_in_x) < threshold) {
-        quat_rot[1] = 0.0f;
-    } else {
-        quat_rot[1] = gyro_in_x * half_dt;
-    }
-    if (fabsf(gyro_in_y) < threshold) {
-        quat_rot[2] = 0.0f;
-    } else {
-        quat_rot[2] = gyro_in_y * half_dt;
-    }
-    if (fabsf(gyro_in_z) < threshold) {
-        quat_rot[3] = 0.0f;
-    } else {
-        quat_rot[3] = gyro_in_z * half_dt;
-    }
-    quat_out[0] = quat_in[0] - quat_in[1] * quat_rot[1] - quat_in[2] * quat_rot[2] - quat_in[3] * quat_rot[3];
-    quat_out[1] = quat_in[1] + quat_in[0] * quat_rot[1] - quat_in[3] * quat_rot[2] + quat_in[2] * quat_rot[3];
-    quat_out[2] = quat_in[2] + quat_in[3] * quat_rot[1] + quat_in[0] * quat_rot[2] - quat_in[1] * quat_rot[3];
-    quat_out[3] = quat_in[3] - quat_in[2] * quat_rot[1] + quat_in[1] * quat_rot[2] + quat_in[0] * quat_rot[3];
+		quat_rot[0] = 1.0f;
+		if (fabsf(gyro_in_x) < threshold)
+		{
+				quat_rot[1] = 0.0f;
+		} else{
+				quat_rot[1] = gyro_in_x * half_dt;
+		}
+		if (fabsf(gyro_in_y) < threshold){
+				quat_rot[2] = 0.0f;
+		} else{
+				quat_rot[2] = gyro_in_y * half_dt;
+		}
+		if (fabsf(gyro_in_z) < threshold)
+		{
+				quat_rot[3] = 0.0f;
+		} else
+		{
+				quat_rot[3] = gyro_in_z * half_dt;
+		}
+		quat_out[0] = quat_in[0] - quat_in[1] * quat_rot[1] - quat_in[2] * quat_rot[2] - quat_in[3] * quat_rot[3];
+		quat_out[1] = quat_in[1] + quat_in[0] * quat_rot[1] - quat_in[3] * quat_rot[2] + quat_in[2] * quat_rot[3];
+		quat_out[2] = quat_in[2] + quat_in[3] * quat_rot[1] + quat_in[0] * quat_rot[2] - quat_in[1] * quat_rot[3];
+		quat_out[3] = quat_in[3] - quat_in[2] * quat_rot[1] + quat_in[1] * quat_rot[2] + quat_in[0] * quat_rot[3];
 }
 
 void GetGravity(const float *quat_in, float *gravity_out)
@@ -469,7 +472,8 @@ void NDOF_Reset(void)
     ndof.ts = 0;
 }
 
-int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy_adc, short gz_adc, long long ts){
+int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy_adc, short gz_adc, long long ts)
+{
     short acc_dyn_ref_idx, acc_dyn_ref_x, acc_dyn_ref_y, acc_dyn_ref_z, acc_dyn_cur_x, acc_dyn_cur_y, acc_dyn_cur_z;
     float acc_vector_length;
     short gyro_dyn_ref_idx, gyro_dyn_ref_x, gyro_dyn_ref_y, gyro_dyn_ref_z, gyro_dyn_cur_x, gyro_dyn_cur_y, gyro_dyn_cur_z;
@@ -512,8 +516,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     acc_dyn_ref_y = ndof.ay_fifo[acc_dyn_ref_idx];
     acc_dyn_ref_z = ndof.az_fifo[acc_dyn_ref_idx];
     if (fabsf((float)acc_dyn_cur_x - (float)acc_dyn_ref_x) > (float)ndof.acc_dyn_det_th
-        || fabsf((float)acc_dyn_cur_y - (float)acc_dyn_ref_y) > (float)ndof.acc_dyn_det_th
-        || fabsf((float)acc_dyn_cur_z - (float)acc_dyn_ref_z) > (float)ndof.acc_dyn_det_th) {
+            || fabsf((float)acc_dyn_cur_y - (float)acc_dyn_ref_y) > (float)ndof.acc_dyn_det_th
+            || fabsf((float)acc_dyn_cur_z - (float)acc_dyn_ref_z) > (float)ndof.acc_dyn_det_th) {
         ndof.acc_dyn_det_count = 0;
     } else {
         ndof.acc_dyn_det_count++;
@@ -583,8 +587,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     delta_y = (float)ndof.gy_max - (float)ndof.gy_min;
     delta_z = (float)ndof.gz_max - (float)ndof.gz_min;
     if (fabsf(delta_x) >= (float)ndof.gyro_dyn_det_th
-        || fabsf(delta_y) >= (float)ndof.gyro_dyn_det_th
-        || fabsf(delta_z) >= (float)ndof.gyro_dyn_det_th) {
+            || fabsf(delta_y) >= (float)ndof.gyro_dyn_det_th
+            || fabsf(delta_z) >= (float)ndof.gyro_dyn_det_th) {
         ndof.gyro_dyn_det_count = 0;
     } else {
         ndof.gyro_dyn_det_count++;
@@ -594,8 +598,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
     }
     ndof.gyro_dyn_status = ndof.gyro_dyn_det_count < ndof.gyro_no_dyn_det_time;
     if (delta_x > (float)ndof.gyro_shake_det_th
-        || delta_y > (float)ndof.gyro_shake_det_th
-        || delta_z > (float)ndof.gyro_shake_det_th) {
+            || delta_y > (float)ndof.gyro_shake_det_th
+            || delta_z > (float)ndof.gyro_shake_det_th) {
         if (ndof.gyro_shake_det_count >= ndof.gyro_shake_det_time) {
             ndof.gyro_shake_det_count = ndof.gyro_shake_det_time + 1;
         } else {
@@ -619,8 +623,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
         gy_fifo_mean = GetMeanFromFIFO(ndof.gy_fifo, 0, calc_mean_fifo_size);
         gz_fifo_mean = GetMeanFromFIFO(ndof.gz_fifo, 0, calc_mean_fifo_size);
         if (fabsf(gx_fifo_mean) < (float)ndof.gyro_offset_th_max
-            && fabsf(gy_fifo_mean) < (float)ndof.gyro_offset_th_max
-            && fabsf(gz_fifo_mean) < (float)ndof.gyro_offset_th_max ) {
+                && fabsf(gy_fifo_mean) < (float)ndof.gyro_offset_th_max
+                && fabsf(gz_fifo_mean) < (float)ndof.gyro_offset_th_max ) {
             if (!ndof.gyro_calibrated_accuracy) {
                 ndof.iir_gx_bias = gx_fifo_mean;
                 ndof.iir_gy_bias = gy_fifo_mean;
@@ -653,10 +657,10 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
             float cor_gx = ndof.cor_gx * 0.061f;
             float cor_gy = ndof.cor_gy * 0.061f;
             float cor_gz = ndof.cor_gz * 0.061f;
-            UpdateOrientation(ndof.ori_quat, cor_gx, cor_gy, cor_gz, (ts - ndof.ts) / 1000.0f, 0.6f, gyro_quat);
+            UpdateOrientation(ndof.ori_quat, cor_gx, cor_gy, cor_gz, (ts - ndof.ts) / 1000.0f, 0.2f, gyro_quat);
             if (fabsf(cor_gx) > (float)ndof.ori_motion_threshold
-                || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
-                || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
+                    || fabsf(cor_gy) > (float)ndof.ori_motion_threshold
+                    || fabsf(cor_gz) > (float)ndof.ori_motion_threshold) {
                 ndof.ori_motion_status = 1;
             } else {
                 ndof.ori_motion_status = 0;
@@ -672,8 +676,8 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
                 cor_gyro_vector_length = cor_gx * cor_gx + cor_gy * cor_gy + cor_gz * cor_gz;
                 if (cor_gyro_vector_length < ndof.ori_acc_gyro_rate_threshold) {
                     if (fabs(acc_quat[1]) >= ndof.ori_acc_noise_threshold
-                        || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
-                        || ndof.ori_motion_status) {
+                            || fabs(acc_quat[2]) >= ndof.ori_acc_noise_threshold
+                            || ndof.ori_motion_status) {
                         ndof.ori_acc_coupling_timer = 0;
                     } else {
                         ndof.ori_acc_coupling_timer++;
@@ -717,12 +721,7 @@ int NDOF_DoStep(short ax_adc, short ay_adc, short az_adc, short gx_adc, short gy
         }
     }
     ndof.ts = ts;
-#if 0
-    printf("acc_dyn:%d %d %d ref/cur x %d %d y %d %d z %d %d\n", ndof.acc_dyn_status, ndof.acc_oneG_status, ndof.acc_dyn_det_count, acc_dyn_ref_x, acc_dyn_cur_x, acc_dyn_ref_y, acc_dyn_cur_y, acc_dyn_ref_z, acc_dyn_cur_z);
-    printf("gyro_dyn:%d %d %d max/min x %d %d y %d %d z %d %d\n", ndof.gyro_dyn_status, ndof.gyro_shake_status, ndof.gyro_dyn_det_count, ndof.gx_max, ndof.gx_min, ndof.gy_max, ndof.gy_min, ndof.gz_max, ndof.gz_min);
-    printf("acc&gyro: %f %f %f %f %f %f bias: %f %f %f\n", ndof.cor_ax * GRAVITY * 0.001f, ndof.cor_ay * GRAVITY * 0.001f, ndof.cor_az * GRAVITY * 0.001f, ndof.cor_gx * 0.061f, ndof.cor_gy * 0.061f, ndof.cor_gz * 0.061f, ndof.gx_bias * 0.061f, ndof.gy_bias * 0.061f, ndof.gz_bias * 0.061f);
-    printf("ori_quat: %f %f %f %f\n", ndof.ori_quat[0], ndof.ori_quat[1], ndof.ori_quat[2], ndof.ori_quat[3]);
-#endif
+
     return NDOF_IsGyroCalibrated();
 }
 
