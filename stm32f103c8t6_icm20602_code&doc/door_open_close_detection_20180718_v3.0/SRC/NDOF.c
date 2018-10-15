@@ -366,7 +366,7 @@ void NDOF_Init(unsigned char acc_range_idx, unsigned char acc_res_bits, unsigned
     // acc param
     ndof.acc_res = (float)NDOF_ACC_RANGE_ARRAY[acc_range_idx] * 1000.0f / (float)(1L << (acc_res_bits - 1));
     ndof.acc_iir_coef = 0.55f;
-    ndof.acc_dyn_det_th = 25/*13*/;
+    ndof.acc_dyn_det_th = 25/*13*/; //mG
     ndof.acc_no_dyn_det_time = 3;
     ndof.acc_dyn_det_bwidth = 4;
     ndof.acc_oneG_th_min = 553536;
